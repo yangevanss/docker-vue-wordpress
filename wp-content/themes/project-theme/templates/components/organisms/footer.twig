@@ -1,0 +1,18 @@
+<footer class="o-footer">
+    {% if footer %}
+		<ul>
+			{% for link in footer %}
+				<li>
+					<a target="{{ link.target }}" href="{{ link.url }}">{{ link.title }}</a>
+				</li>
+				{% for sublink in link.menu_children %}
+					<ul>
+						<li>
+							<a target="{{ sublink.target }}" href="{{sublink.url}}">{{ sublink.title }}</a>
+						</li>
+					</ul>
+				{% endfor %}
+			{% endfor %}
+		</ul>
+	{% endif %}
+</footer>

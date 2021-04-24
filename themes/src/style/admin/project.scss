@@ -1,0 +1,40 @@
+#wpadminbar {
+    #wp-admin-bar-my-sites-list {
+        display: flex;
+        width: 80vw;
+        max-width: 1000px;
+        flex-wrap: wrap;
+
+        >.menupop {
+            padding: 5px 0;
+            width: calc((100% - 80px) / 5);
+            flex: 0 0 calc((100% - 80px) / 5);
+            border-bottom: 1px solid rgba(#aaaaaa, 0.5);
+
+            &:nth-child(5n + 2),
+            &:nth-child(5n + 3),
+            &:nth-child(5n + 4),
+            &:nth-child(5n) {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    #wp-admin-bar-my-sites-list,
+    #wp-admin-bar-network-admin {
+        .wp-admin-bar-arrow,
+        .ab-sub-wrapper {
+            display: none;
+        }
+    }
+}
+
+#wpadminbar #wp-admin-bar-my-sites #wp-admin-bar-my-sites-list a.ab-item {
+    height: auto;
+    line-height: normal;
+    white-space: normal;
+}
+
+#edittag div.meta-box-sortables {
+    min-width: auto;
+}

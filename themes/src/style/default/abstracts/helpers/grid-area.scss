@@ -1,0 +1,7 @@
+@mixin grid-area($row-start, $column-start, $row-end, $column-end) {
+    grid-area: #{$row-start} / #{$column-start} / #{$row-end} / #{$column-end};
+    -ms-grid-row: $row-start * 2 - 1;
+    -ms-grid-column: $column-start * 2 - 1;
+    -ms-grid-row-span: ($row-end - $row-start) * 2 - 1;
+    -ms-grid-column-span: ($column-end - $column-start) * 2 - 1;
+}

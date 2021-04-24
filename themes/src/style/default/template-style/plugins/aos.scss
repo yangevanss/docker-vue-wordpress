@@ -1,0 +1,350 @@
+// Animations variables
+$aos-distance: 40px !default;
+
+$aos-distance-xs: 20px !default;
+$zoom-in: 0.7;
+$zoom-out: 1.2;
+$aos-duration: 0.6s;
+
+$aos-easing: (
+    default: cubi    (0, 0, 0.58, 1),
+);
+
+@keyframes shapeOut {
+    0% {
+        transform: scale(0, 1) translate3d(0, 0, 0);
+        transform-origin: 0 0;
+    }
+
+    49.999% {
+        transform: scale(1, 1) translate3d(0, 0, 0);
+        transform-origin: 0 0;
+    }
+
+    50% {
+        transform: scale(1, 1) translate3d(0, 0, 0);
+        transform-origin: 100% 0;
+    }
+
+    100% {
+        transform: scale(0, 1) translate3d(0, 0, 0);
+        transform-origin: 100% 0;
+    }
+}
+
+@media screen {
+    html:not(.no-js) {
+        // 畫線
+        [data-aos^='draw'][data-aos^='draw'] {
+            transition-property: transform;
+            visibility: hidden;
+
+            &.-aos-active {
+                visibility: visible;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        [data-aos='draw-right'] {
+            transform: translate3d(0, 0, 0) scaleX(0);
+            transform-origin: 0 0;
+        }
+
+        [data-aos='draw-down'] {
+            transform: translate3d(0, 0, 0) scaleY(0);
+            transform-origin: 0 0;
+        }
+
+        [data-aos='draw-up'] {
+            transform: translate3d(0, 0, 0) scaleY(0);
+            transform-origin: 0 100%;
+        }
+
+        [data-aos='draw-left'] {
+            transform: translate3d(0, 0, 0) scaleX(0);
+            transform-origin: 100% 0;
+        }
+
+        // /**
+        // * Fade animations:
+        // * fade
+        // * fade-up, fade-down, fade-left, fade-right
+        // * fade-up-right, fade-up-left, fade-down-right, fade-down-left
+        // */
+
+        [data-aos^='fade'][data-aos^='fade'] {
+            opacity: 0;
+            transition-property: opacity, transform;
+
+            &.-aos-active {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        [data-aos='fade-up'] {
+            transform: translate3d(0, $aos-distance, 0);
+        }
+
+        [data-aos='fade-down'] {
+            transform: translate3d(0, -$aos-distance, 0);
+        }
+
+        [data-aos='fade-right'] {
+            transform: translate3d(-$aos-distance, 0, 0);
+        }
+
+        [data-aos='fade-left'] {
+            transform: translate3d($aos-distance, 0, 0);
+        }
+
+        [data-aos='fade-left-small'] {
+            transform: translate3d(#{$aos-distance - 20px}, 0, 0);
+        }
+
+        [data-aos='fade-up-right'] {
+            transform: translate3d(-$aos-distance, $aos-distance, 0);
+        }
+
+        [data-aos='fade-up-left'] {
+            transform: translate3d($aos-distance, $aos-distance, 0);
+        }
+
+        [data-aos='fade-down-right'] {
+            transform: translate3d(-$aos-distance, -$aos-distance, 0);
+        }
+
+        [data-aos='fade-down-left'] {
+            transform: translate3d($aos-distance, -$aos-distance, 0);
+        }
+
+        // /**
+        // * Zoom animations:
+        // * zoom-in, zoom-in-up, zoom-in-down, zoom-in-left, zoom-in-right
+        // * zoom-out, zoom-out-up, zoom-out-down, zoom-out-left, zoom-out-right
+        // */
+
+        [data-aos^='zoom'][data-aos^='zoom'] {
+            opacity: 0;
+            transition-property: opacity, transform;
+
+            &.-aos-active {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+        }
+
+        [data-aos='zoom-in'] {
+            transform: scale(#{$zoom-in});
+        }
+
+        [data-aos='zoom-in-up'] {
+            transform: translate3d(0, $aos-distance, 0) scale(#{$zoom-in});
+        }
+
+        [data-aos='zoom-in-down'] {
+            transform: translate3d(0, -$aos-distance, 0) scale(#{$zoom-in});
+        }
+
+        [data-aos='zoom-in-right'] {
+            transform: translate3d(-$aos-distance, 0, 0) scale(#{$zoom-in});
+        }
+
+        [data-aos='zoom-in-left'] {
+            transform: translate3d($aos-distance, 0, 0) scale(#{$zoom-in});
+        }
+
+        [data-aos='zoom-out'] {
+            transform: scale(#{$zoom-out});
+        }
+
+        [data-aos='zoom-out-up'] {
+            transform: translate3d(0, $aos-distance, 0) scale(#{$zoom-out});
+        }
+
+        [data-aos='zoom-out-down'] {
+            transform: translate3d(0, -$aos-distance, 0) scale(#{$zoom-out});
+        }
+
+        [data-aos='zoom-out-right'] {
+            transform: translate3d(-$aos-distance, 0, 0) scale(#{$zoom-out});
+        }
+
+        [data-aos='zoom-out-left'] {
+            transform: translate3d($aos-distance, 0, 0) scale(#{$zoom-out});
+        }
+
+        [data-aos^='no-opacity-zoom'][data-aos^='no-opacity-zoom'] {
+            transition-property: transform;
+
+            &.-aos-active {
+                transform: scale(1);
+            }
+        }
+
+        [data-aos='no-opacity-zoom-in'] {
+            transform: scale(#{$zoom-in});
+        }
+
+        [data-aos='no-opacity-zoom-in-up'] {
+            transform: translate3d(0, $aos-distance, 0) scale(#{$zoom-in});
+        }
+
+        [data-aos='no-opacity-zoom-in-down'] {
+            transform: translate3d(0, -$aos-distance, 0) scale(#{$zoom-in});
+        }
+
+        [data-aos='no-opacity-zoom-in-right'] {
+            transform: translate3d(-$aos-distance, 0, 0) scale(#{$zoom-in});
+        }
+
+        [data-aos='no-opacity-zoom-in-left'] {
+            transform: translate3d($aos-distance, 0, 0) scale(#{$zoom-in});
+        }
+
+        [data-aos='no-opacity-zoom-out'] {
+            transform: scale(#{$zoom-out});
+        }
+
+        [data-aos='no-opacity-zoom-out-up'] {
+            transform: translate3d(0, $aos-distance, 0) scale(#{$zoom-out});
+        }
+
+        [data-aos='no-opacity-zoom-out-down'] {
+            transform: translate3d(0, -$aos-distance, 0) scale(#{$zoom-out});
+        }
+
+        [data-aos='no-opacity-zoom-out-right'] {
+            transform: translate3d(-$aos-distance, 0, 0) scale(#{$zoom-out});
+        }
+
+        [data-aos='no-opacity-zoom-out-left'] {
+            transform: translate3d($aos-distance, 0, 0) scale(#{$zoom-out});
+        }
+
+        // /**
+        // * Slide animations
+        // */
+
+        [data-aos^='slide'][data-aos^='slide'] {
+            transition-property: transform;
+            visibility: hidden;
+
+            &.-aos-active {
+                visibility: visible;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        [data-aos='slide-up'] {
+            transform: translate3d(0, 100%, 0);
+        }
+
+        [data-aos='slide-down'] {
+            transform: translate3d(0, -100%, 0);
+        }
+
+        [data-aos='slide-right'] {
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        [data-aos='slide-left'] {
+            transform: translate3d(100%, 0, 0);
+        }
+
+        // /**
+        // * Flip animations:
+        // * flip-left, flip-right, flip-up, flip-down
+        // */
+
+        [data-aos^='flip'][data-aos^='flip'] {
+            backface-visibility: hidden;
+            transition-property: transform;
+        }
+
+        [data-aos='flip-left'] {
+            transform: perspective(2500px) rotateY(-100deg);
+
+            &.-aos-active {
+                transform: perspective(2500px) rotateY(0);
+            }
+        }
+
+        [data-aos='flip-right'] {
+            transform: perspective(2500px) rotateY(100deg);
+
+            &.-aos-active {
+                transform: perspective(2500px) rotateY(0);
+            }
+        }
+
+        [data-aos='flip-up'] {
+            transform: perspective(2500px) rotateX(-100deg);
+
+            &.-aos-active {
+                transform: perspective(2500px) rotateX(0);
+            }
+        }
+
+        [data-aos='flip-down'] {
+            transform: perspective(2500px) rotateX(100deg);
+
+            &.-aos-active {
+                transform: perspective(2500px) rotateX(0);
+            }
+        }
+    }
+}
+
+[data-aos] {
+    pointer-events: none;
+
+    &.-aos-active {
+        pointer-events: auto;
+    }
+
+    &[data-aos][data-aos-loading-delay='0'] {
+        transition-delay: 0s !important;
+        animation-delay: 0s !important;
+
+        &.-aos-init {
+            transition-delay: $loading-delay !important;
+            animation-delay: $loading-delay !important;
+        }
+    }
+
+    // Generate Duration && Delay
+    @for $i from 1 through 60 {
+        body[data-aos-duration='#{$i * 50}'] &,
+        &[data-aos][data-aos-duration='#{$i * 50}'] {
+            transition-duration: #{$i * 50}ms;
+        }
+
+        body[data-aos-delay='#{$i * 50}'] &,
+        &[data-aos][data-aos-delay='#{$i * 50}'] {
+            transition-delay: 0s;
+
+            &.-aos-active {
+                transition-delay: #{$i * 50}ms;
+            }
+        }
+
+        &[data-aos][data-aos-loading-delay='#{$i * 50}'] {
+            transition-delay: 0s !important;
+            animation-delay: 0s !important;
+
+            &.-aos-init {
+                transition-delay: #{$loading-delay + $i * 50ms} !important;
+                animation-delay: #{$loading-delay + $i * 50ms} !important;
+            }
+        }
+    }
+    // Easings implementations
+    // Default timing function: 'ease'
+    @each $key, $val in $aos-easing {
+        body[data-aos-easing='#{$key}'] &,
+        &[data-aos][data-aos-easing='#{$key}'] {
+            transition-timing-function: $val;
+        }
+    }
+}

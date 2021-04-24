@@ -1,0 +1,14 @@
+.m-lang-switcher {
+    display: flex;
+
+    li {
+        height: 100%;
+    }
+
+    a {
+        display: block;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+}

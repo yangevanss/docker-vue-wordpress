@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js no-svg{% if lang %} -lang-{{ lang }}{% endif %}" {{ site.language_attributes }}>
+    <head>
+        {% include 'components/base/html-header.twig' %}
+        {{ enqueue_style('app') }}
+        {% block head %}{% endblock %}
+        {{ function('wp_head') }}
+    </head>
+    <body
+        class="{{ wp_body_class }} {{ body_class }} -loading" {% if custom_id %} id="{{custom_id}}" {% endif %}>
+        {# loading #}
+        {% include 'components/base/loading.twig' %}
+        {% block outside %}{% endblock %}
+        <div id="wrapper">
+            {% include 'components/organisms/header.twig' %}
+            {% block header %}{% endblock %}
+            <main>
+                {% block content %}{% endblock %}
+            </main>
+            {% include 'components/organisms/footer.twig' %}
+        </div>
+        {# script #}
+        <script>
+            var lang = "{{ lang }}"
+            var base_path = "{{ site.theme.link }}"
+            var ajax_url = "{{ site.url }}"
+        </script>
+        {% if option.ga_source_id is not empty %}
+            {# 適用 V2 & V3 #}
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ option.ga_source_id }}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '{{ option.ga_source_id }}');
+            </script>
+        {% endif %}
+        {{ enqueue_script('app') }}
+        {{ enqueue_script('runtime') }}
+        {{ enqueue_script('vendors') }}
+        {{ function('wp_footer') }}
+    </body>
+</html>

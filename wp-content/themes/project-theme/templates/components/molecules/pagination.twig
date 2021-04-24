@@ -1,0 +1,42 @@
+{# example #}
+{#
+    {% include 'components/molecules/pagination.twig' with {
+        pagination: posts.pagination({
+            show_all: false,
+            mid_size: 3,
+            end_size: 2
+        })
+    } %}
+#}
+
+{% if posts.pagination.pages is not empty %}
+    <div class="m-pagination">
+        <ul class="m-pagination__list">
+            {% if posts.pagination.prev %}
+                <li class="m-pagination__link -prev">
+                    <a href="{{ posts.pagination.prev.link }}"><span data-icon="arrow-normal-right" class="icon a-arrow"></span></a>
+                </li>
+            {% else %}
+                <li class="m-pagination__link -prev -disabled">
+                    <a><span data-icon="arrow-normal-right" class="icon a-arrow"></span></a>
+                </li>
+            {% endif %}
+
+            {% for page in posts.pagination.pages %}
+				<li class="m-pagination__link{% if page.link == null %} -current{% endif %}">
+					<a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+				</li>
+            {% endfor %}
+
+            {% if posts.pagination.next %}
+                <li class="m-pagination__link -next">
+                    <a href="{{ posts.pagination.next.link }}"><span data-icon="arrow-normal-right" class="icon a-arrow"></span></a>
+                </li>
+            {% else %}
+                <li class="m-pagination__link -next -disabled">
+                    <a><span data-icon="arrow-normal-right" class="icon a-arrow"></span></a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

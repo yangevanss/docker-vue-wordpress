@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+body.login {
+    background: #ffffff;
+}
+
+#screen-options-link-wrap {
+    display: none;
+}
+
+.login h1 a {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-size: 0;
+    color: transparent;
+    background: url('../img/public/logo.svg') center center / cover no-repeat, #000000 !important;
+
+    &::before {
+        content: '';
+        display: block;
+        padding-bottom: 100%; // logo 高除以寬比率
+        width: 100%;
+    }
+}
+
+#login {
+    padding-bottom: 200px;
+}
+
+.login form {
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+input[type='password'] {
+    border-style: solid;
+    border-width: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+#login form p {
+    width: 100%;
+}
+
+.indicator-hint {
+    color: #000000;
+}
+
+.message {
+    background: #eeeeee;
+}
+
+p.help,
+p.description,
+span.description,
+.form-wrap p {
+    font-style: normal;
+    font-size: 14px;
+}
+
+input[type='file'] {
+    width: 97%;
+    font-size: 14px;
+}
+
+.login #nav a,
+.login #backtoblog a {
+    font-size: 13px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #000000 !important;
+}
+
+.login #nav,
+.login #backtoblog {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+div.updated,
+.login .message {
+    display: none;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 16px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    color: #978e8a;
+    background: none;
+    border: 0;
+}
+
+.login form .input,
+.login input[type='text'] {
+    padding: 5px;
+    background: #e6e6e6;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.login form input:focus,
+.login form textarea:focus {
+    background-color: #cccccc;
+}
+
+input[type='text'] {
+    border-style: solid;
+    border-width: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+.wp-core-ui .button-primary {
+    background-color: #000000;
+    border: 0;
+    border-bottom-color: none;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.wp-core-ui .button-primary:hover,
+.wp-core-ui .button-primary:active,
+.wp-core-ui .button-primary.focus,
+.wp-core-ui .button-primary:focus {
+    background-color: #000000;
+    border: 0;
+    border-bottom-color: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background: #e6e6e6;
+}

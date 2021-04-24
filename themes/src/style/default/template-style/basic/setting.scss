@@ -1,0 +1,125 @@
+// this is for custom setting
+@at-root {
+    @-ms-viewport {
+        width: device-width;
+    }
+}
+
+html {
+    box-sizing: border-box;
+    -ms-overflow-style: scrollbar;
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    height: 100%;
+    font-family: map-get($font-family, 'default');
+    color: map-get($colors, 'font-main');
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    // @include typo('body', 0);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+*:focus {
+    outline: none;
+}
+
+a,
+area,
+button,
+[role='button'],
+input,
+label,
+select,
+summary,
+textarea {
+    touch-action: manipulation;
+}
+
+a,
+button {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 300ms;
+    cursor: pointer;
+
+    @include rwd('desktop', 'above') {
+        &:not([class]):hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+button:focus {
+    outline: 0;
+}
+
+iframe,
+img {
+    // 解決 html 5 bug
+    vertical-align: middle;
+}
+
+// change select color
+::selection {
+    color: #ffffff;
+    background-color: map-get($colors, 'main');
+}
+
+input,
+textarea,
+button,
+select {
+    border-radius: 0;
+    line-height: inherit;
+}
+
+// remove input & textarea default appearence
+input,
+textarea {
+    appearance: none;
+}
+
+textarea {
+    resize: none;
+}
+
+input {
+    border: 0;
+    border-radius: 0;
+    outline: none;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        // clear input 自動完成背景顏色
+        box-shadow: 0 0 0 1000px map-get($colors, 'main') inset;
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: #ffffff;
+    }
+
+    &[type='search'] {
+        &::-ms-clear,
+        &::-ms-reveal {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<header class="o-header">
+    <a class="o-header__logo" href="{{ page_list.index.link }}"><img src="{{ site.theme.link }}/src/img/public/logo.svg" alt=""></a>
+    {% if nav %}
+        <ul>
+            {% for link in nav %}
+                <li>
+                    <a target="{{ link.target }}" href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+                {% for sublink in link.menu_children %}
+                    <ul>
+                        <li>
+                            <a target="{{ sublink.target }}" href="{{sublink.url}}">{{ sublink.title }}</a>
+                        </li>
+                    </ul>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% include 'components/molecules/lang-switcher.twig' %}
+</header>

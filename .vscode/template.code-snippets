@@ -1,0 +1,220 @@
+{
+    // css
+    // ------ rwd -----
+    "SCSS RWD mixin large": {
+        "scope": "scss, vue",
+        "prefix": "rwd-large",
+        "body": [
+            "@include rwd('large', '$1') {",
+            "$0",
+            "}"
+        ],
+        "description": "rwd large"
+    },
+    "SCSS RWD mixin desktop": {
+        "scope": "scss, vue",
+        "prefix": "rwd-desktop",
+        "body": [
+            "@include rwd('desktop', '$1') {",
+            "$0",
+            "}"
+        ],
+        "description": "rwd desktop"
+    },
+    "SCSS RWD mixin medium": {
+        "scope": "scss, vue",
+        "prefix": "rwd-medium",
+        "body": [
+            "@include rwd('medium', '$1') {",
+            "$0",
+            "}"
+        ],
+        "description": "rwd medium"
+    },
+    "SCSS RWD mixin tablet": {
+        "scope": "scss, vue",
+        "prefix": "rwd-tablet",
+        "body": [
+            "@include rwd('tablet', '$1') {",
+            "$0",
+            "}"
+        ],
+        "description": "rwd tablet"
+    },
+    "SCSS RWD mixin mobile": {
+        "scope": "scss, vue",
+        "prefix": "rwd-mobile",
+        "body": [
+            "@include rwd('mobile', '$1') {",
+            "$0",
+            "}",
+        ],
+        "description": "rwd mobile"
+    },
+    "SCSS RWD mixin custom": {
+        "scope": "scss, vue",
+        "prefix": "rwd-custom",
+        "body": [
+            "@include rwd-custom(${1:0}px, '${2:above}') {",
+            "$0",
+            "}",
+        ],
+        "description": "rwd mobile"
+    },
+    // ----- container -----
+    "get container large padding": {
+        "scope": "scss, vue",
+        "prefix": "map:container-lg",
+        "body": [
+            "map-get(map-get(\\$container, large), ${0:padding})"
+        ],
+        "description": "flex align center"
+    },
+    "get container desktop padding": {
+        "scope": "scss, vue",
+        "prefix": "map:container-md",
+        "body": [
+            "map-get(map-get(\\$container, desktop), ${0:padding})"
+        ],
+        "description": "flex align center"
+    },
+    "get container tablet padding": {
+        "scope": "scss, vue",
+        "prefix": "map:container-sm",
+        "body": [
+            "map-get(map-get(\\$container, tablet), ${0:padding})"
+        ],
+        "description": "flex align center"
+    },
+    "get container mobile padding": {
+        "scope": "scss, vue",
+        "prefix": "map:container-xs",
+        "body": [
+            "map-get(map-get(\\$container, mobile), ${0:padding})"
+        ],
+        "description": "flex align center"
+    },
+    // ----- header height -----
+    "get header height": {
+        "scope": "scss, vue",
+        "prefix": "map:header-height",
+        "body": [
+            "map-get(\\$header-height, ${0:normal})"
+        ],
+        "description": "flex align center"
+    },
+    // ----- UI guide -----
+    "typography mixin": {
+        "scope": "scss, vue",
+        "prefix": "typo",
+        "body": [
+            "@include typo('$1', $2);"
+        ],
+        "description": "typography mixin"
+    },
+    "get font-weight": {
+        "scope": "scss, vue",
+        "prefix": "map:font-weight",
+        "body": [
+            "font-weight: map-get(\\$font-weight, $0);"
+        ],
+        "description": "font-weight mixin"
+    },
+    "get font-family": {
+        "scope": "scss, vue",
+        "prefix": "map:font-family",
+        "body": [
+            "font-family: map-get(\\$font-family, $0);"
+        ],
+        "description": "font-family mixin"
+    },
+    "get color": {
+        "scope": "scss, vue",
+        "prefix": "map:color",
+        "body": [
+            "map-get(\\$colors, $0)"
+        ],
+        "description": "flex align center"
+    },
+    // ----- mixins -----
+    "SCSS size mixin": {
+        "scope": "scss, vue",
+        "prefix": "size",
+        "body": [
+            "@include size($1);"
+        ],
+        "description": "size mixin"
+    },
+    "vue transition css": {
+        "scope": "scss, vue",
+        "prefix": "vue-transition",
+        "body": [
+            "$1 {",
+            "    &-enter {",
+            "        &-active {",
+            "        }",
+            "        &-to {",
+            "        }",
+            "    }",
+            "    &-leave {",
+            "        &-active {",
+            "        }",
+            "        &-to {",
+            "        }",
+            "    }",
+            "}"
+        ],
+        "description": "vue transition scss"
+    },
+    "flex-grid": {
+        "scope": "scss, vue",
+        "prefix": "flex-grid",
+        "body": [
+            "@include flex-grid(${1:$child}, ${0:$col})"
+        ],
+        "description": "multiple col"
+    },
+    "flex-grid-2": {
+        "scope": "scss, vue",
+        "prefix": "flex-grid-2",
+        "body": [
+            "@include flex-grid-2(${1:$child}, ${2:$col_1}, ${0:$col_2})"
+        ],
+        "description": "multiple grid"
+    },
+    // ----- css -----
+    "flex center": {
+        "scope": "scss, vue",
+        "prefix": "flex-center",
+        "body": [
+            "display: flex;",
+            "align-items: center;",
+            "justify-content: center;",
+        ],
+        "description": "flex align center"
+    },
+    "SCSS bg-cover mixin": {
+        "scope": "scss, vue",
+        "prefix": "bg-cover",
+        "body": [
+            "background: url('$0') center center / cover no-repeat;"
+        ],
+        "description": "background cover mixin"
+    },
+    // ----- html -----
+    "fakeImg": {
+        "prefix": "fakeimg",
+        "body": ["${1:https://source.unsplash.com/random/${2:1024}x${3:768}}"],
+        "description": "fakeImg"
+    },
+    "targetBlank": {
+        "prefix": "target-blank",
+        "body": ["target=\"_blank\" rel=\"noopener noreferer nofollow\""],
+        "description": "開啟新視窗"
+    },
+    "targetBlankInside": {
+        "prefix": "target-blank-inside",
+        "body": ["target=\"_blank\" rel=\"noopener\""],
+        "description": "開啟新視窗"
+    },
+}

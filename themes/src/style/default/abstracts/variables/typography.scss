@@ -1,0 +1,62 @@
+$font-weight: (
+    light: 300,
+    normal: 400,
+    medium: 500,
+    bold: 700,
+);
+$font-family: (
+    default: #{'en', Helvetica, Arial, Verdana, 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', sans-serif},
+    zh: #{'Noto Sans TC', sans-serif},
+    en: #{'en', sans-serif},
+);
+
+@mixin typo($lv, $type) {
+    @if ($lv == 'display') {
+        @if ($type == 1) {
+            // **** EXAMPLE ****
+            // --- EN only ----
+            font-size: 70px;
+            font-family: 'en', sans-serif;
+            font-weight: map-get($font-weight, heavy);
+            line-height: 1.14;
+            letter-spacing: normal;
+            @include rwd('md', 'below') {
+                font-size: 60px;
+                line-height: 1;
+            }
+            @include rwd('sm', 'below') {
+                font-size: 40px;
+                font-weight: map-get($font-weight, bold);
+                letter-spacing: 0.1px;
+            }
+        }
+        @else {
+            @error '#{$type}：沒有這個type`';
+        }
+    }
+    @else if ($lv == 'heading') {
+        @if ($type == 1) {
+            font-size: 16px;
+            line-height: 1.5625;
+            font-weight: map-get($font-weight, normal);
+            letter-spacing: normal;
+        }
+        @else {
+            @error '#{$type}：沒有這個type`';
+        }
+    }
+    @else if ($lv == 'body') {
+        @if ($type == 1) {
+            font-size: 16px;
+            line-height: 1.5625;
+            font-weight: map-get($font-weight, normal);
+            letter-spacing: normal;
+        }
+        @else {
+            @error '#{$type}：沒有這個type`';
+        }
+    }
+    @else {
+        @error '#{$level}：沒有這個level`';
+    }
+}

@@ -1,0 +1,11 @@
+@function repeater($n, $character) {
+    // TODO: 調整 repeat 用法
+    // REF: https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/
+    $c: '';
+
+    @for $i from 1 through $n {
+        $c: $c + ' '+ $character;
+    }
+
+    @return unquote($c);
+}

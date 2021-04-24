@@ -1,0 +1,11 @@
+{% extends "layouts/base.twig" %}
+
+{% block content %}
+    {{ enqueue_style('index') }}
+    {{ enqueue_script('index') }}
+    <Test></Test>
+    {# <icon svg-class="icon" name="right"></icon> #}
+    <h1>{{ title }}</h1>
+    {# <hello></hello> #}
+    <img src="{{ posts[0].get_field('og')['thumb'] }}" class="js-lazy-image" alt="">
+{% endblock %}
