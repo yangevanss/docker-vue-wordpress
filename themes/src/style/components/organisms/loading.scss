@@ -1,0 +1,25 @@
+body {
+    &.-loading {
+        #wrapper {
+            opacity: 0;
+        }
+
+        .o-loading {
+            pointer-events: auto;
+            opacity: 1;
+        }
+    }
+}
+
+.o-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    opacity: 0;
+    z-index: 100000;
+    transition: opacity 1.8s ease;
+    pointer-events: none;
+}

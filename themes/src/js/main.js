@@ -1,4 +1,4 @@
-import '@/style/styles.scss'
+import '@/style/_main.scss'
 import Vue from 'vue'
 import Test from '@/js/components/Test.vue'
 

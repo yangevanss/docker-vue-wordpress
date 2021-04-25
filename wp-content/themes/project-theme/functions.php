@@ -96,16 +96,22 @@ class StarterSite extends Timber\Site {
         $twig->addFunction(new Twig_SimpleFunction('getFileExt', 'getFileExt'));
         $twig->addFunction(new Twig_SimpleFunction('customDateFormat', 'customDateFormat'));
 
-        $twig->addFunction(new Twig_SimpleFunction('enqueue_script', function ($name) {
+        $twig->addFunction(new Twig_SimpleFunction('enqueue_script', function ($name, $cover = true) {
             $url = get_template_directory_uri() . '/src/js/';
             if (wp_get_environment_type() == 'development') {
                 $url = 'http://localhost:8080/js/';
             }
+            if($cover && wp_script_is('default')){
+                wp_dequeue_script('default');
+            }
             wp_enqueue_script($name, $url . $name . '.bundle.js', null, null, true);
         }));
-        $twig->addFunction(new Twig_SimpleFunction('enqueue_style', function ($name) {
+        $twig->addFunction(new Twig_SimpleFunction('enqueue_style', function ($name, $cover = true) {
             if (wp_get_environment_type() != 'development') {
                 $url = get_template_directory_uri() . '/src/css/';
+                if($cover && wp_style_is('default')){
+                    wp_dequeue_style('default');
+                }
                 wp_enqueue_style($name, $url . $name . '.css', null, null, 'all');
             }
         }));

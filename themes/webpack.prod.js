@@ -42,7 +42,7 @@ module.exports = merge(common, {
                     {
                         loader: 'sass-resources-loader',
                         options: {
-                            resources: [path.resolve(__dirname, 'src/style/default/abstracts/_abstracts.scss')],
+                            resources: [path.resolve(__dirname, 'src/style/mixins/_mixin.scss')],
                         },
                     },
                 ],

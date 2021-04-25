@@ -14,7 +14,14 @@
     },
     "dependencies": {
         "@babel/runtime-corejs3": "^7.13.17",
-        "vue": "^2.6.12"
+        "aos": "^2.3.4",
+        "axios": "^0.21.1",
+        "body-scroll-lock": "^3.1.5",
+        "imagesloaded": "^4.1.4",
+        "lodash": "^4.17.21",
+        "swiper": "5.4.5",
+        "vue": "^2.6.12",
+        "vue-awesome-swiper": "^4.1.1"
     },
     "devDependencies": {
         "@babel/core": "^7.13.16",
@@ -44,6 +51,7 @@
         "stylelint-config-standard": "^21.0.0",
         "stylelint-order": "^4.1.0",
         "stylelint-webpack-plugin": "^2.1.1",
+        "svg-sprite-loader": "^6.0.6",
         "vue-loader": "^15.9.6",
         "vue-template-compiler": "^2.6.12",
         "webpack": "^5.35.0",

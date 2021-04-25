@@ -12,7 +12,7 @@ module.exports = merge(common, {
             chokidar
                 .watch([
                     path.resolve(__dirname, '../wp-content/themes/project-theme/'),
-                    path.resolve(__dirname, 'src/js/page/*.js'),
+                    path.resolve(__dirname, 'src/js/pages/*.js'),
                     path.resolve(__dirname, 'src/js/main.js'),
                 ])
                 .on('all', function () {
@@ -66,7 +66,7 @@ module.exports = merge(common, {
                     {
                         loader: 'sass-resources-loader',
                         options: {
-                            resources: [path.resolve(__dirname, 'src/style/default/abstracts/_abstracts.scss')],
+                            resources: [path.resolve(__dirname, 'src/style/mixins/_mixin.scss')],
                         },
                     },
                 ],

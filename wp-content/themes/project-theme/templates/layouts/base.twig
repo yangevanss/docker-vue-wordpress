@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html class="no-js no-svg{% if lang %} -lang-{{ lang }}{% endif %}" {{ site.language_attributes }}>
+<html {{ site.language_attributes }}>
     <head>
         {% include 'components/base/html-header.twig' %}
-        {{ enqueue_style('app') }}
+        {{ enqueue_style('default', false) }}
         {% block head %}{% endblock %}
         {{ function('wp_head') }}
     </head>
-    <body
-        class="{{ wp_body_class }} {{ body_class }} -loading" {% if custom_id %} id="{{custom_id}}" {% endif %}>
-        {# loading #}
-        {% include 'components/base/loading.twig' %}
+    <body class="{{ body_class }} -loading" >
         {% block outside %}{% endblock %}
         <div id="wrapper">
+            {% include 'components/base/loading.twig' %}
             {% include 'components/organisms/header.twig' %}
             {% block header %}{% endblock %}
             <main>
@@ -19,7 +17,6 @@
             </main>
             {% include 'components/organisms/footer.twig' %}
         </div>
-        {# script #}
         <script>
             var lang = "{{ lang }}"
             var base_path = "{{ site.theme.link }}"
@@ -36,9 +33,10 @@
                 gtag('config', '{{ option.ga_source_id }}');
             </script>
         {% endif %}
-        {{ enqueue_script('app') }}
-        {{ enqueue_script('runtime') }}
-        {{ enqueue_script('vendors') }}
+        {{ enqueue_script('default', false) }}
+        {{ enqueue_script('runtime', false) }}
+        {{ enqueue_script('vendors', false) }}
+        {% block script %}{% endblock %}
         {{ function('wp_footer') }}
     </body>
 </html>

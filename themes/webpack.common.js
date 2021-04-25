@@ -8,8 +8,9 @@ const StylelintPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
     entry: {
-        app: './src/js/main.js',
-        index: ['./src/js/page/index.js'],
+        admin: './src/style/admin/_admin.scss',
+        default: './src/js/main.js',
+        index: ['./src/js/pages/index.js', './src/style/pages/index.scss'],
     },
     output: {
         filename: 'js/[name].bundle.js',
@@ -38,7 +39,7 @@ module.exports = {
         new DotenvWebpack(),
         new Webpack.ProvidePlugin({}),
         new CopyPlugin({
-            patterns: [{ from: path.resolve(__dirname, 'public') }],
+            patterns: [{ from: path.resolve(__dirname, 'static') }],
         }),
         new VueLoaderPlugin(),
         new ESLintPlugin(),

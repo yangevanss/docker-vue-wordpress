@@ -14,7 +14,7 @@ body.login {
     height: auto;
     font-size: 0;
     color: transparent;
-    background: url('../img/public/logo.svg') center center / cover no-repeat, #000000 !important;
+    background: url('~@/img/public/logo.svg') center center / cover no-repeat, #000000 !important;
 
     &::before {
         content: '';
