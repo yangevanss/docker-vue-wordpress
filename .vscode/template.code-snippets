@@ -3,96 +3,43 @@
     // ------ rwd -----
     "SCSS RWD mixin large": {
         "scope": "scss, vue",
-        "prefix": "rwd-large",
+        "prefix": "xl",
         "body": [
-            "@include rwd('large', '$1') {",
-            "$0",
+            "@include media-breakpoint-down(large) {",
+            "$1",
             "}"
         ],
         "description": "rwd large"
     },
     "SCSS RWD mixin desktop": {
         "scope": "scss, vue",
-        "prefix": "rwd-desktop",
+        "prefix": "lg",
         "body": [
-            "@include rwd('desktop', '$1') {",
-            "$0",
+            "@include media-breakpoint-down(desktop) {",
+            "$1",
             "}"
         ],
         "description": "rwd desktop"
     },
-    "SCSS RWD mixin medium": {
-        "scope": "scss, vue",
-        "prefix": "rwd-medium",
-        "body": [
-            "@include rwd('medium', '$1') {",
-            "$0",
-            "}"
-        ],
-        "description": "rwd medium"
-    },
     "SCSS RWD mixin tablet": {
         "scope": "scss, vue",
-        "prefix": "rwd-tablet",
+        "prefix": "md",
         "body": [
-            "@include rwd('tablet', '$1') {",
-            "$0",
+            "@include media-breakpoint-down(tablet) {",
+            "$1",
             "}"
         ],
         "description": "rwd tablet"
     },
     "SCSS RWD mixin mobile": {
         "scope": "scss, vue",
-        "prefix": "rwd-mobile",
+        "prefix": "xs",
         "body": [
-            "@include rwd('mobile', '$1') {",
-            "$0",
+            "@include media-breakpoint-down(mobile) {",
+            "$1",
             "}",
         ],
         "description": "rwd mobile"
-    },
-    "SCSS RWD mixin custom": {
-        "scope": "scss, vue",
-        "prefix": "rwd-custom",
-        "body": [
-            "@include rwd-custom(${1:0}px, '${2:above}') {",
-            "$0",
-            "}",
-        ],
-        "description": "rwd mobile"
-    },
-    // ----- container -----
-    "get container large padding": {
-        "scope": "scss, vue",
-        "prefix": "map:container-lg",
-        "body": [
-            "map-get(map-get(\\$container, large), ${0:padding})"
-        ],
-        "description": "flex align center"
-    },
-    "get container desktop padding": {
-        "scope": "scss, vue",
-        "prefix": "map:container-md",
-        "body": [
-            "map-get(map-get(\\$container, desktop), ${0:padding})"
-        ],
-        "description": "flex align center"
-    },
-    "get container tablet padding": {
-        "scope": "scss, vue",
-        "prefix": "map:container-sm",
-        "body": [
-            "map-get(map-get(\\$container, tablet), ${0:padding})"
-        ],
-        "description": "flex align center"
-    },
-    "get container mobile padding": {
-        "scope": "scss, vue",
-        "prefix": "map:container-xs",
-        "body": [
-            "map-get(map-get(\\$container, mobile), ${0:padding})"
-        ],
-        "description": "flex align center"
     },
     // ----- header height -----
     "get header height": {
@@ -165,22 +112,6 @@
             "}"
         ],
         "description": "vue transition scss"
-    },
-    "flex-grid": {
-        "scope": "scss, vue",
-        "prefix": "flex-grid",
-        "body": [
-            "@include flex-grid(${1:$child}, ${0:$col})"
-        ],
-        "description": "multiple col"
-    },
-    "flex-grid-2": {
-        "scope": "scss, vue",
-        "prefix": "flex-grid-2",
-        "body": [
-            "@include flex-grid-2(${1:$child}, ${2:$col_1}, ${0:$col_2})"
-        ],
-        "description": "multiple grid"
     },
     // ----- css -----
     "flex center": {
