@@ -82,7 +82,6 @@ class StarterSite extends Timber\Site {
 
     public function add_to_context($context) {
         $context['site'] = $this;
-        $context['env_mode'] = wp_get_environment_type();
         return $context;
     }
 
@@ -97,24 +96,34 @@ class StarterSite extends Timber\Site {
         $twig->addFunction(new Twig_SimpleFunction('customDateFormat', 'customDateFormat'));
 
         $twig->addFunction(new Twig_SimpleFunction('enqueue_script', function ($name, $cover = true) {
-            $url = get_template_directory_uri() . '/src/js/';
-            if (wp_get_environment_type() == 'development') {
-                $url = 'http://localhost:8080/js/';
+            $url = path_join(get_template_directory_uri(), './src/js/');
+            if (WP_DEBUG) {
+                $url = path_join('http://localhost:8080/', './js/');
             }
             if($cover && wp_script_is('default')){
                 wp_dequeue_script('default');
             }
             wp_enqueue_script($name, $url . $name . '.bundle.js', null, null, true);
         }));
+
         $twig->addFunction(new Twig_SimpleFunction('enqueue_style', function ($name, $cover = true) {
-            if (wp_get_environment_type() != 'development') {
-                $url = get_template_directory_uri() . '/src/css/';
+            if (!WP_DEBUG) {
+                $url = path_join(get_template_directory_uri(), './src/css/');
                 if($cover && wp_style_is('default')){
                     wp_dequeue_style('default');
                 }
                 wp_enqueue_style($name, $url . $name . '.css', null, null, 'all');
             }
         }));
+
+        $twig->addFunction(new Twig_SimpleFunction('require_assets', function($src) {
+            $url = path_join(get_template_directory_uri() . '/src/', $src);
+            if (WP_DEBUG) {
+                $url = path_join('http://localhost:8080/', $src);
+            }
+            return $url;
+        }));
+
 
         return $twig;
     }

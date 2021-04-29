@@ -1,14 +1,15 @@
 {% extends "layouts/base.twig" %}
+
+{% set body_class = 'page-index' %}
 {% block head %}
     {{ enqueue_style('index') }}
 {% endblock %}
 {% block script %}
     {{ enqueue_script('index') }}
 {% endblock %}
+
 {% block content %}
-    <Test></Test>
-    {# <icon svg-class="icon" name="right"></icon> #}
     <h1>{{ title }}</h1>
-    {# <hello></hello> #}
-    <img src="{{ posts[0].get_field('og')['thumb'] }}" class="js-lazy-image" alt="">
+    <Icon name="up"></Icon>
+    <img src="{{ posts[0].get_field('og')['thumb'] }}" class="page-index__img">
 {% endblock %}

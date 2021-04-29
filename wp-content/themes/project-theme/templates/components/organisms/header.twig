@@ -1,5 +1,7 @@
 <header class="o-header">
-    <a class="o-header__logo" href="{{ page_list.index.link }}"><img src="{{ site.theme.link }}/src/img/public/logo.svg" alt=""></a>
+    <a class="o-header__logo" href="{{ page_list.index.link }}">
+        <img src="{{ require_assets ('./img/logo.jpg') }}" alt="">
+    </a>
     {% if nav %}
         <ul>
             {% for link in nav %}

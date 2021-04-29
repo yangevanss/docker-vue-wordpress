@@ -9,7 +9,7 @@ add_action('wp_print_styles', function () { // 移除後台登入css
 
 add_action('admin_head', function () { // 後台css引入
     $today = date("Y-m-d");
-    echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_url') . '/src/style/admin.css?v=' . $today .'">';
+    echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_url') . '/src/style/admin.css>';
 });
 
 add_action('admin_footer', function () { // 後台使用者class輸入

@@ -6,8 +6,7 @@
         {% block head %}{% endblock %}
         {{ function('wp_head') }}
     </head>
-    <body class="{{ body_class }} -loading" >
-        {% block outside %}{% endblock %}
+    <body class="{{ body_class }}" >
         <div id="wrapper">
             {% include 'components/base/loading.twig' %}
             {% include 'components/organisms/header.twig' %}

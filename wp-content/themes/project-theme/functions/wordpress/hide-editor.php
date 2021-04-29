@@ -7,14 +7,14 @@ add_action( 'admin_init', 'hide_editor' );
 
 function hide_editor() {
     // Get the Post ID.
-    $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
-    if( !isset( $post_id ) ) return;
+    // $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+    // if( !isset( $post_id ) ) return;
 
     /* 隱藏所有 editor 除指定 id */
-    $except_id = []; // 放入指定頁面 id
-    if (!in_array($post_id, $except_id)) {
-        remove_post_type_support('page', 'editor');
-    }
+    // $except_id = []; // 放入指定頁面 id
+    // if (!in_array($post_id, $except_id)) {
+    //     remove_post_type_support('page', 'editor');
+    // }
 
     /* 隱藏 editor 在指定 slug */
     // $homepgname = get_the_title($post_id);

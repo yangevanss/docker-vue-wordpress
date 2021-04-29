@@ -1,0 +1,35 @@
+$grid-columns: 12;
+$grid-row-columns: 6;
+$grid-gutter-width: 25px;
+$grid-breakpoints: (
+    mobile: 0,
+    tablet: 768px,
+    medium: 1024px,
+    desktop: 1200px,
+    large: 1920px,
+);
+
+$container-max-widths: (
+    mobile: 100%,
+    tablet: 100%,
+    medium: 100%,
+    desktop: 1280px,
+    large: 1280px,
+);
+$container-padding: (
+    mobile: 20px,
+    tablet: 40px,
+);
+
+$colors: (
+    black: #000000,
+    white: #ffffff,
+);
+
+$header-height: (
+    desktop: 60px,
+    tablet: 60px,
+    mobile: 60px,
+);
+
+$loading-delay: 800ms;

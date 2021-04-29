@@ -1,12 +1,12 @@
 .DS_Store
 *.log
-*.pem
-node_modules/
+/node_modules
 
-main
+wordpress/*
 wp-content/*
 wp-content/themes/*
 wp-content/themes/project-theme/src
+!wordpress/.gitkeep
 !wp-content/plugins
 !wp-content/themes
 !wp-content/themes/project-theme
