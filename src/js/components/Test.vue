@@ -5,10 +5,17 @@
 </template>
 
 <script>
+import { inject } from '@vue/composition-api'
+
 export default {
     name: 'Test',
+    setup () {
+        const viewportInfo = inject('viewportInfo')
+        return {
+            viewportInfo,
+        }
+    },
     mounted () {
-        console.log('mounted')
     },
 }
 </script>

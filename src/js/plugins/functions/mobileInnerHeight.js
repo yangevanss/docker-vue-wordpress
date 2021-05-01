@@ -1,4 +1,4 @@
-export default (() => {
+const getHeightInfo = () => {
     const dims = { w: 0, h: 0 }
     const axis = Math.abs(window.orientation)
     let measuringEl = document.createElement('div')
@@ -15,8 +15,14 @@ export default (() => {
 
     document.documentElement.removeChild(measuringEl)
     measuringEl = null
-    return () => {
+    return { axis, dims }
+}
+
+export default () => {
+    let { axis, dims } = getHeightInfo()
+    return (refresh) => {
+        if (refresh) ({ axis, dims } = getHeightInfo())
         if (axis !== 90) return dims.h
         return dims.w
     }
-})()
+}

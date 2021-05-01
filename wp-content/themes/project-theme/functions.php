@@ -82,6 +82,7 @@ class StarterSite extends Timber\Site {
 
     public function add_to_context($context) {
         $context['site'] = $this;
+        $context['node_env'] = WP_DEBUG ? 'development' : 'production';
         return $context;
     }
 

@@ -5,9 +5,16 @@
         {{ enqueue_style('default', false) }}
         {% block head %}{% endblock %}
         {{ function('wp_head') }}
+        {% if node_env == 'development' %}
+            <style>
+                body.-loading {
+                    display: none;
+                }
+            </style>
+        {% endif %}
     </head>
-    <body class="{{ body_class }}" >
-        <div id="wrapper">
+    <body class="{{ body_class }} -loading">
+        <div id="wrapper" :style="globalStyle">
             {% include 'components/base/loading.twig' %}
             {% include 'components/organisms/header.twig' %}
             {% block header %}{% endblock %}
