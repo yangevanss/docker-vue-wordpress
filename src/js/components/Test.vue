@@ -11,11 +11,15 @@ export default {
     name: 'Test',
     setup () {
         const viewportInfo = inject('viewportInfo')
+        const addLoadingStack = inject('addLoadingStack')
+        addLoadingStack(new Promise(resolve => {
+            setTimeout(() => {
+                resolve()
+            }, 2000)
+        }))
         return {
             viewportInfo,
         }
-    },
-    mounted () {
     },
 }
 </script>

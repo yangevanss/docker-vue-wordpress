@@ -1,11 +1,13 @@
-import { ref, provide, computed, onMounted, onBeforeUnmount } from '@vue/composition-api'
+import { ref, provide, inject, computed, onMounted, onBeforeUnmount } from '@vue/composition-api'
 import WebFont from 'webfontloader'
 import ImagesLoaded from 'imagesloaded'
+import loading from '@/js/compositions/loading'
 import viewport from '@/js/plugins/functions/viewport'
 
 export default () => {
+    const { loadingConfig, isLoading } = loading()
+    const addLoadingStack = inject('addLoadingStack')
     const vp = ref(viewport)
-    const isLoading = ref(true)
 
     const viewportInfo = computed(() => vp.value.info)
     const globalStyle = computed(() => {
@@ -27,7 +29,6 @@ export default () => {
             })
         })
     }
-
     const loadImage = () => {
         return new Promise(resolve => {
             new ImagesLoaded('#wrapper', { background: '[data-background]' }, (instance) => {
@@ -36,16 +37,9 @@ export default () => {
         })
     }
 
-    onMounted(async () => {
-        if (process.env.NODE_ENV === 'development') {
-            document.body.classList.remove('-loading')
-        }
-
-        await Promise.all([
-            loadFont(),
-            loadImage(),
-        ])
-        isLoading.value = false
+    onMounted(() => {
+        addLoadingStack(loadFont())
+        addLoadingStack(loadImage())
     })
     onBeforeUnmount(() => {
         vp.value.destroy()
@@ -54,6 +48,7 @@ export default () => {
     provide('viewportInfo', viewportInfo)
 
     return {
+        loadingConfig,
         isLoading,
         viewportInfo,
         globalStyle,

@@ -2,19 +2,17 @@ import '@/style/_main.scss'
 import Vue from 'vue'
 
 // compositions
-import global from '@/js/compositions/global'
+import defaultComposition from '@/js/compositions/default'
 
 // plugins
-import VueCompositionAPI, {} from '@vue/composition-api'
+import VueCompositionAPI, { inject, onMounted } from '@vue/composition-api'
 import directive from '@/js/plugins/directives/index'
-import icon from '@/js/plugins/svgIcon'
-import bus from '@/js/plugins/bus'
+import prototype from '@/js/plugins/prototype/index'
 import globalComponent from '@/js/plugins/globalComponent'
 
 Vue.use(VueCompositionAPI)
 Vue.use(directive)
-Vue.use(icon)
-Vue.use(bus)
+Vue.use(prototype)
 Vue.use(globalComponent)
 
 Vue.config.productionTip = false
@@ -23,8 +21,15 @@ new Vue({
     el: '#wrapper',
     delimiters: ['{$', '$}'],
     setup () {
-        const { isLoading, viewportInfo, globalStyle } = global()
+        const { loadingConfig, isLoading, viewportInfo, globalStyle } = defaultComposition()
+        const waitLoading = inject('waitLoading')
+
+        onMounted(() => {
+            waitLoading()
+        })
+
         return {
+            loadingConfig,
             isLoading,
             viewportInfo,
             globalStyle,
@@ -34,6 +39,6 @@ new Vue({
 
 if (module.hot) {
     module.hot.accept([
-        '@/js/compositions/global.js',
+        '@/js/compositions/default.js',
     ])
 }

@@ -17,3 +17,15 @@
         }
     }
 }
+
+.loading {
+    &-leave {
+        &-to {
+            opacity: 0;
+        }
+
+        &-active {
+            transition: opacity 0.6s;
+        }
+    }
+}

@@ -16,7 +16,7 @@ module.exports = {
             exports: 'never',
             functions: 'never',
         }],
-        'no-unused-vars': 'off',
+        'no-unused-vars': 'warn',
         'no-new': 'off',
     },
     parserOptions: {
