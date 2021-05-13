@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.7.x - Development - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-02-22 10:22:02+0000\n"
+"PO-Revision-Date: 2021-05-13 03:20:55+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -58,7 +58,7 @@ msgstr "https://wordpress.org/support/article/nginx/"
 #. translators: %s: Documentation URL.
 #: wp-admin/includes/network.php:628
 msgid "It seems your network is running with Nginx web server. <a href=\"%s\">Learn more about further configuration</a>."
-msgstr "這個多站網路執行於 Nginx 網站伺服器。<a href=\"%s\" target=\"_blank\">進一步瞭解後續組態</a>"
+msgstr "這個多站網路執行於 Nginx 網站伺服器。<a href=\"%s\" target=\"_blank\">進一步了解後續組態</a>"
 
 #. translators: %s: Number of sites.
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:254
@@ -280,7 +280,7 @@ msgstr "請選取在 WordPress 多站網路中要以子網域或子目錄方式�
 #. search for mod_rewrite.
 #: wp-admin/includes/network.php:216
 msgid "If %1$s is disabled, ask your administrator to enable that module, or look at the <a href=\"%2$s\">Apache documentation</a> or <a href=\"%3$s\">elsewhere</a> for help setting it up."
-msgstr "如果 %1$s 已停用，請要求主機管理員啟用這個模組，或查閱 <a href=\"%2$s\">Apache 線上說明</a>及<a href=\"%3$s\">進行必要的搜尋</a>以瞭解如何進行設定。"
+msgstr "如果 %1$s 已停用，請要求主機管理員啟用這個模組，或查閱 <a href=\"%2$s\">Apache 線上說明</a>及<a href=\"%3$s\">進行必要的搜尋</a>以了解如何進行設定。"
 
 #. translators: %s: mod_rewrite
 #: wp-admin/includes/network.php:206

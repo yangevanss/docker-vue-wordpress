@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block style %}
+    {{ enqueue_style('index') }}
+{% endblock %}
+{% block script %}
+    {{ enqueue_script('index') }}
+{% endblock %}
+
+{% block content %}
+	<div class="page-index">
+        <Hello-world></Hello-world>
+		<article class="page-index__main container">
+            <h1 class="page-index__title">{{ title }}</h1>
+            <div class="page-index__content">
+                {{ post.content }}
+            </div>
+		</article>
+	</div>
+{% endblock %}

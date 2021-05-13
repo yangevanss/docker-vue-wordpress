@@ -5,8 +5,8 @@
 wordpress/*
 wp-content/*
 wp-content/themes/*
-wp-content/themes/project-theme/src
+wp-content/themes/blockstudio-theme/src
 !wordpress/.gitkeep
 !wp-content/plugins
 !wp-content/themes
-!wp-content/themes/project-theme
+!wp-content/themes/blockstudio-theme

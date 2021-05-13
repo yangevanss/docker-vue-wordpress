@@ -1,0 +1,8 @@
+{
+    "post_types": {
+        "news": {}
+    },
+    "admin_pages": [
+        "toplevel_page_options"
+    ]
+}

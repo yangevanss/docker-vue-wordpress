@@ -1,7 +1,8 @@
 version: '3.8'
 services:
     wordpress:
-        image: wordpress:5.7.1-php8.0-apache
+        container_name: ${COMPOSE_PROJECT_NAME}_wordpress
+        image: wordpress:latest
         volumes:
             - ./wordpress:/var/www/html
             - ./wp-content:/var/www/html/wp-content
@@ -21,8 +22,10 @@ services:
             WORDPRESS_CONFIG_EXTRA: |
                 define('WP_SITEURL', 'http://localhost:$WP_PORT');
                 define('WP_HOME', 'http://localhost:$WP_PORT');
+                define('BS_WEBPACK_PORT', $WEBPACK_PORT);
 
     phpmyadmin:
+        container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
         image: phpmyadmin/phpmyadmin
         depends_on:
             - mysql
@@ -33,6 +36,7 @@ services:
             - $WP_PORT_PHP_MY_ADMIN:80
 
     mysql:
+        container_name: ${COMPOSE_PROJECT_NAME}_mysql
         image: mysql:8
         volumes:
             - ./SQL/dump-newest.sql:/docker-entrypoint-initdb.d/dump-newest.sql

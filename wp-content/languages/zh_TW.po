@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.7.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-04-15 05:47:07+0000\n"
+"PO-Revision-Date: 2021-05-13 03:19:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -131,7 +131,7 @@ msgstr "https://wordpress.org/support/article/why-should-i-use-https/"
 
 #: wp-includes/class-wp-fatal-error-handler.php:196
 msgid "Learn more about troubleshooting WordPress."
-msgstr "進一步瞭解 WordPress 中的疑難排解方式"
+msgstr "進一步了解 WordPress 中的疑難排解方式"
 
 #. translators: Documentation about troubleshooting.
 #: wp-includes/class-wp-fatal-error-handler.php:195
@@ -933,7 +933,7 @@ msgstr "這個佈景主題無法執行於目前版本的 WordPress。"
 #: wp-admin/theme-install.php:301 wp-admin/theme-install.php:324
 #: wp-admin/theme-install.php:487 wp-admin/theme-install.php:510
 msgid "<a href=\"%s\">Learn more about updating PHP</a>."
-msgstr "<a href=\"%s\" target=\"_blank\">進一步瞭解更新 PHP 執行環境</a>。"
+msgstr "<a href=\"%s\" target=\"_blank\">進一步了解更新 PHP 執行環境</a>。"
 
 #. translators: %s: URL to WordPress Updates screen.
 #: wp-includes/customize/class-wp-customize-theme-control.php:130
@@ -966,7 +966,7 @@ msgstr "<a href=\"%s\">請更新 WordPress</a>。"
 #: wp-admin/themes.php:1014 wp-admin/theme-install.php:287
 #: wp-admin/theme-install.php:473
 msgid "<a href=\"%1$s\">Please update WordPress</a>, and then <a href=\"%2$s\">learn more about updating PHP</a>."
-msgstr "<a href=\"%1$s\">請更新 WordPress</a>，然後<a href=\"%2$s\" target=\"_blank\">進一步瞭解更新 PHP 執行環境</a>。"
+msgstr "<a href=\"%1$s\">請更新 WordPress</a>，然後<a href=\"%2$s\" target=\"_blank\">進一步了解更新 PHP 執行環境</a>。"
 
 #: wp-includes/customize/class-wp-customize-theme-control.php:183
 #: wp-admin/includes/theme.php:927 wp-admin/themes.php:468
@@ -1859,7 +1859,7 @@ msgstr "這份 XML Sitemap 中的網址數量: %s。"
 #: wp-includes/sitemaps/class-wp-sitemaps-stylesheet.php:51
 #: wp-includes/sitemaps/class-wp-sitemaps-stylesheet.php:165
 msgid "Learn more about XML sitemaps."
-msgstr "進一步瞭解 XML Sitemap"
+msgstr "進一步了解 XML Sitemap"
 
 #: wp-includes/sitemaps/class-wp-sitemaps-stylesheet.php:50
 #: wp-includes/sitemaps/class-wp-sitemaps-stylesheet.php:164
@@ -2310,7 +2310,7 @@ msgstr "這個網站發生重大問題。請檢查網站管理員電子郵件收
 
 #: wp-includes/class-wp-fatal-error-handler.php:184
 msgid "There has been a critical error on this website, putting it in recovery mode. Please check the Themes and Plugins screens for more details. If you just installed or updated a theme or plugin, check the relevant page for that first."
-msgstr "這個網站發生重大問題，目前已進入 [復原模式]。請檢查佈景主題及外掛頁面以進一步瞭解相關資訊。如果剛安裝或更新佈景主題或外掛，請先前往相關頁面進行檢查。"
+msgstr "這個網站發生重大問題，目前已進入 [復原模式]。請檢查佈景主題及外掛頁面以進一步了解相關資訊。如果剛安裝或更新佈景主題或外掛，請先前往相關頁面進行檢查。"
 
 #: wp-includes/class-wp-image-editor-imagick.php:643
 msgid "The image cannot be rotated because the embedded meta data cannot be updated."
@@ -2553,7 +2553,7 @@ msgstr "開放使用者在新文章中發佈留言"
 #. translators: %s: Documentation URL.
 #: wp-includes/user.php:2826
 msgid "<strong>Error</strong>: The email could not be sent. Your site may not be correctly configured to send emails. <a href=\"%s\">Get support for resetting your password</a>."
-msgstr "<strong>錯誤</strong>: 無法傳送電子郵件。這個網站並未正確設定，導致無法寄件。進一步瞭解<a href=\"%s\" target=\"_blank\">如何重設密碼</a>。"
+msgstr "<strong>錯誤</strong>: 無法傳送電子郵件。這個網站並未正確設定，導致無法寄件。進一步了解<a href=\"%s\" target=\"_blank\">如何重設密碼</a>。"
 
 #: wp-includes/user.php:2827
 msgid "https://wordpress.org/support/article/resetting-your-password/"
@@ -3015,7 +3015,7 @@ msgstr "%1$s、%2$s"
 #. translators: %s: Default Update PHP page URL.
 #: wp-includes/functions.php:7519
 msgid "This resource is provided by your web host, and is specific to your site. For more information, <a href=\"%s\" target=\"_blank\">see the official WordPress documentation</a>."
-msgstr "這項資源由這個網站的主機提供，並且指定用於這個網站。如需進一步瞭解相關資訊，請參閱 <a href=\"%s\" target=\"_blank\">WordPress 官方線上說明</a>。"
+msgstr "這項資源由這個網站的主機提供，並且指定用於這個網站。如需進一步了解相關資訊，請參閱 <a href=\"%s\" target=\"_blank\">WordPress 官方線上說明</a>。"
 
 #: wp-includes/functions.php:7476
 msgctxt "localized PHP upgrade information page"
@@ -3476,7 +3476,7 @@ msgstr ""
 "\n"
 "如果你有任何後續問題或疑慮，請與網站管理員聯絡。\n"
 "\n"
-"如需進一步瞭解相關資訊，請參閱本站的〈隱私權政策〉頁面：###PRIVACY_POLICY_URL###\n"
+"如需進一步了解相關資訊，請參閱本站的〈隱私權政策〉頁面：###PRIVACY_POLICY_URL###\n"
 "\n"
 "敬祝安好，\n"
 "《###SITENAME###》管理團隊\n"
@@ -3971,7 +3971,7 @@ msgstr "檢視全部位置"
 
 #: wp-includes/class-wp-customize-manager.php:5031
 msgid "While previewing a new theme, you can continue to tailor things like widgets and menus, and explore theme-specific options."
-msgstr "預覽新佈景主題時，還可以自訂小工具及選單等項目，藉以瞭解這個佈景主題的相關選項。"
+msgstr "預覽新佈景主題時，還可以自訂小工具及選單等項目，藉以了解這個佈景主題的相關選項。"
 
 #: wp-includes/class-wp-customize-manager.php:5030
 msgid "Looking for a theme? You can search or browse the WordPress.org theme directory, install and preview themes, then activate them right here."
@@ -7065,7 +7065,7 @@ msgstr "無效的背景重複方式設定。"
 
 #: wp-includes/class-wp-customize-manager.php:5662
 msgid "Learn more about CSS"
-msgstr "進一步瞭解 CSS"
+msgstr "進一步了解 CSS"
 
 #: wp-includes/class-wp-customize-manager.php:5698
 msgid "Additional CSS"
@@ -7394,7 +7394,7 @@ msgstr "圖片裁剪區域預覽。需要以滑鼠進行操作。"
 #. translators: %s: Documentation URL.
 #: wp-includes/formatting.php:4864
 msgid "A structure tag is required when using custom permalinks. <a href=\"%s\">Learn more</a>"
-msgstr "使用自訂永久連結需要搭配結構標籤。<a href=\"%s\" target=\"_blank\">進一步瞭解</a>"
+msgstr "使用自訂永久連結需要搭配結構標籤。<a href=\"%s\" target=\"_blank\">進一步了解</a>"
 
 #: wp-includes/class-wp-xmlrpc-server.php:4310
 #: wp-includes/class-wp-xmlrpc-server.php:4363
@@ -7723,7 +7723,7 @@ msgstr "(目前選單位置: %s)"
 #. translators: %s: Documentation URL.
 #: wp-includes/functions.php:5301
 msgid "Please see <a href=\"%s\">Debugging in WordPress</a> for more information."
-msgstr "請參閱〈<a href=\"%s\" target=\"_blank\">WordPress 的偵錯功能</a>〉以進一步瞭解相關資訊。"
+msgstr "請參閱〈<a href=\"%s\" target=\"_blank\">WordPress 的偵錯功能</a>〉以進一步了解相關資訊。"
 
 #. translators: 1: $table_prefix, 2: wp-config.php
 #: wp-includes/load.php:611
@@ -7733,7 +7733,7 @@ msgstr "<strong>錯誤:</strong> %2$s 檔案中的 %1$s 僅可使用數字、字
 #. translators: %s: Documentation URL.
 #: wp-load.php:82
 msgid "Need more help? <a href='%s'>We got it</a>."
-msgstr "如需進一步瞭解相關資訊，請參閱這篇<a href='%s' target=\"_blank\">線上說明</a>。"
+msgstr "如需進一步了解相關資訊，請參閱這篇<a href='%s' target=\"_blank\">線上說明</a>。"
 
 #. translators: %s: wp-config.php
 #: wp-load.php:77
@@ -7931,7 +7931,7 @@ msgstr "與資料庫重新連線時發生錯誤"
 #. translators: %s: Support forums URL.
 #: wp-includes/wp-db.php:1718 wp-includes/wp-db.php:1875
 msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
-msgstr "假如不瞭解上述內容所代表的意思，請務必聯絡主機管理員。如果仍須其他協助，請造訪 <a href=\"%s\" target=\"_blank\">WordPress 技術支援論壇</a>。"
+msgstr "假如不了解上述內容所代表的意思，請務必聯絡主機管理員。如果仍須其他協助，請造訪 <a href=\"%s\" target=\"_blank\">WordPress 技術支援論壇</a>。"
 
 #: wp-includes/wp-db.php:1713 wp-includes/wp-db.php:1869
 msgid "Are you sure the database server is running?"
@@ -7953,7 +7953,7 @@ msgstr "出現這個頁面便代表這個網站的 %1$s 檔案中的資料庫使
 #. translators: %s: Support forums URL.
 #: wp-includes/wp-db.php:1121
 msgid "If you don&#8217;t know how to set up a database you should <strong>contact your host</strong>. If all else fails you may find help at the <a href=\"%s\">WordPress Support Forums</a>."
-msgstr "如果不瞭解如何設定資料庫，請<strong>聯絡這個網站的主機服務提供商</strong>。如果透過各種方式都無法成功，請前往 <a href=\"%s\" target=\"_blank\">WordPress 技術支援論壇</a>尋求協助。"
+msgstr "如果不了解如何設定資料庫，請<strong>聯絡這個網站的主機服務提供商</strong>。如果透過各種方式都無法成功，請前往 <a href=\"%s\" target=\"_blank\">WordPress 技術支援論壇</a>尋求協助。"
 
 #. translators: %s: Database name.
 #: wp-includes/wp-db.php:1113
@@ -10644,7 +10644,7 @@ msgstr "about,an,are,as,at,be,by,com,for,from,how,in,is,it,of,on,or,that,the,thi
 
 #: wp-includes/post-template.php:1725
 msgid "This content is password protected. To view it please enter your password below:"
-msgstr "這篇內容透過密碼進行保護。如需進行檢閱，請於下方欄位輸入密碼:"
+msgstr "這篇內容受到密碼保護。如需檢視內容，請於下方欄位輸入密碼:"
 
 #: wp-includes/functions.php:1564
 msgid "Error: This is not a valid feed template."

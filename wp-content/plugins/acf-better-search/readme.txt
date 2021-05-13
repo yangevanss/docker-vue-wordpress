@@ -1,9 +1,9 @@
 === ACF: Better Search ===
 Contributors: mateuszgbiorczyk
 Donate link: https://ko-fi.com/gbiorczyk/?utm_source=acf-better-search&utm_medium=readme-donate
-Tags: acf search, advanced custom fields, better search, extended search, search
+Tags: search acf fields, acf custom fields search, acf content search, acf custom search, advanced custom fields search
 Requires at least: 5.0
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 7.0
 Stable tag: trunk
 License: GPLv2 or later

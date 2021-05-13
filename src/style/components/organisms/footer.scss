@@ -1,21 +1,7 @@
 .o-footer {
-    padding: 10px;
-    height: 60px;
+    @include typo('list', 1);
+
+    padding: 5px 20px;
     text-align: center;
-    color: #ffffff;
-    background: #000000;
-
-    ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
-        max-width: 1200px;
-        height: 100%;
-
-        li {
-            padding-right: 20px;
-            padding-left: 20px;
-        }
-    }
+    color: map-get($admin-colors, primary);
 }

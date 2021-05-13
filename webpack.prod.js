@@ -4,9 +4,13 @@ const common = require('./webpack.common.js')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = merge(common, {
     mode: 'production',
+    output: {
+        publicPath: '../',
+    },
     optimization: {
         minimizer: [
             new TerserPlugin({
@@ -18,6 +22,12 @@ module.exports = merge(common, {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
+        }),
+        new FaviconsWebpackPlugin({
+            logo: path.resolve(__dirname, 'static/favicon.svg'),
+            prefix: 'favicon/',
+            cache: true,
+            inject: false,
         }),
     ],
     resolve: {

@@ -21,15 +21,19 @@ $container-padding: (
     tablet: 40px,
 );
 
+$admin-colors: (
+    primary: #40587c,
+    secondary: #ababab,
+);
 $colors: (
     black: #000000,
     white: #ffffff,
 );
 
 $header-height: (
-    desktop: 60px,
-    tablet: 60px,
-    mobile: 60px,
+    desktop: 65px,
+    tablet: 65px,
+    mobile: 65px,
 );
 
 $loading-delay: 800ms;

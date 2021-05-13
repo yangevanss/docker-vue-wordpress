@@ -27,6 +27,7 @@ body {
 
     min-width: 320px;
     overscroll-behavior: none;
+    scroll-behavior: smooth;
 }
 
 input,
@@ -70,31 +71,5 @@ button {
     }
     @include media-breakpoint-down(tablet) {
         padding-top: map-get($header-height, mobile);
-    }
-}
-
-.editor {
-    @include editor-setting;
-
-    color: #000000;
-
-    * {
-        &:first-child {
-            margin-top: 0 !important;
-        }
-
-        &:last-child {
-            margin-bottom: 0 !important;
-        }
-
-        * {
-            &:first-child {
-                margin-top: 0 !important;
-            }
-
-            &:last-child {
-                margin-bottom: 0 !important;
-            }
-        }
     }
 }

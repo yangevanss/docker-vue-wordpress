@@ -1,0 +1,30 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#wpwrap {
+    #wpadminbar {
+        background-color: darken(map-get($admin-colors, primary), 10%);
+    }
+
+    #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+        background-color: map-get($admin-colors, primary);
+    }
+
+    #adminmenu li.wp-menu-separator {
+        height: auto;
+
+        .separator {
+            height: 1px;
+            background-color: map-get($admin-colors, secondary);
+        }
+    }
+
+    .nav-tab {
+        &.nav-tab-active {
+            color: map-get($colors, white);
+            background-color: map-get($admin-colors, primary);
+            border-color: map-get($admin-colors, primary);
+        }
+    }
+}

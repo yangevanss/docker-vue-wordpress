@@ -12,7 +12,7 @@ module.exports = {
     },
     output: {
         filename: 'js/[name].bundle.js',
-        path: path.resolve(__dirname, 'wp-content/themes/project-theme/src'),
+        path: path.resolve(__dirname, 'wp-content/themes/blockstudio-theme/src'),
         pathinfo: false,
     },
     resolve: {
@@ -44,11 +44,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                exclude: path.resolve(__dirname, 'src/assets/icons'),
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 type: 'asset/resource',
+                include: path.resolve(__dirname, 'src/assets/font'),
                 generator: {
-                    filename: 'img/[hash][ext][query]',
+                    filename: 'font/[name][ext]',
                 },
             },
             {
@@ -58,6 +58,17 @@ module.exports = {
                     { loader: 'svg-sprite-loader', options: { symbolId: '[name]' } },
                     'svgo-loader',
                 ],
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                type: 'asset/resource',
+                exclude: [
+                    path.resolve(__dirname, 'src/assets/icons'),
+                    path.resolve(__dirname, 'src/assets/font'),
+                ],
+                generator: {
+                    filename: 'img/[name][ext]',
+                },
             },
             {
                 test: /\.m?js$/,

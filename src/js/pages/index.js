@@ -1,5 +1,6 @@
 import '@/style/_main.scss'
 import Vue from 'vue'
+import HelloWorld from '@/js/components/HelloWorld.vue'
 
 // compositions
 import defaultComposition from '@/js/compositions/default'
@@ -20,6 +21,9 @@ Vue.config.productionTip = false
 new Vue({
     el: '#wrapper',
     delimiters: ['{$', '$}'],
+    components: {
+        HelloWorld,
+    },
     setup () {
         const { loadingConfig, isLoading, viewportInfo, globalStyle } = defaultComposition()
         const waitLoading = inject('waitLoading')

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.7.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-04-10 05:43:57+0000\n"
+"PO-Revision-Date: 2021-05-13 03:20:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,105 +27,105 @@ msgstr "Asia/Taipei"
 msgid "Continue"
 msgstr "繼續"
 
-#: wp-admin/about.php:143
+#: wp-admin/about.php:164
 msgid "<strong>Buttons block:</strong> now you can choose a vertical or a horizontal layout. And you can set the width of a button to a preset percentage."
 msgstr "<strong>[按鈕組] 區塊:</strong> 從這個版本開始，使用者能將多個按鈕以垂直或水平方式對齊，並且能將按鈕寬度設定為預設百分比。"
 
-#: wp-admin/about.php:239
+#: wp-admin/about.php:260
 msgid "Now it’s simple to let iframes lazy-load. By default, WordPress will add a <code>loading=\"lazy\"</code> attribute to iframe tags when both width and height are specified."
 msgstr "這個版本讓實作 iframe 延遲載入變簡單。依照預設，WordPress 在 iframe 標籤的寬度及高度都預先指定的狀況下，會將 <code>loading=\"lazy\"</code> 屬性加入 iframe 標籤中。"
 
-#: wp-admin/about.php:237
+#: wp-admin/about.php:258
 msgid "In 5.7, jQuery gets more focused and less intrusive, with fewer messages in the console."
 msgstr "由於 5.7 的 jQuery 在主控台中產生的訊息更少，因此會更加集中且較少干擾。"
 
-#: wp-admin/about.php:230
+#: wp-admin/about.php:251
 msgid "The new Robots API lets you include the filter directives in the robots meta tag, and the API includes the <code>max-image-preview: large</code> directive by default. That means search engines can show bigger image previews, which can boost your traffic (unless the site is marked <em>not-public</em>)."
 msgstr "全新的 Robots API 能在漫遊器中繼資料標籤中包含篩選器指示詞，預設包含 <code>max-image-preview: large</code> 指示詞。這代表搜尋引擎能在搜尋結果預覽中顯示尺寸更大的圖片，藉以提高網站流量 (除非網站標示為 <code>not-public</code>)。"
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:194
 msgid "Above, the Dashboard before and after the color update in 5.7."
 msgstr "上圖為控制台在更新至 5.7 前及更新後的色彩"
 
-#: wp-admin/about.php:170
+#: wp-admin/about.php:191
 msgid "Dashboard with new color scheme."
 msgstr "使用新式色彩配置的控制台。"
 
-#: wp-admin/about.php:168
+#: wp-admin/about.php:189
 msgid "Dashboard with old color scheme."
 msgstr "使用舊式色彩配置的控制台。"
 
-#: wp-admin/about.php:148
+#: wp-admin/about.php:169
 msgid "<strong>Social Icons block:</strong> now you can change the size of the icons."
 msgstr "<strong>[社交網路服務圖示] 區塊:</strong> 使用者從 5.7 版開始可以變更圖示尺寸。"
 
-#: wp-admin/about.php:238
+#: wp-admin/about.php:259
 msgid "Lazy-load your iframes"
 msgstr "延遲載入 iframe"
 
-#: wp-admin/about.php:236
+#: wp-admin/about.php:257
 msgid "For years jQuery helped make things move on the screen in ways the basic tools couldn’t—but that keeps changing, and so does jQuery."
 msgstr "jQuery 多年來以基本工具無法實現的方式，協助使用者為畫面增添更多變化；伴隨著更多使用者需求，jQuery 也持續不斷進化。"
 
-#: wp-admin/about.php:235
+#: wp-admin/about.php:256
 msgid "Ongoing cleanup after update to jQuery 3.5.1"
 msgstr "持續清理更新至 jQuery 3.5.1 後的程式碼"
 
-#: wp-admin/about.php:227
+#: wp-admin/about.php:248
 msgid "New Robots API"
 msgstr "全新的 Robots API"
 
-#: wp-admin/about.php:226
+#: wp-admin/about.php:247
 msgid "Starting now, switching a site from HTTP to HTTPS is a one-click move. WordPress will automatically update database URLs when you make the switch. No more hunting and guessing!"
 msgstr "這次主要版本更新，提供一鍵從 HTTP 切換至 HTTPS 的功能。網站管理員執行變更後，WordPress 會自動更新資料庫中的網址，不再需要搜尋及嘗試其他操作。"
 
-#: wp-admin/about.php:225
+#: wp-admin/about.php:246
 msgid "From HTTP to HTTPS in a single click"
 msgstr "一鍵將 HTTP 變更為 HTTPS"
 
 #. translators: %s: Color palette dev note link.
-#: wp-admin/about.php:204
+#: wp-admin/about.php:225
 msgid "Find the new palette in the default WordPress Dashboard color scheme, and use it when you’re building themes, plugins, or any other components. For all the details, <a href=\"%s\">check out the Color Palette dev note</a>."
-msgstr "在 WordPress 控制台色彩配置中找到全新調色盤，並將它用於建置佈景主題、外掛或其他元件。如需進一步，請查看調色板開發說明。如需進一步瞭解相關資訊，請參考開發注意事項的<a href=\"%s\" target=\"_blank\">調色盤</a>內容。"
+msgstr "在 WordPress 控制台色彩配置中找到全新調色盤，並將它用於建置佈景主題、外掛或其他元件。如需進一步，請查看調色板開發說明。如需進一步了解相關資訊，請參考開發注意事項的<a href=\"%s\" target=\"_blank\">調色盤</a>內容。"
 
-#: wp-admin/about.php:197
+#: wp-admin/about.php:218
 msgid "Half the range has a 4.5 or higher contrast ratio against black, and the other half maintains the same contrast against white."
 msgstr "一半範圍的黑色對比率為 4.5 或更高，另一半範圍則有相同的白色對比率。"
 
-#: wp-admin/about.php:190
+#: wp-admin/about.php:211
 msgid "The colors are perceptually uniform from light to dark in each range, which means they start at white and get darker by the same amount with each step."
 msgstr "每個範圍內的色彩，由淺到深有一致的變化，這代表這些色彩從白色開始，每階均以相同變量變暗直至深色。"
 
 #. translators: %s: WCAG information link.
-#: wp-admin/about.php:183
+#: wp-admin/about.php:204
 msgid "This new streamlined color palette collapses all the colors that used to be in the WordPress source code down to seven core colors and a range of 56 shades that meet the <a href=\"%s\">WCAG 2.0 AA recommended contrast ratio</a> against white or black."
 msgstr "全新、經過簡化的調色盤將使用於 WordPress 原始程式碼中的全部色彩整合為 7 種核心色彩及 56 種符合 <a href=\"%s\" target=\"_blank\">WCAG 2.0 AA 建議的黑白對比率</a>的陰影範圍。"
 
-#: wp-admin/about.php:161
+#: wp-admin/about.php:182
 msgid "A Simpler Default Color Palette"
 msgstr "更簡化的調色盤"
 
-#: wp-admin/about.php:138
+#: wp-admin/about.php:159
 msgid "<strong>Full-height alignment:</strong> have you ever wanted to make a block, like the Cover block, fill the whole window? Now you can."
 msgstr "<strong>完整高度對齊方式:</strong> 如果曾經希望其他區塊能像 [封面] 區塊一樣填滿整個視窗，這個版本開始就能達成這個目的。"
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:154
 msgid "You can do more without writing custom code"
 msgstr "使用者無須撰寫自訂程式碼即可完成更多編輯工作"
 
-#: wp-admin/about.php:119
+#: wp-admin/about.php:140
 msgid "<strong>Inserter drag-and-drop:</strong> drag blocks and block patterns from the inserter right into your post."
 msgstr "<strong>插入器支援拖放功能:</strong> 使用者可以從插入器拖曳區塊及區塊版面配置至內容編輯區。"
 
-#: wp-admin/about.php:114
+#: wp-admin/about.php:135
 msgid "<strong>Reusable blocks:</strong> several enhancements make reusable blocks more stable and easier to use. And now they save automatically with the post when you click the Update button."
 msgstr "<strong>可重複使用區塊:</strong> 多個增強功能讓可重複使用區塊更加穩定及易用。從這個版本開始，使用者在內容編輯區點擊 [更新] 按鈕後，會隨著內容自動儲存。"
 
-#: wp-admin/about.php:109
+#: wp-admin/about.php:130
 msgid "<strong>Font-size adjustment in more places:</strong> now, font-size controls are right where you need them in the List and Code blocks. No more trekking to another screen to make that single change!"
 msgstr "<strong>可在更多位置調整字型大小:</strong> 從這個版本開始，[清單] 及 [標示為程式碼] 區塊會在使用者需要時顯示字型大小控制項，不需要再到其他畫面進行這類單純的變更操作。"
 
-#: wp-admin/about.php:104
+#: wp-admin/about.php:125
 msgid "Now the editor is easier to use"
 msgstr "編輯器更加簡單易用"
 
@@ -165,7 +165,7 @@ msgstr "〈<a href=\"https://wordpress.org/support/article/tools-export-personal
 
 #: wp-admin/export-personal-data.php:55
 msgid "Plugin authors can <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/\" target=\"_blank\">learn more about how to add the Personal Data Exporter to a plugin here</a>."
-msgstr "外掛開發者請參考<a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/\" target=\"_blank\">這篇文章</a>，以進一步瞭解將使用者個人資料匯出程式加入外掛的方式。"
+msgstr "外掛開發者請參考<a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/\" target=\"_blank\">這篇文章</a>，以進一步了解將使用者個人資料匯出程式加入外掛的方式。"
 
 #: wp-admin/export-personal-data.php:54
 msgid "Many plugins may collect or store personal data either in the WordPress database or remotely. Any Export Personal Data request should include data from plugins as well."
@@ -174,7 +174,7 @@ msgstr "許多外掛會利用 WordPress 資料庫或遠端方式，進行使用�
 #. translators: %s: URL to Privacy Policy Guide screen.
 #: wp-admin/export-personal-data.php:45
 msgid "If you are not sure, check the plugin documentation or contact the plugin author to see if the plugin collects data and if it supports the Data Exporter tool. This information may be available in the <a href=\"%s\">Privacy Policy Guide</a>."
-msgstr "如果網站管理員不確定實際狀況，請查閱外掛相關文件或聯絡外掛開發者，以便瞭解外掛是否收集資料及是否支援資料匯出程式。這項資訊可能會在 [<a href=\"%s\">隱私權政策指南</a>] 中提供。"
+msgstr "如果網站管理員不確定實際狀況，請查閱外掛相關文件或聯絡外掛開發者，以便了解外掛是否收集資料及是否支援資料匯出程式。這項資訊可能會在 [<a href=\"%s\">隱私權政策指南</a>] 中提供。"
 
 #: wp-admin/export-personal-data.php:38
 msgid "<strong>Comments</strong> &mdash; For any comments made by the user, Email Address, IP Address, User Agent (Browser/OS), Date/Time, Comment Content, and Content URL."
@@ -282,7 +282,7 @@ msgstr "〈<a href=\"https://wordpress.org/support/article/tools-erase-personal-
 
 #: wp-admin/erase-personal-data.php:55
 msgid "Plugin authors can <a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\" target=\"_blank\">learn more about how to add support for the Personal Data Eraser to a plugin here</a>."
-msgstr "外掛開發者請參考<a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\" target=\"_blank\">這篇文章</a>，以進一步瞭解將使用者個人資料清除程式支援加入外掛的方式。"
+msgstr "外掛開發者請參考<a href=\"https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/\" target=\"_blank\">這篇文章</a>，以進一步了解將使用者個人資料清除程式支援加入外掛的方式。"
 
 #: wp-admin/erase-personal-data.php:54
 msgid "Many plugins may collect or store personal data either in the WordPress database or remotely. Any Erase Personal Data request should delete data from plugins as well."
@@ -295,7 +295,7 @@ msgstr "外掛資料"
 #. translators: %s: URL to Privacy Policy Guide screen.
 #: wp-admin/erase-personal-data.php:45
 msgid "If you are not sure, check the plugin documentation or contact the plugin author to see if the plugin collects data and if it supports the Data Eraser tool. This information may be available in the <a href=\"%s\">Privacy Policy Guide</a>."
-msgstr "如果網站管理員不確定實際狀況，請查閱外掛相關文件或聯絡外掛開發者，以便瞭解外掛是否收集資料及是否支援資料清除程式。這項資訊可能會在 [<a href=\"%s\">隱私權政策指南</a>] 中提供。"
+msgstr "如果網站管理員不確定實際狀況，請查閱外掛相關文件或聯絡外掛開發者，以便了解外掛是否收集資料及是否支援資料清除程式。這項資訊可能會在 [<a href=\"%s\">隱私權政策指南</a>] 中提供。"
 
 #: wp-admin/erase-personal-data.php:39 wp-admin/export-personal-data.php:39
 msgid "<strong>Media</strong> &mdash; A list of URLs for all media file uploads made by the user."
@@ -402,7 +402,7 @@ msgstr "這個網站的 [<a href=\"%s\">網站位址</a>] 並未設定為 HTTPS�
 
 #: wp-admin/includes/class-wp-site-health.php:1441
 msgid "Learn more about debugging in WordPress."
-msgstr "進一步瞭解 WordPress 中的偵錯方式"
+msgstr "進一步了解 WordPress 中的偵錯方式"
 
 #: wp-admin/includes/revision.php:90
 msgid "Added"
@@ -502,9 +502,9 @@ msgid "https://developer.wordpress.org/rest-api/frequently-asked-questions/#why-
 msgstr "https://developer.wordpress.org/rest-api/frequently-asked-questions/#why-is-authentication-not-working"
 
 #. translators: %s: WordPress 5.7 Field Guide link.
-#: wp-admin/about.php:252
+#: wp-admin/about.php:273
 msgid "Check out the latest version of the WordPress Field Guide. It highlights developer notes for each change you may want to be aware of. <a href=\"%s\">WordPress 5.7 Field Guide.</a>"
-msgstr "請參考最新版 WordPress 詳解指南，這份指南列舉了每一項開發者需要瞭解的注意事項。<a href=\"%s\" target=\"_blank\">WordPress 5.7 詳解指南</a>"
+msgstr "請參考最新版 WordPress 詳解指南，這份指南列舉了每一項開發者需要了解的注意事項。<a href=\"%s\" target=\"_blank\">WordPress 5.7 詳解指南</a>"
 
 #: wp-admin/update-core.php:382
 msgid "This site appears to be under version control. Automatic updates are disabled."
@@ -573,7 +573,7 @@ msgstr "新增應用程式密碼"
 msgid "Required to create an Application Password, but not to update the user."
 msgstr "這是建立應用程式密碼的必填項目，但這項設定不會變更使用者個人資料。"
 
-#: wp-admin/about.php:265
+#: wp-admin/about.php:286
 msgid "Go to Updates"
 msgstr "前往 [更新]"
 
@@ -768,7 +768,7 @@ msgstr "授權標頭"
 
 #: wp-admin/includes/class-wp-site-health.php:2226
 msgid "Learn how to configure the Authorization header."
-msgstr "進一步瞭解如何設定授權標頭"
+msgstr "進一步了解如何設定授權標頭"
 
 #: wp-admin/includes/class-wp-site-health.php:2220
 msgid "Flush permalinks"
@@ -923,9 +923,9 @@ msgstr "%1$s 的值小於 %2$s。"
 msgid "Environment type"
 msgstr "環境類型"
 
-#: wp-admin/about.php:247
+#: wp-admin/about.php:268
 msgid "Check the Field Guide for more!"
-msgstr "請參閱詳解指南以進一步瞭解相關資訊"
+msgstr "請參閱詳解指南以進一步了解相關資訊"
 
 #: wp-admin/plugins.php:577
 msgid "Auto-updates are only available for plugins recognized by WordPress.org, or that include a compatible update system."
@@ -1211,7 +1211,7 @@ msgstr "WordPress 主要版本、每個佈景主題或外掛均可個別啟用�
 #. updating WordPress.
 #: wp-admin/update-core.php:249
 msgid "<strong>Important:</strong> Before updating, please <a href=\"%1$s\">back up your database and files</a>. For help with updates, visit the <a href=\"%2$s\">Updating WordPress</a> documentation page."
-msgstr "<strong>重要提示:</strong> 在進行更新前，請先<a href=\"%1$s\" target=\"_blank\">備份這個網站的資料庫及檔案</a>。如需進一步瞭解更新核心程式相關說明，請參考〈<a href=\"%2$s\" target=\"_blank\">更新 WordPress</a>〉線上說明。"
+msgstr "<strong>重要提示:</strong> 在進行更新前，請先<a href=\"%1$s\" target=\"_blank\">備份這個網站的資料庫及檔案</a>。如需進一步了解更新核心程式相關說明，請參考〈<a href=\"%2$s\" target=\"_blank\">更新 WordPress</a>〉線上說明。"
 
 #: wp-admin/customize.php:195 wp-admin/themes.php:551 wp-admin/themes.php:897
 #: wp-admin/themes.php:1113 wp-admin/theme-install.php:374
@@ -1976,7 +1976,7 @@ msgstr "〈<a href=\"https://wordpress.org/support/article/users-screen/\" targe
 
 #: wp-admin/user-edit.php:327
 msgid "<a href=\"https://wordpress.org/support/article/keyboard-shortcuts/\" target=\"_blank\">More information</a>"
-msgstr "<a href=\"https://wordpress.org/support/article/keyboard-shortcuts/\" target=\"_blank\">進一步瞭解</a>"
+msgstr "<a href=\"https://wordpress.org/support/article/keyboard-shortcuts/\" target=\"_blank\">進一步了解</a>"
 
 #: wp-admin/user-edit.php:71
 msgid "<a href=\"https://wordpress.org/support/article/users-your-profile-screen/\">Documentation on User Profiles</a>"
@@ -2009,7 +2009,7 @@ msgstr "[%s] 設定已取消註冊。系統會將取消註冊的設定功能淘�
 
 #: wp-admin/edit-form-advanced.php:380
 msgid "<strong>Format</strong> &mdash; Post Formats designate how your theme will display a specific post. For example, you could have a <em>standard</em> blog post with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Your theme could enable all or some of 10 possible formats. <a href=\"https://wordpress.org/support/article/post-formats/#supported-formats\">Learn more about each post format</a>."
-msgstr "<strong>文章格式</strong> &mdash; 文章格式決定了佈景主題顯示指定文章的方式。舉例來說，使用者可以撰寫含有標題及段落的<strong>標準</strong>格式文章，也可以撰寫省略標題、僅有簡短文字簡介的<strong>記事</strong>格式文章。目前使用的佈景主題可以啟用全部 10 種或其中部分的文章格式。請參閱〈<a href=\"https://wordpress.org/support/article/post-formats/#supported-formats\" target=\"_blank\">文章格式說明</a>〉以進一步瞭解相關資訊。"
+msgstr "<strong>文章格式</strong> &mdash; 文章格式決定了佈景主題顯示指定文章的方式。舉例來說，使用者可以撰寫含有標題及段落的<strong>標準</strong>格式文章，也可以撰寫省略標題、僅有簡短文字簡介的<strong>記事</strong>格式文章。目前使用的佈景主題可以啟用全部 10 種或其中部分的文章格式。請參閱〈<a href=\"https://wordpress.org/support/article/post-formats/#supported-formats\" target=\"_blank\">文章格式說明</a>〉以進一步了解相關資訊。"
 
 #: wp-admin/edit-form-advanced.php:337
 msgid "<a href=\"https://wordpress.org/support/article/pages-screen/\">Documentation on Editing Pages</a>"
@@ -2157,7 +2157,7 @@ msgstr "https://wordpress.org/support/article/changing-file-permissions/"
 #: wp-admin/includes/file.php:323 wp-admin/theme-editor.php:322
 #: wp-admin/plugin-editor.php:295
 msgid "You need to make this file writable before you can save your changes. See <a href=\"%s\">Changing File Permissions</a> for more information."
-msgstr "儲存變更前，請確認這個檔案為可寫入。請參閱〈<a href=\"%s\" target=\"_blank\">變更檔案權限</a>〉，以進一步瞭解相關資訊。"
+msgstr "儲存變更前，請確認這個檔案為可寫入。請參閱〈<a href=\"%s\" target=\"_blank\">變更檔案權限</a>〉，以進一步了解相關資訊。"
 
 #: wp-admin/includes/ajax-actions.php:2433
 msgid "Upload failed. Please reload and try again."
@@ -2347,7 +2347,7 @@ msgstr "〈<a href=\"https://wordpress.org/support/article/posts-categories-scre
 #. translators: %s: Documentation URL.
 #: wp-admin/options-reading.php:170
 msgid "Your theme determines how content is displayed in browsers. <a href=\"%s\">Learn more about feeds</a>."
-msgstr "使用中的佈景主題掌控了內容在瀏覽器中的顯示方式。<a href=\"%s\" target=\"_blank\">進一步瞭解資訊提供</a>"
+msgstr "使用中的佈景主題掌控了內容在瀏覽器中的顯示方式。<a href=\"%s\" target=\"_blank\">進一步了解資訊提供</a>"
 
 #: wp-admin/options-reading.php:160 wp-admin/options-reading.php:161
 msgid "For each post in a feed, include"
@@ -2501,7 +2501,7 @@ msgstr "WordPress 的 UTF8MB4 支援需要 MySQL %s 版或更新版本。請聯�
 
 #: wp-admin/includes/class-wp-site-health.php:1166
 msgid "Learn more about what WordPress requires to run."
-msgstr "進一步瞭解執行 WordPress 的環境需求"
+msgstr "進一步了解執行 WordPress 的環境需求"
 
 #. translators: Localized version of WordPress requirements if one exists.
 #: wp-admin/includes/class-wp-site-health.php:1165
@@ -2775,7 +2775,7 @@ msgstr "無法更新"
 #. 4: Version number 5: URL to Update PHP page.
 #: wp-admin/includes/update.php:520
 msgid "There is a new version of %1$s available, but it doesn&#8217;t work with your version of PHP. <a href=\"%2$s\" %3$s>View version %4$s details</a> or <a href=\"%5$s\">learn more about updating PHP</a>."
-msgstr "%1$s 已有新版本可供下載安裝，但無法在目前使用的 PHP 版本中執行。<a href=\"%2$s\" %3$s>檢視 %4$s 版的詳細資料</a>或<a href=\"%5$s\" target=\"_blank\">進一步瞭解更新 PHP 執行環境</a>。"
+msgstr "%1$s 已有新版本可供下載安裝，但無法在目前使用的 PHP 版本中執行。<a href=\"%2$s\" %3$s>檢視 %4$s 版的詳細資料</a>或<a href=\"%5$s\" target=\"_blank\">進一步了解更新 PHP 執行環境</a>。"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:1077
 msgid "This plugin failed to load properly and is paused during recovery mode."
@@ -3037,7 +3037,7 @@ msgstr "伺服器間的安全通訊是擷取檔案、在網路商店進行商品
 
 #: wp-admin/includes/class-wp-site-health.php:1521
 msgid "Learn more about why you should use HTTPS"
-msgstr "進一步瞭解為什麼網站該採用 HTTPS"
+msgstr "進一步了解為什麼網站該採用 HTTPS"
 
 #: wp-admin/includes/class-wp-site-health.php:1532
 msgid "Your website does not use HTTPS"
@@ -3887,7 +3887,7 @@ msgstr "設定這個網站的首頁"
 #: wp-admin/includes/class-wp-site-health.php:736
 #: wp-admin/includes/dashboard.php:1794
 msgid "Learn more about updating PHP"
-msgstr "進一步瞭解更新 PHP 執行環境"
+msgstr "進一步了解更新 PHP 執行環境"
 
 #: wp-admin/includes/dashboard.php:1778
 msgid "What is PHP and how does it affect my site?"
@@ -3933,7 +3933,7 @@ msgstr "<strong>錯誤:</strong> 這個外掛<strong>需要較新版本的 WordP
 #. translators: %s: URL to Update PHP page.
 #: wp-admin/includes/plugin-install.php:810
 msgid "<a href=\"%s\" target=\"_blank\">Click here to learn more about updating PHP</a>."
-msgstr "<a href=\"%s\" target=\"_blank\">點擊這裡以進一步瞭解更新 PHP 執行環境</a>。"
+msgstr "<a href=\"%s\" target=\"_blank\">點擊這裡以進一步了解更新 PHP 執行環境</a>。"
 
 #: wp-admin/includes/plugin-install.php:806
 msgid "<strong>Error:</strong> This plugin <strong>requires a newer version of PHP</strong>."
@@ -3978,7 +3978,8 @@ msgstr "無法安裝"
 
 #. translators: %s: WordPress version.
 #: wp-admin/includes/update.php:302 wp-admin/install.php:238
-#: wp-admin/update-core.php:84 wp-admin/upgrade.php:80 wp-admin/about.php:91
+#: wp-admin/update-core.php:84 wp-admin/upgrade.php:80 wp-admin/about.php:86
+#: wp-admin/about.php:112
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -4222,7 +4223,7 @@ msgstr "透過系統功能建立隱私權政策頁面後，建議進行必要的
 #. Accessibility text.
 #: wp-admin/options-privacy.php:215
 msgid "Need help putting together your new Privacy Policy page? <a href=\"%1$s\" %2$s>Check out our Privacy Policy guide%3$s</a> for recommendations on what content to include, along with policies suggested by your plugins and theme."
-msgstr "制訂隱私權政策時如需協助，請參考這份<a href=\"%1$s\" %2$s>隱私權政策指南%3$s</a>，以便瞭解必要內容的建議，以及針對網站採用的外掛及佈景主題的建議政策。"
+msgstr "制訂隱私權政策時如需協助，請參考這份<a href=\"%1$s\" %2$s>隱私權政策指南%3$s</a>，以便了解必要內容的建議，以及針對網站採用的外掛及佈景主題的建議政策。"
 
 #: wp-admin/privacy-policy-guide.php:65 wp-admin/privacy-policy-guide.php:74
 msgid "Privacy Policy Guide"
@@ -4282,7 +4283,7 @@ msgstr "簡介"
 
 #: wp-admin/includes/class-wp-privacy-policy-content.php:330
 msgid "Need help putting together your new Privacy Policy page? Check out our guide for recommendations on what content to include, along with policies suggested by your plugins and theme."
-msgstr "制訂隱私權政策時如需協助，請參考這份指南，以便瞭解必要內容的建議，以及針對網站採用的外掛及佈景主題的建議政策。"
+msgstr "制訂隱私權政策時如需協助，請參考這份指南，以便了解必要內容的建議，以及針對網站採用的外掛及佈景主題的建議政策。"
 
 #: wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php:66
 #: wp-admin/includes/class-wp-privacy-data-removal-requests-list-table.php:140
@@ -4485,7 +4486,7 @@ msgstr "Cookie"
 #. translators: Default privacy policy text.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:496
 msgid "An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment."
-msgstr "這個網站會根據使用者的電子郵件地址建立匿名化字串 (亦稱為<strong>雜湊值</strong>)，並提供給 Gravatar 個人頭像服務以查詢這個使用者是否為這項服務的使用者。如需瞭解 Gravatar 個人頭像服務的隱私權政策，請造訪 <a title=\"Automattic 的隱私權政策\" href=\"https://automattic.com/privacy/\" target=\"_blank\">https://automattic.com/privacy/</a>。網站管理員核准使用者發佈的留言後，使用者的個人資料圖片便會在留言內容中公開顯示。"
+msgstr "這個網站會根據使用者的電子郵件地址建立匿名化字串 (亦稱為<strong>雜湊值</strong>)，並提供給 Gravatar 個人頭像服務以查詢這個使用者是否為這項服務的使用者。如需了解 Gravatar 個人頭像服務的隱私權政策，請造訪 <a title=\"Automattic 的隱私權政策\" href=\"https://automattic.com/privacy/\" target=\"_blank\">https://automattic.com/privacy/</a>。網站管理員核准使用者發佈的留言後，使用者的個人資料圖片便會在留言內容中公開顯示。"
 
 #. translators: Default privacy policy text.
 #: wp-admin/includes/class-wp-privacy-policy-content.php:494
@@ -4988,7 +4989,7 @@ msgstr "如果<a href=\"%s\" target=\"_blank\">網站首頁網址需要與 WordP
 #. translators: %s: https://wordpress.org/about/privacy
 #: wp-admin/privacy.php:68
 msgid "We take privacy and transparency very seriously. To learn more about what data we collect, and how we use it, please visit <a href=\"%s\">our Privacy Policy</a>."
-msgstr "我們非常注重隱私權及資訊透明度。如需進一步瞭解我們收集了哪些資料及其使用方式，請造訪我們的〈<a href=\"%s\" target=\"_blank\">隱私權政策</a>〉頁面。"
+msgstr "我們非常注重隱私權及資訊透明度。如需進一步了解我們收集了哪些資料及其使用方式，請造訪我們的〈<a href=\"%s\" target=\"_blank\">隱私權政策</a>〉頁面。"
 
 #: wp-admin/freedoms.php:60 wp-admin/freedoms.php:112
 msgid "https://wordpress.org/about/license/"
@@ -5096,7 +5097,7 @@ msgstr "啟用 [發佈至網站]"
 
 #: wp-admin/theme-editor.php:377 wp-admin/plugin-editor.php:331
 msgid "I understand"
-msgstr "已瞭解這項操作的風險"
+msgstr "已了解這項操作的風險"
 
 #: wp-admin/theme-editor.php:356 wp-admin/plugin-editor.php:325
 msgid "Heads up!"
@@ -5958,7 +5959,7 @@ msgstr "<strong>引用通知</strong> (英文原文為 Trackback) 是種通知�
 #. translators: %s: Documentation URL.
 #: wp-admin/includes/meta-boxes.php:707
 msgid "Excerpts are optional hand-crafted summaries of your content that can be used in your theme. <a href=\"%s\">Learn more about manual excerpts</a>."
-msgstr "[內容摘要] 是一項選用功能，它是佈景主題可以自由運用的手動擷取內容。<a href=\"%s\" target=\"_blank\">進一步瞭解手動輸入內容摘要</a>。"
+msgstr "[內容摘要] 是一項選用功能，它是佈景主題可以自由運用的手動擷取內容。<a href=\"%s\" target=\"_blank\">進一步了解手動輸入內容摘要</a>。"
 
 #: wp-admin/edit-form-advanced.php:295
 msgid "The Text mode allows you to enter HTML along with your post text. Note that &lt;p&gt; and &lt;br&gt; tags are converted to line breaks when switching to the Text editor to make it less cluttered. When you type, a single line break can be used instead of typing &lt;br&gt;, and two line breaks instead of paragraph tags. The line breaks are converted back to tags automatically."
@@ -6146,7 +6147,7 @@ msgstr "使用者評論"
 #. translators: %s: URL to "Features as Plugins" page.
 #: wp-admin/includes/plugin-install.php:407
 msgid "You are using a development version of WordPress. These feature plugins are also under development. <a href=\"%s\">Learn more</a>."
-msgstr "這個網站使用了 WordPress 的開發版本，目前主要功能外掛仍處於開發階段。<a href=\"%s\" target=\"_blank\">進一步瞭解</a>。"
+msgstr "這個網站使用了 WordPress 的開發版本，目前主要功能外掛仍處於開發階段。<a href=\"%s\" target=\"_blank\">進一步了解</a>。"
 
 #: wp-admin/includes/image-edit.php:212
 msgid "Thumbnail Settings Help"
@@ -6374,7 +6375,7 @@ msgid "(Currently set to: %s)"
 msgstr "(目前選單: %s)"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:366
+#: wp-admin/about.php:76 wp-admin/about.php:387
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>%s 版</strong>修正了 1 個安全性問題。"
 
@@ -6386,15 +6387,15 @@ msgstr "https://zh-tw.gravatar.com/"
 msgid "Profile Picture"
 msgstr "個人資料圖片"
 
-#: wp-admin/about.php:71 wp-admin/about.php:363
+#: wp-admin/about.php:71 wp-admin/about.php:384
 msgid "Maintenance and Security Releases"
 msgstr "維護及安全性更新版本"
 
-#: wp-admin/about.php:360
+#: wp-admin/about.php:381
 msgid "Security Releases"
 msgstr "安全性更新版本"
 
-#: wp-admin/about.php:357
+#: wp-admin/about.php:378
 msgid "Maintenance Releases"
 msgstr "維護版本"
 
@@ -7084,7 +7085,7 @@ msgstr "留言狀態"
 
 #: wp-admin/edit-form-advanced.php:362
 msgid "You can also embed media from many popular websites including Twitter, YouTube, Flickr and others by pasting the media URL on its own line into the content of your post/page. <a href=\"https://wordpress.org/support/article/embeds/\">Learn more about embeds</a>."
-msgstr "使用者還可以透過將媒體檔案網址貼上至文章/頁面的內容中的方式，藉以嵌入來自包含 Twitter、YouTube、Flickr 等熱門網站的內容。<a href=\"https://wordpress.org/support/article/embeds/\" target=\"_blank\">進一步瞭解嵌入內容</a>。"
+msgstr "使用者還可以透過將媒體檔案網址貼上至文章/頁面的內容中的方式，藉以嵌入來自包含 Twitter、YouTube、Flickr 等熱門網站的內容。<a href=\"https://wordpress.org/support/article/embeds/\" target=\"_blank\">進一步了解嵌入內容</a>。"
 
 #: wp-admin/includes/class-custom-background.php:99
 msgid "<a href=\"https://codex.wordpress.org/Appearance_Background_Screen\">Documentation on Custom Background</a>"
@@ -7112,12 +7113,12 @@ msgstr "〈<a href=\"https://codex.wordpress.org/Dashboard_My_Sites_Screen\" tar
 
 #: wp-admin/widgets.php:88
 msgid "The theme you are currently using isn&#8217;t widget-aware, meaning that it has no sidebars that you are able to change. For information on making your theme widget-aware, please <a href=\"https://developer.wordpress.org/themes/functionality/widgets/\">follow these instructions</a>."
-msgstr "這個網站目前使用的佈景主題不支援小工具功能，這代表它沒有內建任何可供網站管理員進行設定的資訊欄。如需進一步瞭解如何製作支援小工具功能的佈景主題，請參考<a href=\"https://developer.wordpress.org/themes/functionality/widgets/\" target=\"_blank\">這篇線上文件</a>。"
+msgstr "這個網站目前使用的佈景主題不支援小工具功能，這代表它沒有內建任何可供網站管理員進行設定的資訊欄。如需進一步了解如何製作支援小工具功能的佈景主題，請參考<a href=\"https://developer.wordpress.org/themes/functionality/widgets/\" target=\"_blank\">這篇線上文件</a>。"
 
 #. translators: %s: Documentation URL.
 #: wp-admin/options-writing.php:209
 msgid "When you publish a new post, WordPress automatically notifies the following site update services. For more about this, see <a href=\"%s\">Update Services</a> on the Codex. Separate multiple service URLs with line breaks."
-msgstr "使用者發佈新文章後，WordPress 會自動向下列網站更新服務傳送通知。如需進一步瞭解相關資訊，請查看 Codex 上的〈<a href=\"%s\" target=\"_blank\">更新服務</a>〉線上說明。請以每行一個服務網址的方式分隔多個更新服務。"
+msgstr "使用者發佈新文章後，WordPress 會自動向下列網站更新服務傳送通知。如需進一步了解相關資訊，請查看 Codex 上的〈<a href=\"%s\" target=\"_blank\">更新服務</a>〉線上說明。請以每行一個服務網址的方式分隔多個更新服務。"
 
 #: wp-admin/includes/options.php:133
 msgid "The <a href=\"https://wordpress.org/support/article/glossary/#character-set\">character encoding</a> of your site (UTF-8 is recommended)"
@@ -7587,7 +7588,7 @@ msgstr "使用者上傳的全部檔案均會顯示於 [媒體庫]，並會依上
 
 #: wp-admin/plugin-install.php:101
 msgid "If you just want to get an idea of what&#8217;s available, you can browse Featured and Popular plugins by using the links above the plugins list. These sections rotate regularly."
-msgstr "如果只想瞭解有哪些不錯的外掛可供選用，請使用外掛清單上方的 [精選] 及 [熱門] 分頁來瀏覽外掛，這兩項分類的內容會常態新更新。"
+msgstr "如果只想了解有哪些不錯的外掛可供選用，請使用外掛清單上方的 [精選] 及 [熱門] 分頁來瀏覽外掛，這兩項分類的內容會常態新更新。"
 
 #: wp-admin/plugin-install.php:139
 msgid "Browse Plugins"
@@ -8226,7 +8227,7 @@ msgstr "請將網址為 %1$s 的網站更新至 WordPress %2$s。"
 #. translators: %s: WordPress version.
 #: wp-admin/includes/class-wp-automatic-updater.php:735
 msgid "For more on version %s, see the About WordPress screen:"
-msgstr "如需進一步瞭解 %s 版的資訊，請參閱〈關於 WordPress〉頁面："
+msgstr "如需進一步了解 %s 版的資訊，請參閱〈關於 WordPress〉頁面："
 
 #: wp-admin/includes/class-wp-automatic-updater.php:729
 msgid "No further action is needed on your part."
@@ -8325,7 +8326,7 @@ msgstr "在 [編輯選單] 分頁中<strong>點擊任一選單項目右側的箭
 #. themes.
 #: wp-admin/nav-menus.php:597
 msgid "Menus can be displayed in locations defined by your theme, even used in sidebars by adding a &#8220;Navigation Menu&#8221; widget on the <a href=\"%1$s\">Widgets</a> screen. If your theme does not support the navigation menus feature (the default themes, %2$s and %3$s, do), you can learn about adding this support by following the Documentation link to the side."
-msgstr "每個佈景主題提供的選單位置不盡相同，而選單除了可以顯示於佈景主題提供的位置外，還可以透過 [<a href=\"%1$s\">小工具</a>] 頁面的 [導覽選單] 小工具顯示於資訊欄。如果這個網站使用的佈景主題不支援導覽選單功能 (預設佈景主題 %2$s 和 %3$s 均支援)，請查閱側邊的說明文件以進一步瞭解如何為佈景主題加入這項功能的支援。"
+msgstr "每個佈景主題提供的選單位置不盡相同，而選單除了可以顯示於佈景主題提供的位置外，還可以透過 [<a href=\"%1$s\">小工具</a>] 頁面的 [導覽選單] 小工具顯示於資訊欄。如果這個網站使用的佈景主題不支援導覽選單功能 (預設佈景主題 %2$s 和 %3$s 均支援)，請查閱側邊的說明文件以進一步了解如何為佈景主題加入這項功能的支援。"
 
 #. translators: %s: URL to Widgets screen.
 #: wp-admin/nav-menus.php:588
@@ -8986,7 +8987,7 @@ msgstr "網站管理員也可以點擊 [選取色彩] 按鈕選取背景色彩�
 
 #: wp-admin/includes/dashboard.php:1970
 msgid "Learn more about getting started"
-msgstr "進一步瞭解如何開始使用 WordPress"
+msgstr "進一步了解如何開始使用 WordPress"
 
 #: wp-admin/includes/dashboard.php:1968
 msgid "Turn comments on or off"
@@ -9276,7 +9277,7 @@ msgstr "預覽及安裝"
 
 #: wp-admin/theme-install.php:118
 msgid "Once you have generated a list of themes, you can preview and install any of them. Click on the thumbnail of the theme you&#8217;re interested in previewing. It will open up in a full-screen Preview page to give you a better idea of how that theme will look."
-msgstr "網站管理員在這個畫面中，可以預覽及安裝清單中的任何一款佈景主題。點擊屬意的佈景主題縮圖便會開啟全螢幕頁面進行預覽，讓網站管理員能更加瞭解佈景主題套用後的實際外觀。"
+msgstr "網站管理員在這個畫面中，可以預覽及安裝清單中的任何一款佈景主題。點擊屬意的佈景主題縮圖便會開啟全螢幕頁面進行預覽，讓網站管理員能更加了解佈景主題套用後的實際外觀。"
 
 #: wp-admin/includes/media.php:3038
 msgid "You are using the browser&#8217;s built-in file uploader. The WordPress uploader includes multiple file selection and drag and drop capability. <a href=\"#\">Switch to the multi-file uploader</a>."
@@ -9293,7 +9294,7 @@ msgstr "這個畫面中的 [分類與標籤轉換程式] 連結會將使用者�
 
 #: wp-admin/tools.php:48
 msgid "Categories have hierarchy, meaning that you can nest sub-categories. Tags do not have hierarchy and cannot be nested. Sometimes people start out using one on their posts, then later realize that the other would work better for their content."
-msgstr "分類具備階層架構，這代表使用者可以使用巢狀子分類；標籤不具備階層架構，也無法使用巢狀子項目。使用者有時候只會在文章中使用其中一種，之後便會瞭解到另外一種更適合他們的內容。"
+msgstr "分類具備階層架構，這代表使用者可以使用巢狀子分類；標籤不具備階層架構，也無法使用巢狀子項目。使用者有時候只會在文章中使用其中一種，之後便會了解到另外一種更適合他們的內容。"
 
 #. translators: %s: URL to General Settings screen.
 #: wp-admin/includes/class-custom-image-header.php:123
@@ -9557,7 +9558,7 @@ msgstr "永久刪除我的網站"
 #. translators: %s: Site address.
 #: wp-admin/ms-delete-site.php:126
 msgid "I'm sure I want to permanently delete my site, and I am aware I can never get it back or use %s again."
-msgstr "確定永久刪除這個網站，並清楚瞭解無法取回已刪除的網站或再次使用 %s。"
+msgstr "確定永久刪除這個網站，並清楚了解無法取回已刪除的網站或再次使用 %s。"
 
 #: wp-admin/ms-delete-site.php:117
 msgid "Remember, once deleted your site cannot be restored."
@@ -9853,26 +9854,26 @@ msgstr "檢視網站前端時顯示工具列"
 
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:88 wp-admin/about.php:389
+#: wp-admin/about.php:83 wp-admin/about.php:109 wp-admin/about.php:410
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
-msgstr "如需進一步瞭解相關資訊，請參閱<a href=\"%s\" target=\"_blank\">版本資訊</a>。"
+msgstr "如需進一步了解相關資訊，請參閱<a href=\"%s\" target=\"_blank\">版本資訊</a>。"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:76 wp-admin/about.php:383
+#: wp-admin/about.php:97 wp-admin/about.php:404
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s 版</strong>修正了多個安全性問題，同時也修正了 %2$s 個程式碼錯誤。"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:377
+#: wp-admin/about.php:398
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s 版</strong>修正了 1 個安全性問題，同時也修正了 %2$s 個程式碼錯誤。"
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:371
+#: wp-admin/about.php:392
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>%1$s 版</strong>修正了 %2$s 個程式碼錯誤。"
@@ -9882,19 +9883,19 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "歡迎使用 WordPress 控制台！使用者登入網站後便會看見這個畫面，這個畫面能讓不同權限的使用者存取 WordPress 網站的對應管理功能。點擊任何頁面標題上方的 [使用說明] 分頁，便能取得相關功能的使用說明。"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:368
+#: wp-admin/about.php:389
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>%s 版</strong>修正了多個安全性問題。"
 
-#: wp-admin/about.php:362
+#: wp-admin/about.php:383
 msgid "Maintenance and Security Release"
 msgstr "維護及安全性更新版本"
 
-#: wp-admin/about.php:359
+#: wp-admin/about.php:380
 msgid "Security Release"
 msgstr "安全性更新版本"
 
-#: wp-admin/about.php:356
+#: wp-admin/about.php:377
 msgid "Maintenance Release"
 msgstr "維護版本"
 
@@ -9910,7 +9911,7 @@ msgstr "網站管理員可以在這個畫面設定網站的永久連結結構，
 #. translators: 1: WordPress version, 2: URL to About screen.
 #: wp-admin/includes/update-core.php:1476 wp-admin/update-core.php:866
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
-msgstr "歡迎使用 WordPress %1$s。<a href=\"%2$s\">進一步瞭解</a>"
+msgstr "歡迎使用 WordPress %1$s。<a href=\"%2$s\">進一步了解</a>"
 
 #: wp-admin/media-new.php:50
 msgid "You can upload media files here without creating a post first. This allows you to upload files to use with posts and pages later and/or to get a web link for a particular file that you can share. There are three options for uploading files:"
@@ -10024,7 +10025,7 @@ msgstr "<strong>永久連結</strong>是連結至網站個別頁面及文章的�
 
 #: wp-admin/options-writing.php:23
 msgid "You can submit content in several different ways; this screen holds the settings for all of them. The top section controls the editor within the dashboard, while the rest control external publishing methods. For more information on any of these methods, use the documentation links."
-msgstr "在這個網站中可用多種不同的方式提交內容，而這個畫面包含了全部相關設定。最上方的區段控管了編輯管理畫面的預設設定，其他部分則控管了外部發佈方式。如需進一步瞭解這些方式，請點擊這個分頁中的線上說明連結。"
+msgstr "在這個網站中可用多種不同的方式提交內容，而這個畫面包含了全部相關設定。最上方的區段控管了編輯管理畫面的預設設定，其他部分則控管了外部發佈方式。如需進一步了解這些方式，請點擊這個分頁中的線上說明連結。"
 
 #: wp-admin/options-media.php:22
 msgid "Uploading Files allows you to choose the folder and path for storing your uploaded files."
@@ -10048,7 +10049,7 @@ msgstr "透過電子郵件發佈文章"
 
 #: wp-admin/options-discussion.php:24
 msgid "This screen provides many options for controlling the management and display of comments and links to your posts/pages. So many, in fact, they won&#8217;t all fit here! :) Use the documentation links to get information on what each discussion setting does."
-msgstr "這個畫面提供了多項用於管理及顯示留言以及連結至文章/頁面的設定。如需進一步瞭解 [討論設定] 頁面中的每一項設定的用途，請參考這個分頁中的線上說明連結。"
+msgstr "這個畫面提供了多項用於管理及顯示留言以及連結至文章/頁面的設定。如需進一步了解 [討論設定] 頁面中的每一項設定的用途，請參考這個分頁中的線上說明連結。"
 
 #: wp-admin/user-edit.php:54
 msgid "You can change your password, turn on keyboard shortcuts, change the color scheme of your WordPress administration screens, and turn off the WYSIWYG (Visual) editor, among other things. You can hide the Toolbar (formerly called the Admin Bar) from the front end of your site, however it cannot be disabled on the admin screens."
@@ -10112,7 +10113,7 @@ msgstr "頁面與文章相似之處在於它們都有標題、內文及相關中
 
 #: wp-admin/edit-comments.php:188
 msgid "Many people take advantage of keyboard shortcuts to moderate their comments more quickly. Use the link to the side to learn more."
-msgstr "許多人使用鍵盤快速鍵更快速地審閱相關留言。如需進一步瞭解，請點擊旁邊的連結。"
+msgstr "許多人使用鍵盤快速鍵更快速地審閱相關留言。如需進一步了解，請點擊旁邊的連結。"
 
 #: wp-admin/edit-comments.php:184
 msgid "In the <strong>Author</strong> column, in addition to the author&#8217;s name, email address, and blog URL, the commenter&#8217;s IP address is shown. Clicking on this link will show you all the comments made from this IP address."
@@ -10137,7 +10138,7 @@ msgstr "使用者可以為各個連結指派不同的連結分類，[連結分�
 #. translators: 1: URL to About screen, 2: WordPress version.
 #: wp-admin/update-core.php:275
 msgid "<a href=\"%1$s\">Learn more about WordPress %2$s</a>."
-msgstr "<a href=\"%1$s\">進一步瞭解 WordPress %2$s 版的相關資訊</a>。"
+msgstr "<a href=\"%1$s\">進一步了解 WordPress %2$s 版的相關資訊</a>。"
 
 #: wp-admin/users.php:53
 msgid "<strong>Edit</strong> takes you to the editable profile screen for that user. You can also reach that screen by clicking on the username."
@@ -10179,11 +10180,11 @@ msgstr "<strong>編輯</strong> &mdash; 點擊 [編輯] 連結便會進入文章
 msgid "Because this is a multisite installation, you may add accounts that already exist on the Network by specifying a username or email, and defining a role. For more options, such as specifying a password, you have to be a Network Administrator and use the hover link under an existing user&#8217;s name to Edit the user profile under Network Admin > All Users."
 msgstr "由於這是多站網路，因此網站管理員可以透過指定使用者名稱或電子郵件地址的方式，將多站網路中現有的帳號加入網站中，並為其指派使用者角色。如需進行指派密碼等其他設定，則必須具備多站網路管理員權限，然後前往 [多站網路管理中心]&rarr;[全部使用者]，並點擊某位現有使用者的使用者名稱連結，便能編輯這個使用者的個人資料。"
 
-#: wp-admin/about.php:268
+#: wp-admin/about.php:289
 msgid "Go to Dashboard &rarr; Home"
 msgstr "前往 [控制台]&rarr;[首頁]"
 
-#: wp-admin/about.php:265
+#: wp-admin/about.php:286
 msgid "Go to Dashboard &rarr; Updates"
 msgstr "前往 [控制台]&rarr;[更新]"
 
@@ -10289,7 +10290,7 @@ msgstr "Tumblr"
 #. translators: 1: Browser update URL, 2: Browser name, 3: Browse Happy URL.
 #: wp-admin/includes/dashboard.php:1653
 msgid "<a href=\"%1$s\" class=\"update-browser-link\">Update %2$s</a> or learn how to <a href=\"%3$s\" class=\"browse-happy-link\">browse happy</a>"
-msgstr "<a href=\"%1$s\" class=\"update-browser-link\">更新 %2$s</a>或進一步瞭解如何<a href=\"%3$s\" class=\"browse-happy-link\">快樂瀏覽</a>"
+msgstr "<a href=\"%1$s\" class=\"update-browser-link\">更新 %2$s</a>或進一步了解如何<a href=\"%3$s\" class=\"browse-happy-link\">快樂瀏覽</a>"
 
 #. translators: 1: Link start tag, 2: Link end tag, 3: Width, 4: Height.
 #: wp-admin/includes/media.php:3070
@@ -10546,7 +10547,7 @@ msgstr "設定已儲存。"
 #: wp-admin/network/users.php:229 wp-admin/network/site-new.php:31
 #: wp-admin/network/settings.php:62 wp-admin/network/sites.php:44
 msgid "For more information:"
-msgstr "進一步瞭解相關資訊:"
+msgstr "進一步了解相關資訊:"
 
 #: wp-admin/edit-form-advanced.php:329
 msgid "About Pages"
@@ -10735,12 +10736,12 @@ msgstr "專案負責人"
 #. translators: %s: https://make.wordpress.org
 #: wp-admin/credits.php:75
 msgid "Want to see your name in lights on this page? <a href=\"%s\">Get involved in WordPress</a>."
-msgstr "想要名列這個頁面？<a href=\"%s\" target=\"_blank\">瞭解如何參與 WordPress 專案</a>"
+msgstr "想要名列這個頁面？<a href=\"%s\" target=\"_blank\">了解如何參與 WordPress 專案</a>"
 
 #. translators: 1: https://wordpress.org/about/, 2: https://make.wordpress.org
 #: wp-admin/credits.php:59
 msgid "WordPress is created by a <a href=\"%1$s\">worldwide team</a> of passionate individuals. <a href=\"%2$s\">Get involved in WordPress</a>."
-msgstr "WordPress 是由許多熱情的社群成員組成的<a href=\"%1$s\" target=\"_blank\">全球團隊</a>所一手打造。<a href=\"%2$s\" target=\"_blank\">瞭解如何參與 WordPress 專案</a>。"
+msgstr "WordPress 是由許多熱情的社群成員組成的<a href=\"%1$s\" target=\"_blank\">全球團隊</a>所一手打造。<a href=\"%2$s\" target=\"_blank\">了解如何參與 WordPress 專案</a>。"
 
 #: wp-admin/credits.php:13 wp-admin/credits.php:43 wp-admin/credits.php:51
 #: wp-admin/privacy.php:40 wp-admin/freedoms.php:46 wp-admin/about.php:42
@@ -10762,7 +10763,7 @@ msgstr "你目前使用的是不安全的瀏覽器！"
 
 #: wp-admin/freedoms.php:117
 msgid "Don&#8217;t you wish all software came with these freedoms? So do we! For more information, check out the <a href=\"https://www.fsf.org/\">Free Software Foundation</a>."
-msgstr "希望全部軟體都擁有這樣的使用自由嗎？我們希望！如需進一步瞭解相關資訊，請造訪<a href=\"https://www.fsf.org/\" target=\"_blank\">自由軟體基金會</a>。"
+msgstr "希望全部軟體都擁有這樣的使用自由嗎？我們希望！如需進一步了解相關資訊，請造訪<a href=\"https://www.fsf.org/\" target=\"_blank\">自由軟體基金會</a>。"
 
 #: wp-admin/credits.php:44 wp-admin/privacy.php:41 wp-admin/freedoms.php:18
 #: wp-admin/freedoms.php:47 wp-admin/freedoms.php:53 wp-admin/about.php:43
@@ -10840,7 +10841,7 @@ msgstr "這個畫面會列出這個網站的全部使用者。網站管理員可
 
 #: wp-admin/plugin-editor.php:135
 msgid "If you want to make changes but don&#8217;t want them to be overwritten when the plugin is updated, you may be ready to think about writing your own plugin. For information on how to edit plugins, write your own from scratch, or just better understand their anatomy, check out the links below."
-msgstr "如果不希望因為外掛更新而覆寫目前為外掛所做的自訂變更，可以考慮自己編寫一個外掛。如需進一步瞭解編輯外掛、編寫自有外掛的方式，或編輯外掛、撰寫外掛或更加想瞭解外掛結構相關資訊，請點擊目前 [使用說明] 分頁中的相關連結。"
+msgstr "如果不希望因為外掛更新而覆寫目前為外掛所做的自訂變更，可以考慮自己編寫一個外掛。如需進一步了解編輯外掛、編寫自有外掛的方式，或編輯外掛、撰寫外掛或更加想了解外掛結構相關資訊，請點擊目前 [使用說明] 分頁中的相關連結。"
 
 #: wp-admin/index.php:73
 msgid "The boxes on your Dashboard screen are:"
@@ -11029,7 +11030,7 @@ msgstr "請注意，裁剪圖片時請點擊該圖片 (裁剪圖示按鈕成為�
 
 #: wp-admin/media.php:88 wp-admin/edit-form-advanced.php:347
 msgid "For images only, you can click on Edit Image under the thumbnail to expand out an inline image editor with icons for cropping, rotating, or flipping the image as well as for undoing and redoing. The boxes on the right give you more options for scaling the image, for cropping it, and for cropping the thumbnail in a different way than you crop the original image. You can click on Help in those boxes to get more information."
-msgstr "使用者若需處理圖片，可以點擊縮圖下方的 [編輯圖片] 以開啟圖片編輯器，在圖片編輯器中可以對圖片進行裁剪、旋轉、或翻轉，還可以復原及重做。編輯器右側提供了更多設定，用於縮放、裁剪圖片以及使用與裁剪原始圖片不同的方式裁剪縮圖。請點擊 [使用說明] 以瞭解進一步的資訊。"
+msgstr "使用者若需處理圖片，可以點擊縮圖下方的 [編輯圖片] 以開啟圖片編輯器，在圖片編輯器中可以對圖片進行裁剪、旋轉、或翻轉，還可以復原及重做。編輯器右側提供了更多設定，用於縮放、裁剪圖片以及使用與裁剪原始圖片不同的方式裁剪縮圖。請點擊 [使用說明] 以了解進一步的資訊。"
 
 #: wp-admin/media.php:87 wp-admin/edit-form-advanced.php:346
 msgid "This screen allows you to edit fields for metadata in a file within the media library."
@@ -11344,7 +11345,7 @@ msgstr "如果有需要，具備管理留言權限的站務人員可以編輯留
 #. translators: %s: Documentation URL.
 #: wp-admin/options-reading.php:33
 msgid "You can also control the display of your content in RSS feeds, including the maximum number of posts to display and whether to show full text or a summary. <a href=\"%s\">Learn more about feeds</a>."
-msgstr "網站管理員還可以設定 RSS 資訊提供顯示內容的方式，包含最新文章顯示數量以及在資訊提供中要顯示完整內容還是內容摘要。<a href=\"%s\" target=\"_blank\">進一步瞭解資訊提供</a>"
+msgstr "網站管理員還可以設定 RSS 資訊提供顯示內容的方式，包含最新文章顯示數量以及在資訊提供中要顯示完整內容還是內容摘要。<a href=\"%s\" target=\"_blank\">進一步了解資訊提供</a>"
 
 #: wp-admin/options-reading.php:25
 msgid "This screen contains the settings that affect the display of your content."
@@ -11444,7 +11445,7 @@ msgstr "小工具是網頁內容的獨立區塊，這種獨立區塊可放置於
 
 #: wp-admin/theme-editor.php:39
 msgid "<strong>Advice:</strong> Think very carefully about your site crashing if you are live-editing the theme currently in use."
-msgstr "<strong>重要須知:</strong> 如果編輯的檔案屬於目前使用的佈景主題，請務必瞭解這項操作有可能造成網站停擺。"
+msgstr "<strong>重要須知:</strong> 如果編輯的檔案屬於目前使用的佈景主題，請務必了解這項操作有可能造成網站停擺。"
 
 #: wp-admin/theme-editor.php:38
 msgid "After typing in your edits, click Update File."
@@ -11864,7 +11865,7 @@ msgstr "立即更新"
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:622
 #: wp-admin/import.php:204
 msgid "More information about %s"
-msgstr "進一步瞭解 %s 的相關資訊"
+msgstr "進一步了解 %s 的相關資訊"
 
 #: wp-admin/user-edit.php:440
 msgid "Grant this user super admin privileges for the Network."
@@ -12011,7 +12012,7 @@ msgstr "WordPress 更新"
 msgid "Edit menu item"
 msgstr "編輯選單項目"
 
-#: wp-admin/about.php:268 wp-admin/includes/network.php:148
+#: wp-admin/about.php:289 wp-admin/includes/network.php:148
 msgid "Go to Dashboard"
 msgstr "前往 [控制台]"
 
@@ -13684,7 +13685,7 @@ msgstr "圖片網址"
 
 #: wp-admin/includes/meta-boxes.php:1334
 msgid "If the link is to a person, you can specify your relationship with them using the above form. If you would like to learn more about the idea check out <a href=\"https://gmpg.org/xfn/\">XFN</a>."
-msgstr "如果連結目標為個人，可以使用上方的表單指定連結建立者與連結目標的人際關係。如需進一步瞭解相關資訊，請參考〈<a href=\"https://gmpg.org/xfn/\" target=\"_blank\">XFN 定義的人際關係</a>〉線上說明。"
+msgstr "如果連結目標為個人，可以使用上方的表單指定連結建立者與連結目標的人際關係。如需進一步了解相關資訊，請參考〈<a href=\"https://gmpg.org/xfn/\" target=\"_blank\">XFN 定義的人際關係</a>〉線上說明。"
 
 #. translators: xfn: https://gmpg.org/xfn
 #: wp-admin/includes/meta-boxes.php:1328

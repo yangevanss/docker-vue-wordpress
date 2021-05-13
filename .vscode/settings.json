@@ -1,6 +1,7 @@
 {
-    "files.exclude": {
-        "wp-content/plugins/": true
+    "search.exclude": {
+        // "wordpress": true,
+        // "wp-content/plugins/": true
     },
     "editor.insertSpaces": true, // 強制輸入空白
     "editor.detectIndentation": false, // 關閉縮排偵測
@@ -64,5 +65,8 @@
     "todo-tree.filtering.excludeGlobs": [
         "**/node_modules/*",
         "**/wp-content/plugins/*"
+    ],
+    "cSpell.words": [
+        "blockstudio"
     ],
 }

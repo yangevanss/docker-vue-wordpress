@@ -43,6 +43,8 @@
         "eslint-plugin-promise": "^5.1.0",
         "eslint-plugin-vue": "^7.9.0",
         "eslint-webpack-plugin": "^2.5.4",
+        "favicons": "^6.2.2",
+        "favicons-webpack-plugin": "^5.0.2",
         "mini-css-extract-plugin": "^1.5.0",
         "postcss": "^8.2.10",
         "postcss-loader": "^5.2.0",
