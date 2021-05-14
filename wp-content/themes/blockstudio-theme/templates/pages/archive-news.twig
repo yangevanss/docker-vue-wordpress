@@ -1,5 +1,25 @@
 {% extends "base.twig" %}
 
+{% block style %}
+    {{ enqueue_style('archive-news', false) }}
+{% endblock %}
+{% block script %}
+    {{ enqueue_script('archive-news', false) }}
+{% endblock %}
+
 {% block content %}
-    news archive {{title}}
+    <div class="archive-news">
+        <div class="container">
+            {% include "components/molecules/breadcrumb.twig" %}
+            <ul>
+                {% for post in posts %}
+                    <li>
+                        <a href="{{ post.guid }}">
+                            {{ post.post_title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}

@@ -1,0 +1,26 @@
+.m-breadcrumb {
+    &__main {
+        @include typo('list', 1);
+
+        display: flex;
+        align-items: center;
+        color: map-get($admin-colors, primary);
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        & + & {
+            &::before {
+                @include size(3px);
+
+                content: '';
+                display: block;
+                margin: 0 5px;
+                background-color: map-get($admin-colors, primary);
+                border-radius: 50%;
+            }
+        }
+    }
+}

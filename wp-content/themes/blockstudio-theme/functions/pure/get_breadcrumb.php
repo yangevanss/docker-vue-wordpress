@@ -42,7 +42,9 @@ function get_breadcrumb(String $type, Callable $callback, Array $others = null)
     
         array_unshift($generate, [
             "page_id" => get_option('page_on_front'),
-            "title" => wpm_get_language() === 'zh' ? '首頁' : 'Index',
+            "title" => function_exists('wpm_get_language') 
+            ? (wpm_get_language() === 'zh' ? '首頁' : 'Index')
+            : '首頁',
             "url" => get_home_url(),
         ]);
     }

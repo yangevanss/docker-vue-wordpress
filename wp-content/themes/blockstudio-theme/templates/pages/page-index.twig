@@ -1,15 +1,16 @@
 {% extends "base.twig" %}
 
 {% block style %}
-    {{ enqueue_style('index') }}
+    {{ enqueue_style('page-index') }}
 {% endblock %}
 {% block script %}
-    {{ enqueue_script('index') }}
+    {{ enqueue_script('page-index') }}
 {% endblock %}
 
 {% block content %}
 	<div class="page-index">
         <Hello-world></Hello-world>
+        <Icon name="left" ></Icon>
 		<article class="page-index__main container">
             <h1 class="page-index__title">{{ title }}</h1>
             <div class="page-index__content">

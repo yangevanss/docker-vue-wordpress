@@ -160,6 +160,7 @@ class StarterSite extends Timber\Site
         $context['post'] = $post;
         $context['posts'] = $posts;
         $context['fields'] = $fields;
+        $context['blog_public'] = get_option('blog_public');
         $context['seo'] = get_seo($fields['seo']);
         $context['global_options'] = get_field('global_options', 'option');
         $context['main_menu'] = get_menu('main_menu');

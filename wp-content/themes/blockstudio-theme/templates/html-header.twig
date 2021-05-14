@@ -24,6 +24,10 @@
 <meta itemprop="description" content="{{ seo.desc }}">
 <meta itemprop="image" content="{{ seo.thumb }}">
 
+{% if not blog_public %}
+    <meta name="googlebot" content="noindex, nofollow">
+{% endif %}
+
 {% if NODE_ENV == 'production' %}
     <link rel="apple-touch-icon" sizes="57x57" href="{{ site.theme.link }}/src/favicon/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ site.theme.link }}/src/favicon/apple-touch-icon-60x60.png">

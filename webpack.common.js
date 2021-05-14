@@ -7,8 +7,10 @@ const { VueLoaderPlugin } = require('vue-loader')
 module.exports = {
     entry: {
         admin: './src/style/admin/_admin.scss',
-        default: './src/js/main.js',
-        index: ['./src/js/pages/index.js', './src/style/pages/index.scss'],
+        default: './src/js/pages/default.js',
+        'page-index': ['./src/js/pages/page-index.js', './src/style/pages/page-index.scss'],
+        'archive-news': ['./src/style/pages/archive-news.scss'],
+        'single-news': ['./src/style/pages/single-news.scss'],
     },
     output: {
         filename: 'js/[name].bundle.js',
