@@ -1,10 +1,7 @@
 {% extends "base.twig" %}
 
 {% block style %}
-    {{ enqueue_style('archive-news', false) }}
-{% endblock %}
-{% block script %}
-    {{ enqueue_script('archive-news', false) }}
+    {{ enqueue_style('archive-news', true) }}
 {% endblock %}
 
 {% block content %}

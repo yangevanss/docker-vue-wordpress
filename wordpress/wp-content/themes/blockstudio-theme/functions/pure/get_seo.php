@@ -10,7 +10,7 @@ function get_seo($field)
         'url' => get_permalink(),
         'og_type' => 'website'
     ];
-    print_r($field);
+
     if($field && count($field)){
         $generate['title'] = $field['title'] ? $field['title'] . ' - ' . get_bloginfo('description') : $generate['title'];
         $generate['desc'] = $field['desc'] ? $field['desc'] : $generate['desc'];

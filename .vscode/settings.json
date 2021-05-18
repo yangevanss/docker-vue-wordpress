@@ -1,7 +1,6 @@
 {
     "search.exclude": {
-        // "wordpress": true,
-        // "wp-content/plugins/": true
+        // "wordpress/wp-content/plugins/": true
     },
     "editor.insertSpaces": true, // 強制輸入空白
     "editor.detectIndentation": false, // 關閉縮排偵測

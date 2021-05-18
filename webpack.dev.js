@@ -13,7 +13,7 @@ module.exports = merge(common, {
         before (app, server) {
             chokidar
                 .watch([
-                    path.resolve(__dirname, 'wp-content/themes/blockstudio-theme/'),
+                    path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/'),
                     path.resolve(__dirname, 'src/js/pages/*.js'),
                     path.resolve(__dirname, 'src/js/plugins/**/*.js'),
                     path.resolve(__dirname, 'src/js/main.js'),
@@ -23,7 +23,7 @@ module.exports = merge(common, {
                 })
         },
         port: dotenv.WEBPACK_PORT,
-        contentBase: path.resolve(__dirname, 'wp-content/themes/blockstudio-theme/src'),
+        contentBase: path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/src'),
         compress: true,
         hot: true,
         open: true,

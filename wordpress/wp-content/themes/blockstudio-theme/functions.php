@@ -161,7 +161,7 @@ class StarterSite extends Timber\Site
         $context['posts'] = $posts;
         $context['fields'] = $fields;
         $context['blog_public'] = get_option('blog_public');
-        $context['seo'] = get_seo($fields['seo']);
+        $context['seo'] = get_seo($fields ? $fields['seo'] : null);
         $context['global_options'] = get_field('global_options', 'option');
         $context['main_menu'] = get_menu('main_menu');
         $context['breadcrumb'] = get_breadcrumb('main_menu', function ($item) use ($post) {

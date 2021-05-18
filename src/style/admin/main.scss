@@ -3,11 +3,15 @@ html {
 }
 
 #wpwrap {
-    #wpadminbar {
+    #adminmenu .wp-submenu {
+        background-color: darken(map-get($admin-colors, primary), 15%);
+    }
+
+    #adminmenu li.menu-top:hover, #adminmenu li.opensub > a.menu-top, #adminmenu li > a.menu-top:focus, #wpadminbar {
         background-color: darken(map-get($admin-colors, primary), 10%);
     }
 
-    #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+    #adminmenu, #adminmenuback, #adminmenuwrap {
         background-color: map-get($admin-colors, primary);
     }
 

@@ -7,8 +7,8 @@
                 display: none;
             }
         </style>
-        {{ enqueue_style('default', false) }}
         {% block style %}{% endblock %}
+        {{ enqueue_style('default') }}
 		{{ function('wp_head') }}
 	</head>
 	<body class="{{ body_class }}" data-template="base.twig">
@@ -24,10 +24,10 @@
             {% include 'components/organisms/footer.twig' %}
             {% include 'components/organisms/loading.twig' %}
         </div>
-        {{ enqueue_script('default', false) }}
-        {{ enqueue_script('runtime', false) }}
-        {{ enqueue_script('vendors', false) }}
         {% block script %}{% endblock %}
+        {{ enqueue_script('default') }}
+        {{ enqueue_script('runtime', 'runtime') }}
+        {{ enqueue_script('vendors', 'vendors') }}
         {{ function('wp_footer') }}
 	</body>
 </html>

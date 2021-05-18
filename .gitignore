@@ -3,10 +3,8 @@
 /node_modules
 
 wordpress/*
-wp-content/*
-wp-content/themes/*
-wp-content/themes/blockstudio-theme/src
+!wordpress/wp-content
 !wordpress/.gitkeep
-!wp-content/plugins
-!wp-content/themes
-!wp-content/themes/blockstudio-theme
+wordpress/wp-content/themes/*
+!wordpress/wp-content/themes/blockstudio-theme
+wordpress/wp-content/themes/blockstudio-theme/src

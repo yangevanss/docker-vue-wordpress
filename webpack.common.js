@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         filename: 'js/[name].bundle.js',
-        path: path.resolve(__dirname, 'wp-content/themes/blockstudio-theme/src'),
+        path: path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/src'),
         pathinfo: false,
     },
     resolve: {
