@@ -5,6 +5,7 @@
 wordpress/*
 !wordpress/wp-content
 !wordpress/.gitkeep
+!wordpress/.htaccess
 wordpress/wp-content/themes/*
 !wordpress/wp-content/themes/blockstudio-theme
 wordpress/wp-content/themes/blockstudio-theme/src

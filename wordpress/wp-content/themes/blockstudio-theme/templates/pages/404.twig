@@ -1,5 +1,13 @@
 {% extends "base.twig" %}
 
+{% block style %}
+    {{ enqueue_style('404', true) }}
+{% endblock %}
+
 {% block content %}
-	Sorry, we couldn't find what you're looking for.
+    <div class="404">
+        <div class="container">
+            Sorry, we couldn't find what you're looking for.
+        </div>
+    </div>
 {% endblock %}

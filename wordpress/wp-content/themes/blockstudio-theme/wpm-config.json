@@ -2,6 +2,10 @@
     "post_types": {
         "news": {}
     },
+    "taxonomies": {
+        "news_category": {},
+        "news_tag": {}
+    },
     "admin_pages": [
         "toplevel_page_options"
     ]

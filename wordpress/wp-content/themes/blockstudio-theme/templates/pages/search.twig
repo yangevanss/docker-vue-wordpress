@@ -1,13 +1,28 @@
-{# see `archive.twig` for an alternative strategy of extending templates #}
 {% extends "base.twig" %}
 
-{% block content %}
-  {# see `base.twig:27` for where this block's content will be inserted #}
-  <div class="content-wrapper">
-    {% for post in posts %}
-      {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-    {% endfor %}
+{% block style %}
+    {{ enqueue_style('search', true) }}
+{% endblock %}
 
-    {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
-  </div>
+{% block content %}
+    <div class="search">
+        <div class="container">
+            {% include "components/molecules/breadcrumb.twig" %}
+            <ul class="search__main">
+                {% for post in posts %}
+                    <li class="search__post">
+                        <a 
+                            href="{{ post.guid }}" 
+                            v-bg="'{{ require_assets('img/block-map.jpg') }}'"
+                        >
+                            <p>
+                                {{ post.post_title }}
+                            </p>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% include "components/molecules/pagination.twig" %}
+        </div>
+    </div>
 {% endblock %}

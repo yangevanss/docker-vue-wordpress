@@ -1,18 +1,29 @@
 <?php
 function pre_posts_page($query)
 {
-    // $query->set('post_type', ['post', 'test_post_type']);
-    if (is_post_type_archive('test_post_type')) {
-        $query->set('posts_per_page', 8);
-        return;
+    $custom_post_types = get_post_types([
+        'public'   => true,
+        '_builtin' => false,
+    ], 'names');
+
+    foreach($custom_post_types as $key => $type){
+        if (is_post_type_archive($type)) {
+            return;
+        }
     }
-    if (is_archive() && $query->is_main_query()) {
-        $query->set('posts_per_page', 8);
-        return;
+
+    if($query->is_category() && $query->is_main_query()) {
+        $query->set('post_type', $custom_post_types);
+        $query->set('posts_per_page', 9);
     }
+
+    if ($query->is_tag() && $query->is_main_query()) {
+        $query->set('post_type', $custom_post_types);
+        $query->set('posts_per_page', 9);
+    }
+
     if ($query->is_search() && $query->is_main_query()) {
-        $query->set('posts_per_page', 8);
-        return;
+        $query->set('post_type', $custom_post_types);
+        $query->set('posts_per_page', 9);
     }
-    $query->set('posts_per_page', -1);
 }

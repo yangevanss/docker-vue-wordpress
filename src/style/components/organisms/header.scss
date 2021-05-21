@@ -18,4 +18,15 @@
             width: 45px;
         }
     }
+
+    &__nav {
+        ul {
+            display: flex;
+            align-items: center;
+        }
+
+        li {
+            margin-left: 10px;
+        }
+    }
 }

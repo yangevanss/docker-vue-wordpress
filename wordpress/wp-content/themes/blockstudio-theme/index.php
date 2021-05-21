@@ -14,9 +14,4 @@
  * @since   Timber 0.1
  */
 
-$context = Timber::context();
-$templates = array('pages/index.twig', 'pages/404.twig');
-if (is_home()) {
-	array_unshift($templates, 'pages/page-index.twig');
-}
-Timber::render($templates, $context);
+require_once '404.php';

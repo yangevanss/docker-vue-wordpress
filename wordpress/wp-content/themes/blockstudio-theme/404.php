@@ -9,5 +9,12 @@
  * @subpackage  Timber
  * @since    Timber 0.1
  */
+
+$wp_query->set_404();
+status_header(404);
+
 $context = Timber::context();
+$context['title'] = wp_get_document_title();
+$context['seo'] = get_seo(null);
+
 Timber::render('pages/404.twig', $context);

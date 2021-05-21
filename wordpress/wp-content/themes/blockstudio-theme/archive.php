@@ -15,24 +15,11 @@
  * @since   Timber 0.2
  */
 
-$templates = array('pages/archive.twig');
+$checkFileExist = file_exists(get_template_directory() . '/archive-' . get_post_type() . '.php');
 
-$context = Timber::context();
-$context['title'] = 'Archive';
-if (is_day()) {
-	$context['title'] = 'Archive: ' . get_the_date('D M Y');
-} elseif (is_month()) {
-	$context['title'] = 'Archive: ' . get_the_date('M Y');
-} elseif (is_year()) {
-	$context['title'] = 'Archive: ' . get_the_date('Y');
-} elseif (is_tag()) {
-	$context['title'] = single_tag_title('', false);
-} elseif (is_category()) {
-	$context['title'] = single_cat_title('', false);
-	array_unshift($templates, 'pages/archive-' . get_query_var('cat') . '.twig');
-} elseif (is_post_type_archive()) {
-	$context['title'] = post_type_archive_title('', false);
-	array_unshift($templates, 'pages/archive-' . get_post_type() . '.twig');
+if(get_post_type() && $checkFileExist){
+    require_once 'archive-' . get_post_type() . '.php';
+    return;
 }
 
-Timber::render($templates, $context);
+require_once '404.php';

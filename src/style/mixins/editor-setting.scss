@@ -1,245 +1,58 @@
 @mixin editor-setting {
-    $hr-bg-color: #ac232b;
+    h1 {
+        font-size: 2rem;
+    }
 
-    * {
-        line-height: 1.5;
-        letter-spacing: 0.5px;
-
-        html.en-lang & {
-            letter-spacing: 0;
-        }
+    h2 {
+        font-size: 1.5rem;
     }
 
     h3 {
-        margin: 20px auto;
-        font-weight: map-get($font-weight, bold);
+        font-size: 1.17rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    h5 {
+        font-size: 0.83rem;
+    }
+
+    h6 {
+        font-size: 0.67rem;
     }
 
     p {
-        margin: 20px auto;
-        width: 100%;
-        font-size: 15px;
-        text-align: left;
-
-        + p {
-            margin-top: 20px;
-        }
-
-        + img {
-            margin-top: 20px;
-        }
-    }
-
-    b {
-        font-weight: map-get($font-weight, bold);
-        color: map-get($colors, 'main');
+        font-size: 1rem;
     }
 
     strong {
         font-weight: map-get($font-weight, bold);
-        color: map-get($colors, 'main');
     }
 
     em {
         font-style: italic;
     }
 
-    img {
-        display: block !important;
-        margin: 20px auto;
-        width: 100%;
-        height: auto;
-    }
-
-    figure {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    hr {
-        width: 100%;
-        height: 1px;
-        background-color: $hr-bg-color;
-        border: 0;
-        margin-bottom: 1.5em;
-    }
-
     blockquote {
-        margin: 20px auto;
-        width: 100%;
-        font-weight: map-get($font-weight, bold);
-        box-sizing: border-box;
-
-        &::before,
-        &::after {
-            content: '';
-            position: relative;
-            display: block;
-            margin: 25px 0;
-            width: 100%;
-            height: 8px;
-            background: #000000;
-        }
-
-        p {
-            font-size: inherit;
-            line-height: inherit;
-        }
-    }
-
-    a {
-        font-weight: map-get($font-weight, bold);
-        text-decoration: underline;
-        color: inherit;
-        @include media-breakpoint-up(desktop) {
-            transition: opacity 0.3s ease;
-
-            &:hover {
-                opacity: 0.6;
-            }
-        }
-    }
-
-    iframe {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-        outline: 0;
-        vertical-align: top;
-    }
-
-    ol, ul, li {
-        padding: 0;
-        font-weight: map-get($font-weight, bold);
-        text-align: left;
-        list-style: none !important;
-        box-sizing: border-box;
-    }
-
-    ol, ul {
         display: block;
-        margin: 20px auto;
-        width: 100%;
+        margin-inline-start: 2.5rem;
+        margin-inline-end: 2.5rem;
     }
 
     ul {
-        li {
-            position: relative;
-            padding-left: 30px;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 8px;
-                left: 0;
-                display: inline-block;
-                margin-right: 20px;
-                width: 10px;
-                height: 10px;
-                background: #000000;
-                border-radius: 50%;
-            }
-        }
+        list-style-type: disc;
+        margin-inline-start: 1.5rem;
     }
 
     ol {
-        counter-reset: item;
-
-        li {
-            position: relative;
-            display: block;
-            margin-left: 20px;
-
-            @media screen and (max-width: 1199px) {
-                margin-left: 24px;
-            }
-
-            &::before {
-                content: counter(item) '.';
-                position: absolute;
-                left: -20px;
-                font-weight: map-get($font-weight, bold);
-                counter-increment: item;
-            }
-        }
+        list-style-type: decimal;
+        margin-inline-start: 1.5rem;
     }
 
-    li {
-        > ul, > ol {
-            margin-bottom: 0;
-            margin-left: 1.5em;
-        }
-    }
-
-    .wp-caption-text,
-    .wp-caption-dd {
-        display: block;
-        margin-top: 0;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        color: inherit;
-        word-break: break-all;
-        margin-bottom: 0;
-    }
-
-    .wp-caption-dd {
-        width: 100%;
-    }
-
-    .wp-caption {
-        margin-right: auto;
-        margin-left: auto;
-        width: 100% !important;
-        margin-bottom: 20px;
-
-        img {
-            margin: 0;
-            width: 100% !important;
-        }
-    }
-
-    .img-container {
-        display: block;
-        overflow: hidden;
-    }
-
-    embed,
-    iframe,
-    object {
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-
-    .video-container,
-    .wpview.wpview-wrap {
-        position: relative;
-        margin: auto;
-        padding-bottom: 56.25%;
-        width: 100%;
-        height: 0;
-    }
-
-    // figcaption.wp-caption-text {
-    //     margin-top: -15px !important;
-    //     word-wrap: break-word;
-    //     color: #999;
-    // }
-
-    .wp-caption-dt {
-        margin: auto;
-        width: 100% !important;
-    }
-
-    .wp-caption img[class*='wp-image-'] {
-        display: block;
-        margin-right: auto;
-        margin-left: auto;
+    hr {
+        margin-block-start: 0.5rem;
+        margin-block-end: 0.5rem;
     }
 }

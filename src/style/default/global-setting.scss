@@ -2,6 +2,11 @@
     --vh: 1vh;
 }
 
+::selection {
+    color: map-get($colors, white);
+    background-color: map-get($admin-colors, primary);
+}
+
 @include get-container();
 @include grid-system();
 
@@ -42,11 +47,6 @@ pre {
     white-space: pre-line;
 }
 
-::selection {
-    color: map-get($colors, white);
-    background: map-get($colors, black);
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -72,4 +72,8 @@ button {
     @include media-breakpoint-down(tablet) {
         padding-top: map-get($header-height, mobile);
     }
+}
+
+.-editor {
+    @include editor-setting;
 }

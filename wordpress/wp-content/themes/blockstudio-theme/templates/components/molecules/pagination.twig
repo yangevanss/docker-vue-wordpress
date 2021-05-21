@@ -1,64 +1,74 @@
 {% if posts.pagination.pages is not empty %}
-    <nav class="pagination-block">
-        <ul class="pagination">
-
+    <nav class="m-pagination">
+        <ul class="m-pagination__main">
             {# First #}
             {% if posts.pagination.pages|first and posts.pagination.pages|first.current != true %}
-                <li class="first btn">
-                    <a href="{{ posts.pagination.pages|first.link }}">First</a>
+                <li class="m-pagination__btn -first">
+                    <a href="{{ posts.pagination.pages|first.link }}">
+                        <Icon name="db-left"></Icon>
+                    </a>
                 </li>
             {% else %}
-                <li class="first btn disabled">
-                    <button disabled>First</button>
+                <li class="m-pagination__btn -first -disable">
+                    <button disabled>
+                        <Icon name="db-left"></Icon>
+                    </button>
                 </li>
             {% endif %}
-
             {# Previous #}
             {% if posts.pagination.prev %}
-                <li class="prev btn">
-                    <a href="{{ posts.pagination.prev.link }}">Previous</a>
+                <li class="m-pagination__btn -prev">
+                    <a href="{{ posts.pagination.prev.link }}">
+                        <Icon name="left"></Icon>
+                    </a>
                 </li>
             {% else %}
-                <li class="prev btn disabled">
-                    <button disabled>Previous</button>
+                <li class="m-pagination__btn -prev -disable">
+                    <button disabled>
+                        <Icon name="left"></Icon>
+                    </button>
                 </li>
             {% endif %}
-
             {# Pages #}
             {% for page in posts.pagination.pages %}
                 {% if page.link %}
-                    <li>
+                    <li class="m-pagination__link">
                         <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
                     </li>
                 {% else %}
-                    <li class="current">
+                    <li class="m-pagination__link -active">
                         <span class="{{ page.class }}">{{ page.title }}</span>
                     </li>
                 {% endif %}
             {% endfor %}
-
             {# Next #}
             {% if posts.pagination.next %}
-                <li class="next btn">
-                    <a href="{{ posts.pagination.next.link }}">Next</a>
+                <li class="m-pagination__btn -next">
+                    <a href="{{ posts.pagination.next.link }}">
+                        <Icon name="right"></Icon>
+                    </a>
                 </li>
             {% else %}
-                <li class="next btn disabled">
-                    <button disabled>Next</button>
+                <li class="m-pagination__btn -next -disable">
+                    <button disabled>
+                        <Icon name="right"></Icon>
+                    </button>
                 </li>
             {% endif %}
-
             {# Last #}
             {% if posts.pagination.pages|last and posts.pagination.pages|last.current != true %}
-                <li class="last btn">
-                    <a href="{{ posts.pagination.pages|last.link }}">Last</a>
+                <li class="m-pagination__btn -last">
+                    <a href="{{ posts.pagination.pages|last.link }}">
+                        <Icon name="db-right"></Icon>
+                    </a>
                 </li>
             {% else %}
-                <li class="last btn disabled">
-                    <button disabled>Last</button>
+                <li class="m-pagination__btn -last -disable">
+                    <button disabled>
+                        <Icon name="db-right"></Icon>
+                    </button>
                 </li>
             {% endif %}
-
         </ul>
     </nav>
 {% endif %}

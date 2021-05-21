@@ -13,6 +13,9 @@
 $templates = array('pages/search.twig');
 
 $context = Timber::context();
+$posts = new Timber\PostQuery();
+$context['posts'] = $posts;
+$context['seo'] = get_seo(null);
 $context['title'] = 'Search results for ' . get_search_query();
 
 Timber::render($templates, $context);

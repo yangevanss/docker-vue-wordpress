@@ -39,5 +39,6 @@ function get_menu(String $menu_type = null)
             $generate[$ID] = $data;
         }
     }
+
     return $generate;
 }

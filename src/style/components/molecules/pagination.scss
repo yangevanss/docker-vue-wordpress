@@ -1,0 +1,28 @@
+.m-pagination {
+    &__main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > li {
+            @media (hover: hover) and (pointer: fine) {
+                &:not(.-disable):not(.-active):hover {
+                    color: map-get($admin-colors, primary);
+                }
+            }
+
+            > * {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 5px 10px;
+            }
+        }
+    }
+
+    &__link {
+        &.-active {
+            color: map-get($admin-colors, primary);
+        }
+    }
+}

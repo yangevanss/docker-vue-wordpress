@@ -69,8 +69,6 @@ class StarterSite extends Timber\Site
         add_action('after_setup_theme', array($this, 'default_setup'));
         add_filter('timber/context', array($this, 'add_to_context'));
         add_filter('timber/twig', array($this, 'add_to_twig'));
-        // add_action('init', array($this, 'register_post_types')); please use "Custom Post Type UI" plugin to register
-        // add_action('init', array($this, 'register_taxonomies')); please use "Custom Post Type UI" plugin to register
         parent::__construct();
     }
 
@@ -133,7 +131,7 @@ class StarterSite extends Timber\Site
     {
         require_once 'api/index.php';
         require_once 'functions/index.php';
-        
+
         if (is_admin()) {
             add_action('admin_enqueue_scripts', 'admin_style');
             add_filter('upload_mimes', 'upload_svg');
@@ -141,7 +139,7 @@ class StarterSite extends Timber\Site
             add_filter('admin_footer_text', 'admin_copyright');
         } else {
             add_action('login_enqueue_scripts', 'admin_style'); 
-            add_action('pre_get_posts', 'pre_posts_page');
+            add_action('pre_get_posts', 'pre_posts_page'); 
             add_filter('show_admin_bar', 'is_blog_admin');
         }
     }
@@ -153,20 +151,12 @@ class StarterSite extends Timber\Site
     public function add_to_context($context)
     {
         $context['site'] = $this;
-        $post = new Timber\Post();
-        $posts = new Timber\PostQuery();
-        $fields = get_fields($post);
         $context['NODE_ENV'] = WP_DEBUG ? 'development' : 'production';
-        $context['post'] = $post;
-        $context['posts'] = $posts;
-        $context['fields'] = $fields;
         $context['blog_public'] = get_option('blog_public');
-        $context['seo'] = get_seo($fields ? $fields['seo'] : null);
         $context['global_options'] = get_field('global_options', 'option');
         $context['main_menu'] = get_menu('main_menu');
-        $context['breadcrumb'] = get_breadcrumb('main_menu', function ($item) use ($post) {
-            return $item['page_id'] == $post->ID;
-        });
+        $context = array_merge($context, get_singular_context());
+        $context = array_merge($context, get_archive_context());
 
         return $context;
     }
@@ -183,22 +173,6 @@ class StarterSite extends Timber\Site
         $twig->addFunction(new Timber\Twig_Function('require_assets', 'require_assets'));
         $twig->addFunction(new Timber\Twig_Function('t', 'translate_language'));
         return $twig;
-    }
-
-    /**
-     *  This is where you can register custom post types. 
-     * 	please use "Custom Post Type UI" plugin to register
-     * */
-    public function register_post_types()
-    {
-    }
-
-    /** 
-     * This is where you can register custom taxonomies. 
-     * please use "Custom Post Type UI" plugin to register
-     * */
-    public function register_taxonomies()
-    {
     }
 }
 
