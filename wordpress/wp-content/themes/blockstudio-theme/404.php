@@ -10,7 +10,9 @@
  * @since    Timber 0.1
  */
 
-$wp_query->set_404();
+if($wp_query) {
+    $wp_query->set_404();
+}
 status_header(404);
 
 $context = Timber::context();

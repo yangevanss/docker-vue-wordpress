@@ -1,6 +1,7 @@
 <transition name="loading">
     <div
-        class="o-loading" 
+        class="o-loading"
+        v-lock="loadingConfig.type === 'default' && isLoading"
         v-show="loadingConfig.type === 'default' && isLoading"
     ></div>
 </transition>

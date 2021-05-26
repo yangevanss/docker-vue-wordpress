@@ -3,6 +3,10 @@ html {
 }
 
 #wpwrap {
+    #wpbody-content > .wrap {
+        padding-top: 0;
+    }
+
     #adminmenu .wp-submenu {
         background-color: darken(map-get($admin-colors, primary), 15%);
     }
@@ -30,5 +34,9 @@ html {
             background-color: map-get($admin-colors, primary);
             border-color: map-get($admin-colors, primary);
         }
+    }
+
+    .language-switcher {
+        position: static;
     }
 }

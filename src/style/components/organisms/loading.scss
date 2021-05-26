@@ -6,5 +6,9 @@
     left: 0;
     background: map-get($admin-colors, primary);
     z-index: 999;
-    pointer-events: none;
+    cursor: wait;
+
+    > * {
+        pointer-events: none;
+    }
 }

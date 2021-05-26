@@ -51,6 +51,7 @@
 
 # ----- 基礎資安設定 -----
 <IfModule mod_headers.c>
+    Header always edit Set-Cookie (.*) "$1; HTTPOnly; Secure; SameSite=Lax"
     Header set X-XSS-Protection "1; mode=block" 
     Header set X-Frame-Options DENY
     Header set X-Content-Type-Options nosniff
