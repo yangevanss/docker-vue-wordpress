@@ -13,7 +13,8 @@
                     <li class="archive-news__post">
                         <a 
                             href="{{ post.guid }}" 
-                            v-bg="'{{ require_assets('img/block-map.jpg') }}'"
+                            v-lazy:background-image="'{{ require_assets('img/block-map.jpg') }}'"
+                            v-bg.contain.lazy="'{{ require_assets('img/block-map.jpg') }}'"
                         >
                             <p>
                                 {{ post.post_title }}
