@@ -1,5 +1,5 @@
 <?php
-function global_options($request){
+function get_global_options($request){
     $response = [
         'code' => 404
     ];

@@ -134,12 +134,13 @@ class StarterSite extends Timber\Site
 
         if (is_admin()) {
             add_action('admin_enqueue_scripts', 'admin_style');
+            add_action('admin_menu', 'editor_menu_role');
             add_filter('upload_mimes', 'upload_svg');
             add_filter('upload_size_limit', 'upload_size_limit');
             add_filter('admin_footer_text', 'admin_copyright');
         } else {
-            add_action('login_enqueue_scripts', 'admin_style'); 
-            add_action('pre_get_posts', 'pre_posts_page'); 
+            add_action('login_enqueue_scripts', 'admin_style');
+            add_action('pre_get_posts', 'pre_posts_page');
             add_filter('show_admin_bar', 'is_blog_admin');
         }
     }

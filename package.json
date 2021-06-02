@@ -8,7 +8,7 @@
     "scripts": {
         "dev": "NODE_ENV=development node node/rewriteConfig.js; webpack serve --hot-only --config webpack.dev.js",
         "build": "NODE_ENV=production node node/rewriteConfig.js; webpack --config webpack.prod.js",
-        "lint:style": "stylelint **/*.{vue,scss} --fix",
+        "lint:style": "stylelint --fix **/*.{vue,scss}",
         "lint:eslint": "eslint --fix --ext .js,.vue .",
         "lint": "yarn lint:style; yarn lint:eslint"
     },
