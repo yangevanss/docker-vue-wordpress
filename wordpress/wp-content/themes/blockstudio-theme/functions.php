@@ -139,6 +139,7 @@ class StarterSite extends Timber\Site
             add_filter('upload_size_limit', 'upload_size_limit');
             add_filter('admin_footer_text', 'admin_copyright');
         } else {
+            remove_action('wp_head', '_wp_render_title_tag', 1);
             add_action('login_enqueue_scripts', 'admin_style');
             add_action('pre_get_posts', 'pre_posts_page');
             add_filter('show_admin_bar', 'is_blog_admin');

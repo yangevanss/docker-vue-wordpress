@@ -36,9 +36,11 @@ const eventsHandler = {}
 export default function (Vue, options) {
     Vue.directive('blur', {
         bind (el, { value }) {
-            const event = clickOutSide.bind(this, el, value)
-            document.body.addEventListener('click', event)
-            eventsHandler[bindingEl(el)] = event
+            if (typeof value === 'function') {
+                const event = clickOutSide.bind(this, el, value)
+                document.body.addEventListener('click', event)
+                eventsHandler[bindingEl(el)] = event
+            }
         },
         update () {
 

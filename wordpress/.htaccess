@@ -1,4 +1,5 @@
 # ----- 開啟DEFLATE壓縮 -----
+
 <IfModule mod_deflate.c>
     AddType x-font/woff .woff
     AddType x-font/ttf .ttf
@@ -20,6 +21,7 @@
 </IfModule>
 
 # ----- 建立快取 -----
+
 <FilesMatch "\.(webm|ogg|mp4|ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|x-html|css|xml|js|woff|woff2|ttf|svg|eot)(\.gz)?$">
     <IfModule mod_expires.c>
         AddType application/font-woff2 .woff2
@@ -50,6 +52,7 @@
 </FilesMatch>
 
 # ----- 基礎資安設定 -----
+
 <IfModule mod_headers.c>
     Header always edit Set-Cookie (.*) "$1; HTTPOnly; Secure; SameSite=Lax"
     Header set X-XSS-Protection "1; mode=block" 
@@ -58,27 +61,18 @@
 </IfModule>
 
 # ----- WordPress 設定 -----
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
-    RewriteRule ^index\.php$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.php [L]
-</IfModule>
 
 # BEGIN WordPress
 # 在含有 BEGIN WordPress 及 END WordPress 標記的這兩行間的指示詞內容為動態產生，
 # 且應僅有 WordPress 篩選器能進行修改。對這兩行間任何指示詞內容的變更，
 # 都會遭到系統覆寫。
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+    RewriteEngine On
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
 </IfModule>
-
 # END WordPress

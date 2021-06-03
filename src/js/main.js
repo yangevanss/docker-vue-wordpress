@@ -1,8 +1,8 @@
 import '@/style/_main.scss'
 import Vue from 'vue'
-import VueLazyload from 'vue-lazyload'
 
 // plugins
+import VueLazyload from 'vue-lazyload'
 import VueCompositionAPI from '@vue/composition-api'
 import directive from '@/js/plugins/directives/index'
 import prototype from '@/js/plugins/prototype/index'

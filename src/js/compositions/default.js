@@ -1,12 +1,11 @@
-import { ref, provide, inject, computed, onMounted, onBeforeUnmount } from '@vue/composition-api'
+import { ref, provide, computed, onMounted, onBeforeUnmount } from '@vue/composition-api'
 import WebFont from 'webfontloader'
 import ImagesLoaded from 'imagesloaded'
 import loading from '@/js/compositions/loading'
 import viewport from '@/js/plugins/functions/viewport'
 
 export default () => {
-    const { loadingConfig, isLoading } = loading()
-    const addLoadingStack = inject('addLoadingStack')
+    const { loadingConfig, isLoading, changeLoadingType, addLoadingStack, waitLoading } = loading()
     const vp = ref(viewport)
 
     const viewportInfo = computed(() => vp.value.info)
@@ -46,6 +45,9 @@ export default () => {
     })
 
     provide('viewportInfo', viewportInfo)
+    provide('changeLoadingType', changeLoadingType)
+    provide('addLoadingStack', addLoadingStack)
+    provide('waitLoading', waitLoading)
 
     return {
         loadingConfig,

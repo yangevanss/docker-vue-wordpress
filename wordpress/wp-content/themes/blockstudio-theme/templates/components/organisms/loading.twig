@@ -1,7 +1,10 @@
-<transition name="loading">
-    <div
-        class="o-loading"
-        v-lock="loadingConfig.type === 'default' && isLoading"
-        v-show="loadingConfig.type === 'default' && isLoading"
-    ></div>
-</transition>
+<div class="o-loading">
+    <Loading-default 
+        :loading-config="loadingConfig" 
+        :is-loading="isLoading"
+    ></Loading-default >
+    <Loading-ajax 
+        :loading-config="loadingConfig" 
+        :is-loading="isLoading"
+    ></Loading-ajax >
+</div>

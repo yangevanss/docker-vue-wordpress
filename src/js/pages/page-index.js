@@ -5,12 +5,16 @@ import Vue from '@/js/main.js'
 import defaultComposition from '@/js/compositions/default'
 
 // component
+import LoadingDefault from '@/js/components/LoadingDefault.vue'
+import LoadingAjax from '@/js/components/LoadingAjax.vue'
 import HelloWorld from '@/js/components/HelloWorld.vue'
 
 new Vue({
     el: '#wrapper',
     delimiters: ['{$', '$}'],
     components: {
+        LoadingDefault,
+        LoadingAjax,
         HelloWorld,
     },
     setup () {

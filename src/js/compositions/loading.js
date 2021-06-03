@@ -1,7 +1,7 @@
-import { ref, readonly, provide, computed } from '@vue/composition-api'
+import { ref, readonly, computed } from '@vue/composition-api'
 
 const LOADING = Object.freeze({
-    MIN_LOAD_TIME: 1000,
+    MIN_LOAD_TIME: 500,
     LOADING_TYPE_DEFAULT: 'default',
     LOADING_TYPE_AJAX: 'ajax',
 })
@@ -22,8 +22,14 @@ export default () => {
         }
     }
     const addLoadingStack = (payload) => {
+        if (Array.isArray(payload)) {
+            const promise = Promise.all(payload.filter(p => p instanceof Promise))
+            loadingStack.value.push(promise)
+            return promise
+        }
         if (payload instanceof Promise) {
             loadingStack.value.push(payload)
+            return payload
         }
     }
     const delLoadingStack = () => {
@@ -39,12 +45,11 @@ export default () => {
         })
     }
 
-    provide('changeLoadingType', changeLoadingType)
-    provide('addLoadingStack', addLoadingStack)
-    provide('waitLoading', waitLoading)
-
     return {
         loadingConfig: readonly(loadingConfig),
         isLoading,
+        changeLoadingType,
+        addLoadingStack,
+        waitLoading,
     }
 }
