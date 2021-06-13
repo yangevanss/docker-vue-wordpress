@@ -4,6 +4,8 @@ const DotenvWebpack = require('dotenv-webpack')
 const CopyPlugin = require('copy-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
+const transpileDependencies = []
+
 module.exports = {
     entry: {
         admin: './src/style/admin/_admin.scss',
@@ -89,10 +91,7 @@ module.exports = {
             },
             {
                 test: /\.m?js$/,
-                exclude: file => (
-                    /node_modules/.test(file) &&
-                    !/\.vue\.js/.test(file)
-                ),
+                exclude: new RegExp(`node_modules/(?!(${transpileDependencies.join('|')})/).*`),
                 use: {
                     loader: 'babel-loader?cacheDirectory',
                 },

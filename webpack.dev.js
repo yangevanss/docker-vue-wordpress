@@ -27,7 +27,7 @@ module.exports = merge(common, {
         compress: true,
         hot: true,
         open: true,
-        quiet: true,
+        // quiet: true,
         // host: '0.0.0.0',
         // disableHostCheck: true,
         // useLocalIp: true,
