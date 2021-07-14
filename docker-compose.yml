@@ -5,6 +5,7 @@ services:
         image: wordpress:latest
         volumes:
             - ./wordpress:/var/www/html
+            - ./wordpress/.htaccess:/var/www/html/.htaccess
         expose:
             - $WP_PORT
         ports:
