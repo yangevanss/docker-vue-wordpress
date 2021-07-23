@@ -1,6 +1,7 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
+const DotenvWebpack = require('dotenv-webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
@@ -19,6 +20,10 @@ module.exports = merge(common, {
         ],
     },
     plugins: [
+        new DotenvWebpack({
+            path: './.env.production',
+            defaults: '.env',
+        }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',

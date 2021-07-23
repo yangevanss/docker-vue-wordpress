@@ -1,6 +1,5 @@
 const Webpack = require('webpack')
 const path = require('path')
-const DotenvWebpack = require('dotenv-webpack')
 const CopyPlugin = require('copy-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
@@ -41,7 +40,6 @@ module.exports = {
         },
     },
     plugins: [
-        new DotenvWebpack(),
         new Webpack.ProvidePlugin({}),
         new CopyPlugin({
             patterns: [{ from: path.resolve(__dirname, 'static') }],

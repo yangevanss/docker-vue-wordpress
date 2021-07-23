@@ -1,6 +1,7 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
+const DotenvWebpack = require('dotenv-webpack')
 const dotenv = require('dotenv').config({ path: './.env' }).parsed
 const chokidar = require('chokidar')
 const ESLintPlugin = require('eslint-webpack-plugin')
@@ -55,6 +56,10 @@ module.exports = merge(common, {
         },
     },
     plugins: [
+        new DotenvWebpack({
+            path: './.env.development',
+            defaults: '.env',
+        }),
         new ESLintPlugin(),
         new StylelintPlugin({
             files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'],
