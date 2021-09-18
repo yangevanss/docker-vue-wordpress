@@ -915,6 +915,13 @@ class Ai1wm_Import_Database {
 			$new_table_prefixes[] = ai1wm_table_prefix() . $table_name;
 		}
 
+		// Since BuddyBoss Platform 2.0, non-multisite configurations have stored signups in
+		// the same way as Multisite configs traditionally have: in the wp_signups table
+		if ( ai1wm_validate_plugin_basename( 'buddyboss-platform/bp-loader.php' ) ) {
+			$old_table_prefixes[] = ai1wm_servmask_prefix( 'mainsite' ) . 'signups';
+			$new_table_prefixes[] = ai1wm_table_prefix() . 'signups';
+		}
+
 		// Set base table prefixes
 		foreach ( $blogs as $blog ) {
 			if ( ai1wm_is_mainsite( $blog['Old']['BlogID'] ) === true ) {
@@ -1006,11 +1013,11 @@ class Ai1wm_Import_Database {
 			$params['completed'] = false;
 		}
 
-		// Delete active plugins
-		delete_option( AI1WM_ACTIVE_PLUGINS );
-
 		// Flush WP cache
 		ai1wm_cache_flush();
+
+		// Reset active plugins
+		update_option( AI1WM_ACTIVE_PLUGINS, array() );
 
 		// Activate plugins
 		ai1wm_activate_plugins( ai1wm_active_servmask_plugins() );

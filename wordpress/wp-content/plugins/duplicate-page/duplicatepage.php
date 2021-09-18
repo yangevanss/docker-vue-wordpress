@@ -4,7 +4,7 @@ Plugin Name: Duplicate Page
 Plugin URI: https://wordpress.org/plugins/duplicate-page/
 Description: Duplicate Posts, Pages and Custom Posts using single click.
 Author: mndpsingh287
-Version: 4.4
+Version: 4.4.3
 Author URI: https://profiles.wordpress.org/mndpsingh287/
 License: GPLv2
 Text Domain: duplicate-page
@@ -13,7 +13,7 @@ if (!defined('DUPLICATE_PAGE_PLUGIN_DIRNAME')) {
     define('DUPLICATE_PAGE_PLUGIN_DIRNAME', plugin_basename(dirname(__FILE__)));
 }
 if (!defined('DUPLICATE_PAGE_PLUGIN_VERSION')) {
-    define('DUPLICATE_PAGE_PLUGIN_VERSION', '4.4');
+    define('DUPLICATE_PAGE_PLUGIN_VERSION', '4.4.3');
 }
 if (!class_exists('duplicate_page')):
     class duplicate_page
@@ -57,13 +57,13 @@ if (!class_exists('duplicate_page')):
         public function duplicate_page_install()
         {
             $defaultsettings = array(
-                                             'duplicate_post_status' => 'draft',
-                                             'duplicate_post_redirect' => 'to_list',
-                                             'duplicate_post_suffix' => '',
-                                             'duplicate_post_editor' => 'classic',
-                                             );
+                'duplicate_post_status' => 'draft',
+                'duplicate_post_redirect' => 'to_list',
+                'duplicate_post_suffix' => '',
+                'duplicate_post_editor' => 'classic',
+            );
             $opt = get_option('duplicate_page_options');
-            if (!$opt['duplicate_post_status']) {
+            if (!isset($opt['duplicate_post_status'])) {
                 update_option('duplicate_page_options', $defaultsettings);
             }
         }
@@ -109,7 +109,7 @@ if (!class_exists('duplicate_page')):
            /*
            * get Nonce value
            */
-           $nonce = $_REQUEST['nonce'];
+           $nonce = sanitize_text_field($_REQUEST['nonce']);
             /*
             * get the original post id
             */
@@ -122,7 +122,7 @@ if (!class_exists('duplicate_page')):
             $suffix = isset($opt['duplicate_post_suffix']) && !empty($opt['duplicate_post_suffix']) ? ' -- '.$opt['duplicate_post_suffix'] : '';
             $post_status = !empty($opt['duplicate_post_status']) ? $opt['duplicate_post_status'] : 'draft';
             $redirectit = !empty($opt['duplicate_post_redirect']) ? $opt['duplicate_post_redirect'] : 'to_list';
-            if (!(isset($_GET['post']) || isset($_POST['post']) || (isset($_REQUEST['action']) && 'dt_duplicate_post_as_draft' == $_REQUEST['action']))) {
+            if (!(isset($_GET['post']) || isset($_POST['post']) || (isset($_REQUEST['action']) && 'dt_duplicate_post_as_draft' == sanitize_text_field($_REQUEST['action'])))) {
                 wp_die('No post to duplicate has been supplied!');
             }
             $returnpage = '';            

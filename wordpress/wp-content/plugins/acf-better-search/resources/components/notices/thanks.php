@@ -23,10 +23,10 @@
         class="acfbsContent__button acfbsButton acfbsButton--green dashicons-heart">
         <?= __('Provide us a coffee', 'acf-better-search'); ?>
       </a>
-      <a href="#" target="_blank" data-permanently
+      <button type="button" data-permanently
         class="acfbsContent__button acfbsButton acfbsButton--blue">
         <?= __('I added review, do not show again', 'acf-better-search'); ?>
-      </a>
+      </button>
     </div>
   </div>
 </div>

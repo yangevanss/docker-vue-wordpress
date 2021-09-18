@@ -1,6 +1,7 @@
-<?php if (!defined('ABSPATH')) {
+<?php if (!defined('ABSPATH') && !current_user_can('manage_options')) {
     exit;
-} ?>
+} 
+?>
 <script>
 var dp_ajax_url = "<?php echo admin_url( 'admin-ajax.php' );?>";
 </script>
@@ -9,25 +10,27 @@ var dp_ajax_url = "<?php echo admin_url( 'admin-ajax.php' );?>";
 <div class="wrap duplicate_page_settings">
 <?php $this->load_help_desk(); ?>
 <h1><?php _e('Duplicate Page Settings ', 'duplicate-page'); ?><a href="https://duplicatepro.com/pro/" target="_blank" class="button button-primary"><?php _e('Buy PRO', 'duplicate-page'); ?></a></h1>
-<?php $duplicatepageoptions = array();
-$opt = get_option('duplicate_page_options');
-$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
-if (isset($_POST['submit_duplicate_page']) && wp_verify_nonce($_POST['duplicatepage_nonce_field'], 'duplicatepage_action')):
+<?php
+$msg = isset($_GET['msg']) ? intval($_GET['msg']) : '';
+if (current_user_can('manage_options') && isset($_POST['submit_duplicate_page']) && wp_verify_nonce(sanitize_text_field($_POST['duplicatepage_nonce_field']), 'duplicatepage_action')):
     _e('<strong>Saving Please wait...</strong>', 'duplicate-page');
-    $needToUnset = array('submit_duplicate_page'); //no need to save in Database
-    foreach ($needToUnset as $noneed):
-      unset($_POST[$noneed]);
-    endforeach;
-        foreach ($_POST as $key => $val):
-        $duplicatepageoptions[$key] = $val;
-        endforeach;
-         $saveSettings = update_option('duplicate_page_options', $duplicatepageoptions);
+        $duplicatepageoptions = array(
+            "duplicate_post_editor" => sanitize_text_field(htmlentities($_POST["duplicate_post_editor"])),
+            "duplicate_post_status" => sanitize_text_field(htmlentities($_POST["duplicate_post_status"])),
+            "duplicate_post_redirect" => sanitize_text_field(htmlentities($_POST["duplicate_post_redirect"])),
+            "duplicate_post_suffix" => sanitize_text_field(htmlentities($_POST["duplicate_post_suffix"]))
+        );
+       
+        $saveSettings = update_option('duplicate_page_options', $duplicatepageoptions);
         if ($saveSettings) {
             duplicate_page::dp_redirect('options-general.php?page=duplicate_page_settings&msg=1');
         } else {
             duplicate_page::dp_redirect('options-general.php?page=duplicate_page_settings&msg=2');
         }
 endif;
+
+$opt = get_option('duplicate_page_options');
+
 if (!empty($msg) && $msg == 1):
   _e('<div class="updated settings-error notice is-dismissible" id="setting-error-settings_updated"> 
 <p><strong>Settings saved.</strong></p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', 'duplicate-page');
@@ -89,3 +92,9 @@ endif;
 </div>
 </div>
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        var admin_page_url = "options-general.php?page=duplicate_page_settings";
+        window.history.replaceState({}, document.title, admin_page_url);
+    });
+</script>

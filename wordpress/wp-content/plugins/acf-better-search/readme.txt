@@ -1,9 +1,9 @@
 === ACF: Better Search ===
 Contributors: mateuszgbiorczyk
 Donate link: https://ko-fi.com/gbiorczyk/?utm_source=acf-better-search&utm_medium=readme-donate
-Tags: search acf fields, acf custom fields search, acf content search, acf custom search, advanced custom fields search
+Tags: acf search, advanced custom fields, better search, extended search, search
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 7.0
 Stable tag: trunk
 License: GPLv2 or later
@@ -94,6 +94,9 @@ This is all very important to us and allows us to do even better things for you!
 1. Screenshot of the options panel
 
 == Changelog ==
+
+= 3.8.1 (2021-05-22) =
+* `[Fixed]` Closing notice in admin panel
 
 = 3.8.0 (2021-01-13) =
 * `[Fixed]` Search using regular expression

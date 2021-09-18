@@ -157,9 +157,13 @@ class Ai1wm_Main_Controller {
 		add_filter( 'ai1wm_export', 'Ai1wm_Export_Config_File::execute', 60 );
 		add_filter( 'ai1wm_export', 'Ai1wm_Export_Enumerate_Content::execute', 100 );
 		add_filter( 'ai1wm_export', 'Ai1wm_Export_Enumerate_Media::execute', 110 );
-		add_filter( 'ai1wm_export', 'Ai1wm_Export_Enumerate_Tables::execute', 120 );
+		add_filter( 'ai1wm_export', 'Ai1wm_Export_Enumerate_Plugins::execute', 120 );
+		add_filter( 'ai1wm_export', 'Ai1wm_Export_Enumerate_Themes::execute', 130 );
+		add_filter( 'ai1wm_export', 'Ai1wm_Export_Enumerate_Tables::execute', 140 );
 		add_filter( 'ai1wm_export', 'Ai1wm_Export_Content::execute', 150 );
 		add_filter( 'ai1wm_export', 'Ai1wm_Export_Media::execute', 160 );
+		add_filter( 'ai1wm_export', 'Ai1wm_Export_Plugins::execute', 170 );
+		add_filter( 'ai1wm_export', 'Ai1wm_Export_Themes::execute', 180 );
 		add_filter( 'ai1wm_export', 'Ai1wm_Export_Database::execute', 200 );
 		add_filter( 'ai1wm_export', 'Ai1wm_Export_Database_File::execute', 220 );
 		add_filter( 'ai1wm_export', 'Ai1wm_Export_Download::execute', 250 );
@@ -176,7 +180,7 @@ class Ai1wm_Main_Controller {
 		add_filter( 'ai1wm_import', 'Ai1wm_Import_Content::execute', 250 );
 		add_filter( 'ai1wm_import', 'Ai1wm_Import_Mu_Plugins::execute', 270 );
 		add_filter( 'ai1wm_import', 'Ai1wm_Import_Database::execute', 300 );
-		add_filter( 'ai1wm_import', 'Ai1wm_Import_Plugins::execute', 340 );
+		add_filter( 'ai1wm_import', 'Ai1wm_Import_Options::execute', 330 );
 		add_filter( 'ai1wm_import', 'Ai1wm_Import_Done::execute', 350 );
 		add_filter( 'ai1wm_import', 'Ai1wm_Import_Clean::execute', 400 );
 	}
@@ -571,7 +575,7 @@ class Ai1wm_Main_Controller {
 	 */
 	public function plugin_row_meta( $links, $file ) {
 		if ( $file === AI1WM_PLUGIN_BASENAME ) {
-			$links[] = Ai1wm_Template::get_content( 'main/get-support' );
+			$links[] = Ai1wm_Template::get_content( 'main/contact-support' );
 			$links[] = Ai1wm_Template::get_content( 'main/translate' );
 		}
 
@@ -716,17 +720,6 @@ class Ai1wm_Main_Controller {
 
 		wp_localize_script(
 			'ai1wm_export',
-			'ai1wm_report',
-			array(
-				'ajax'       => array(
-					'url' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_report' ) ),
-				),
-				'secret_key' => get_option( AI1WM_SECRET_KEY ),
-			)
-		);
-
-		wp_localize_script(
-			'ai1wm_export',
 			'ai1wm_export',
 			array(
 				'ajax'       => array(
@@ -801,17 +794,6 @@ class Ai1wm_Main_Controller {
 			array(
 				'ajax'       => array(
 					'url' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_feedback' ) ),
-				),
-				'secret_key' => get_option( AI1WM_SECRET_KEY ),
-			)
-		);
-
-		wp_localize_script(
-			'ai1wm_import',
-			'ai1wm_report',
-			array(
-				'ajax'       => array(
-					'url' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_report' ) ),
 				),
 				'secret_key' => get_option( AI1WM_SECRET_KEY ),
 			)
@@ -965,17 +947,6 @@ class Ai1wm_Main_Controller {
 			array(
 				'ajax'       => array(
 					'url' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_feedback' ) ),
-				),
-				'secret_key' => get_option( AI1WM_SECRET_KEY ),
-			)
-		);
-
-		wp_localize_script(
-			'ai1wm_backups',
-			'ai1wm_report',
-			array(
-				'ajax'       => array(
-					'url' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_report' ) ),
 				),
 				'secret_key' => get_option( AI1WM_SECRET_KEY ),
 			)
@@ -1181,7 +1152,6 @@ class Ai1wm_Main_Controller {
 		add_action( 'wp_ajax_nopriv_ai1wm_status', 'Ai1wm_Status_Controller::status' );
 		add_action( 'wp_ajax_nopriv_ai1wm_backups', 'Ai1wm_Backups_Controller::delete' );
 		add_action( 'wp_ajax_nopriv_ai1wm_feedback', 'Ai1wm_Feedback_Controller::feedback' );
-		add_action( 'wp_ajax_nopriv_ai1wm_report', 'Ai1wm_Report_Controller::report' );
 		add_action( 'wp_ajax_nopriv_ai1wm_add_backup_label', 'Ai1wm_Backups_Controller::add_label' );
 		add_action( 'wp_ajax_nopriv_ai1wm_backup_list', 'Ai1wm_Backups_Controller::backup_list' );
 
@@ -1191,7 +1161,6 @@ class Ai1wm_Main_Controller {
 		add_action( 'wp_ajax_ai1wm_status', 'Ai1wm_Status_Controller::status' );
 		add_action( 'wp_ajax_ai1wm_backups', 'Ai1wm_Backups_Controller::delete' );
 		add_action( 'wp_ajax_ai1wm_feedback', 'Ai1wm_Feedback_Controller::feedback' );
-		add_action( 'wp_ajax_ai1wm_report', 'Ai1wm_Report_Controller::report' );
 		add_action( 'wp_ajax_ai1wm_add_backup_label', 'Ai1wm_Backups_Controller::add_label' );
 		add_action( 'wp_ajax_ai1wm_backup_list', 'Ai1wm_Backups_Controller::backup_list' );
 

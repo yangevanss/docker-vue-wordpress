@@ -24,7 +24,6 @@
     "comment_fields": {},
     "admin_pages": [
         "upload",
-        "nav-menus",
         "options-general",
         "widgets",
         "settings-network",
