@@ -137,6 +137,7 @@ class StarterSite extends Timber\Site
             add_action('admin_menu', 'editor_menu_role');
             add_filter('upload_mimes', 'upload_svg');
             add_filter('admin_footer_text', 'admin_copyright');
+            add_filter('wpm_acf_image_config', '__return_empty_array');
         } else {
             remove_action('wp_head', '_wp_render_title_tag', 1);
             add_action('login_enqueue_scripts', 'admin_style');

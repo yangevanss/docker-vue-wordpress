@@ -59,9 +59,9 @@
                     "acfe_textarea_code": 0
                 },
                 {
-                    "key": "field_609cf0505c007",
+                    "key": "field_6145888a04299",
                     "label": "預覽縮圖",
-                    "name": "thumb",
+                    "name": "thumbnail",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -116,7 +116,7 @@
     "hide_on_screen": [
         "the_content"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
     "acfe_display_title": "",
     "acfe_autosync": [
@@ -125,5 +125,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1620898833
+    "modified": 1631946931
 }

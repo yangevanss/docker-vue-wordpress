@@ -86,8 +86,9 @@ class Viewport {
     }
 
     get isPc () {
+        const touchPoints = window.navigator.maxTouchPoints || window.navigator.msMaxTouchPoints
         const { os } = this.device
-        return os !== 'iOS' && os !== 'Android OS'
+        return !touchPoints && os !== 'iOS' && os !== 'Android OS'
     }
 
     get isIE () {

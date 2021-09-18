@@ -20,4 +20,8 @@ Vue.use(globalComponent)
 
 Vue.config.productionTip = false
 
+const requireAll = requireContext => requireContext.keys().map(requireContext)
+const req = require.context('@/assets', true, /^(?!.*(?:icons)).*/)
+requireAll(req)
+
 export default Vue

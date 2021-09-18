@@ -37,8 +37,10 @@ export default () => {
     }
 
     onMounted(() => {
-        addLoadingStack(loadFont())
-        addLoadingStack(loadImage())
+        addLoadingStack([
+            loadFont(),
+            loadImage(),
+        ])
     })
     onBeforeUnmount(() => {
         vp.value.destroy()
