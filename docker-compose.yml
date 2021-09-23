@@ -19,8 +19,8 @@ services:
             WORDPRESS_DB_NAME: $WP_MYSQL_DATABASE
             WORDPRESS_DEBUG: $WP_DEBUG
             WORDPRESS_CONFIG_EXTRA: |
-                define('WP_SITEURL', 'http://localhost:$WP_PORT');
-                define('WP_HOME', 'http://localhost:$WP_PORT');
+                define('WP_SITEURL', 'http://' . $$_SERVER['HTTP_HOST']);
+                define('WP_HOME', 'http://' . $$_SERVER['HTTP_HOST']);
                 define('BS_WEBPACK_PORT', $WEBPACK_PORT);
 
     phpmyadmin:
