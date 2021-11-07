@@ -84,7 +84,10 @@ module.exports = {
                     path.resolve(__dirname, 'src/assets/font'),
                 ],
                 generator: {
-                    filename: 'img/[name][ext]',
+                    filename: (e) => {
+                        const fileName = e.filename.replace('src/assets/img/', '')
+                        return `img/${fileName}`
+                    },
                 },
             },
             {
