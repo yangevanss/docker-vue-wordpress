@@ -41,14 +41,13 @@ export default {
 </script>
 
 <style lang='scss'>
-
 .o-loading-ajax {
     @include size(100%);
 
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(map-get($colors, white), 0.9);
+    background: map-get($colors, white);
     z-index: 999;
     cursor: wait;
 

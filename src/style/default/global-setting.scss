@@ -7,8 +7,8 @@
     background-color: map-get($admin-colors, primary);
 }
 
-@include get-container();
-@include grid-system();
+@include get-container;
+@include grid-system;
 
 * {
     margin: 0;
@@ -28,7 +28,7 @@ textarea {
 
 html,
 body {
-    @include typo("body", 1);
+    @include typo('body', 1);
 
     min-width: 320px;
     overscroll-behavior: none;
@@ -37,7 +37,7 @@ body {
 
 input,
 textarea {
-    @include typo("body", 1);
+    @include typo('body', 1);
 
     border: none;
     appearance: none;
@@ -59,7 +59,7 @@ a {
 }
 
 button {
-    @include typo("button", 1);
+    @include typo('button', 1);
 
     background-color: transparent;
 }

@@ -11,7 +11,7 @@ module.exports = merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        before (app, server) {
+        onBeforeSetupMiddleware (devServer) {
             chokidar
                 .watch([
                     path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/'),
@@ -20,22 +20,23 @@ module.exports = merge(common, {
                     path.resolve(__dirname, 'src/js/main.js'),
                 ])
                 .on('all', function () {
-                    server.sockWrite(server.sockets, 'content-changed')
+                    devServer.sendMessage(devServer.sockets, 'content-changed')
                 })
         },
         port: dotenv.WEBPACK_PORT,
-        contentBase: path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/src'),
         compress: true,
-        hot: true,
+        hot: 'only',
         open: true,
-        // quiet: true,
-        // host: '0.0.0.0',
-        // disableHostCheck: true,
-        // useLocalIp: true,
-        // https: true,
-        overlay: {
-            warnings: false,
-            errors: true,
+        allowedHosts: 'all',
+        // host: 'local-ip',
+        static: {
+            directory: path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/src'),
+        },
+        client: {
+            overlay: {
+                errors: true,
+                warnings: true,
+            },
         },
         proxy: {
             '/': {

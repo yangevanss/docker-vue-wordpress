@@ -6,7 +6,6 @@ $default-gutter: 24px;
     flex-wrap: wrap;
 
     >#{$child-class} {
-
         $cols: $total-col / $col - 1;
 
         @for $i from 1 through $col {
@@ -17,7 +16,7 @@ $default-gutter: 24px;
                 max-width: $calcs;
                 flex: 0 0 $calcs;
 
-                @if ($i % ($col + 1) !=1) {
+                @if $i % ($col + 1) != 1 {
                     margin-left: $gutter;
                 }
             }
@@ -44,7 +43,6 @@ $default-gutter: 24px;
 
     // $calcs: calc(100% / #{$total-col} * #{$current_col} - #{$gutter} / #{$total-col} * #{$another_col});  原始邏輯
     $calcs: calc(#{100% * $percent} - #{$gutter * $another-percent});
-
     $cols: 12 / $total-col * $current_col - 1;
 
     width: #{$calcs};
@@ -53,7 +51,7 @@ $default-gutter: 24px;
 
     @for $i from 1 through $cols {
         // $calcs:calc(((100% - 11 * #{$gutter}) / 12 * #{$i}) + #{$gutter} * #{$i}); 原始邏輯
-        $percent: $i/$total-col;
+        $percent: $i / $total-col;
         $calcs: calc(#{100% * $percent} + #{$gutter * $i - ($total-col - 1) * $gutter * $percent});
 
         &.-os-l-#{$i} {

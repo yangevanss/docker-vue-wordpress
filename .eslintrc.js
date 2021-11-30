@@ -9,6 +9,7 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         indent: ['error', 4, { SwitchCase: 1 }],
         'vue/html-indent': ['error', 4, { baseIndent: 1 }],
+        'vue/multi-word-component-names': 'off',
         'comma-dangle': ['error', {
             arrays: 'always-multiline',
             objects: 'always-multiline',
@@ -20,6 +21,6 @@ module.exports = {
         'no-new': 'off',
     },
     parserOptions: {
-        parser: 'babel-eslint',
+        parser: '@babel/eslint-parser',
     },
 }

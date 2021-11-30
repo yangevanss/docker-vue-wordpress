@@ -55,7 +55,7 @@
             }
 
             .row-cols#{$infix}-auto > * {
-                @include make-col-auto();
+                @include make-col-auto;
             }
 
             @if $grid-row-columns > 0 {
@@ -67,7 +67,7 @@
             }
 
             .col#{$infix}-auto {
-                @include make-col-auto();
+                @include make-col-auto;
             }
 
             @if $columns > 0 {
@@ -91,12 +91,12 @@
 
 @mixin grid-system() {
     .row {
-        @include make-row();
+        @include make-row;
 
         > * {
-            @include make-col-ready();
+            @include make-col-ready;
         }
     }
 
-    @include make-grid-columns();
+    @include make-grid-columns;
 }

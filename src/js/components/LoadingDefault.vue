@@ -37,7 +37,6 @@ export default {
 </script>
 
 <style lang='scss'>
-
 .o-loading-default {
     @include size(100%);
 
