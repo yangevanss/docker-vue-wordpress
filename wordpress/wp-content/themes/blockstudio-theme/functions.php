@@ -172,6 +172,7 @@ class StarterSite extends Timber\Site
         $twig->addExtension(new Twig\Extension\StringLoaderExtension());
         $twig->addFunction(new Timber\Twig_Function('enqueue_script', 'enqueue_script'));
         $twig->addFunction(new Timber\Twig_Function('enqueue_style', 'enqueue_style'));
+        $twig->addFunction(new Timber\Twig_Function('enqueue_page_script_style', 'enqueue_page_script_style'));
         $twig->addFunction(new Timber\Twig_Function('require_assets', 'require_assets'));
         $twig->addFunction(new Timber\Twig_Function('t', 'translate_language'));
         return $twig;

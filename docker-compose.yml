@@ -21,6 +21,8 @@ services:
             WORDPRESS_CONFIG_EXTRA: |
                 define('WP_SITEURL', 'http://' . $$_SERVER['HTTP_HOST'] . '/');
                 define('WP_HOME', 'http://' . $$_SERVER['HTTP_HOST'] . '/');
+                define('WP_MEMORY_LIMIT', '256M');
+                define('WP_MAX_MEMORY_LIMIT', '256M');
                 define('BS_WEBPACK_PORT', $WEBPACK_PORT);
 
     phpmyadmin:

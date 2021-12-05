@@ -32,7 +32,6 @@ body {
 
     min-width: 320px;
     overscroll-behavior: none;
-    scroll-behavior: smooth;
 }
 
 input,
@@ -48,6 +47,7 @@ pre {
 }
 
 a {
+    display: inline-block;
     text-decoration: none;
     color: inherit;
 
@@ -61,6 +61,7 @@ a {
 button {
     @include typo('button', 1);
 
+    color: currentColor;
     background-color: transparent;
 }
 

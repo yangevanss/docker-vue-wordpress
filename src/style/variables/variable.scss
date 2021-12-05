@@ -1,6 +1,7 @@
+$padding: 8px;
 $grid-columns: 12;
 $grid-row-columns: 6;
-$grid-gutter-width: 25px;
+$grid-gutter-width: $padding * 3;
 $grid-breakpoints: (
     mobile: 0,
     tablet: 768px,
@@ -16,8 +17,8 @@ $container-max-widths: (
     large: 1280px,
 );
 $container-padding: (
-    mobile: 20px,
-    tablet: 40px,
+    mobile: $padding * 3,
+    tablet: $padding * 5,
 );
 $admin-colors: (
     primary: #40587c,
@@ -32,4 +33,3 @@ $header-height: (
     tablet: 65px,
     mobile: 65px,
 );
-$loading-delay: 800ms;

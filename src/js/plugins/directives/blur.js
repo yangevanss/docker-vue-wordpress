@@ -1,3 +1,17 @@
+// fix IE
+function composedPath (el) {
+    const path = []
+    while (el) {
+        path.push(el)
+        if (el.tagName === 'HTML') {
+            path.push(document)
+            path.push(window)
+            return path
+        }
+        el = el.parentNode
+    }
+}
+
 const uniqueID = (() => {
     const generate = function * () {
         let increment = 0
@@ -24,7 +38,7 @@ const bindingEl = (el) => {
 }
 
 const clickOutSide = (el, callback, e) => {
-    const path = e.path || e.composedPath?.()
+    const path = e.path || e.composedPath?.() || composedPath(e.target)
     const isInside = ~path.indexOf(el)
     if (!isInside) {
         callback(isInside)

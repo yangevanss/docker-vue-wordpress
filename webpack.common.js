@@ -9,12 +9,12 @@ module.exports = {
     entry: {
         admin: './src/style/admin/_admin.scss',
         default: './src/js/pages/default.js',
-        'page-index': ['./src/js/pages/page-index.js', './src/style/pages/page-index.scss'],
-        tax: ['./src/style/pages/tax.scss'],
-        search: ['./src/style/pages/search.scss'],
-        404: ['./src/style/pages/404.scss'],
-        'archive-news': ['./src/style/pages/archive-news.scss'],
-        'single-news': ['./src/style/pages/single-news.scss'],
+        'page-index': './src/js/pages/page-index.js',
+        tax: './src/style/pages/tax.scss',
+        search: './src/style/pages/search.scss',
+        404: './src/style/pages/404.scss',
+        'archive-news': './src/style/pages/archive-news.scss',
+        'single-news': './src/style/pages/single-news.scss',
     },
     output: {
         filename: 'js/[name].bundle.js',

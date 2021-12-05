@@ -7,9 +7,10 @@
                 display: none;
             }
         </style>
+        {% block script_style %}{% endblock %}
         {% block style %}{% endblock %}
         {{ enqueue_style('default') }}
-		{{ function('wp_head') }}
+		{# {{ function('wp_head') }} #}
 	</head>
 	<body class="{{ body_class }}" data-template="base.twig">
         <div 
@@ -26,8 +27,8 @@
         </div>
         {% block script %}{% endblock %}
         {{ enqueue_script('default') }}
-        {{ enqueue_script('runtime', 'runtime') }}
-        {{ enqueue_script('vendors', 'vendors') }}
+        {{ enqueue_script('runtime') }}
+        {{ enqueue_script('vendors') }}
         {{ function('wp_footer') }}
 	</body>
 </html>

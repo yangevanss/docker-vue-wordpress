@@ -1,18 +1,13 @@
 <?php
-function enqueue_style(String $file_name = null, Bool $hot = false, String $key = 'default')
+function enqueue_style(String $file_name = null, String $key = null)
 {
-    if($hot){
-        $key = $file_name;
+    $key = $key ? $key : $file_name;
+    if (WP_DEBUG){
         enqueue_script($file_name, $key);
+        return;
     }
-
-    if (!WP_DEBUG) {
-        if(!$file_name) {
-            $file_name = $key;
-        }
-
-        $url = path_join(get_template_directory_uri(), './src/css/');
-
+    if($file_name && !wp_style_is($key)) {
+        $url = path_join(get_template_directory_uri(), 'src/css/');
         wp_enqueue_style($key, $url . $file_name . '.css', null, null, 'all');
     }
 }

@@ -13,6 +13,6 @@ export default function (Vue, options) {
         }
         el.style.backgroundPosition = 'center'
         el.style.backgroundSize = size
-        el.style.background = color
+        el.style.backgroundColor = color
     })
 }

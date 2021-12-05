@@ -1,10 +1,7 @@
 {% extends "base.twig" %}
 
-{% block style %}
-    {{ enqueue_style('page-index') }}
-{% endblock %}
-{% block script %}
-    {{ enqueue_script('page-index') }}
+{% block script_style %}
+    {{ enqueue_page_script_style('page-index') }}
 {% endblock %}
 
 {% block content %}

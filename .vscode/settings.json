@@ -22,7 +22,8 @@
     "css.validate": false,
     "less.validate": false,
     "scss.validate": false,
-    "stylelint.validate": ["css, scss, vue"],
+    "stylelint.snippet": ["css", "scss", "vue"],
+    "stylelint.validate": ["css", "scss", "vue"],
     // ----- Todo tree 設定 -----
     "todo-tree.highlights.defaultHighlight": {
         "foreground": "white",

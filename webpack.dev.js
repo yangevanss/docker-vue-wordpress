@@ -15,18 +15,15 @@ module.exports = merge(common, {
             chokidar
                 .watch([
                     path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/'),
-                    path.resolve(__dirname, 'src/js/pages/*.js'),
-                    path.resolve(__dirname, 'src/js/plugins/**/*.js'),
-                    path.resolve(__dirname, 'src/js/main.js'),
                 ])
                 .on('all', function () {
-                    devServer.sendMessage(devServer.sockets, 'content-changed')
+                    devServer.sendMessage(devServer.webSocketServer.clients, 'content-changed')
                 })
         },
         port: dotenv.WEBPACK_PORT,
         compress: true,
         hot: 'only',
-        open: true,
+        // open: true,
         allowedHosts: 'all',
         // host: 'local-ip',
         static: {
@@ -35,7 +32,7 @@ module.exports = merge(common, {
         client: {
             overlay: {
                 errors: true,
-                warnings: true,
+                warnings: false,
             },
         },
         proxy: {

@@ -1,14 +1,14 @@
 module.exports = {
     extends: [
-        'stylelint-config-standard',
         'stylelint-config-standard-scss',
-        'stylelint-config-recommended-vue'
+        'stylelint-config-recommended-vue/scss'
     ],
     plugins: ['stylelint-order'],
     // add your custom config here
     // https://stylelint.io/user-guide/configuration
     rules: {
         indentation: 4,
+        'custom-property-pattern': null,
         'scss/no-global-function-names': null,
         'string-quotes': 'single',
         'property-no-vendor-prefix': null,

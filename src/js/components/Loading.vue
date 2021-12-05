@@ -4,9 +4,9 @@
         @afterLeave="loadingDone"
     >
         <div
-            v-show="loadingConfig.type === 'default' && isLoading"
-            v-lock="loadingConfig.type === 'default' && isLoading"
-            class="o-loading-default"
+            v-show="isLoading"
+            v-lock="isLoading"
+            class="o-loading"
         />
     </transition>
 </template>
@@ -14,12 +14,8 @@
 <script>
 
 export default {
-    name: 'LoadingDefault',
+    name: 'Loading',
     props: {
-        loadingConfig: {
-            type: Object,
-            required: true,
-        },
         isLoading: {
             type: Boolean,
             required: true,
@@ -37,15 +33,14 @@ export default {
 </script>
 
 <style lang='scss'>
-.o-loading-default {
+.o-loading {
     @include size(100%);
 
     position: fixed;
     top: 0;
     left: 0;
     background: map-get($admin-colors, primary);
-    z-index: 999;
-    cursor: wait;
+    z-index: 99;
 
     > * {
         pointer-events: none;

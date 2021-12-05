@@ -10,12 +10,14 @@ export default {
     setup () {
         const viewportInfo = inject('viewportInfo')
         const addLoadingStack = inject('addLoadingStack')
+
         addLoadingStack(new Promise(resolve => {
             setTimeout(() => {
                 console.log('%cBlock Studio', 'color: #ffffff; background-color: #40587c; padding: 5px 10px;')
                 resolve()
-            }, Math.random() * 3000)
+            }, Math.random() * 1000)
         }))
+
         return {
             viewportInfo,
         }

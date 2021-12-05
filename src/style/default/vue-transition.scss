@@ -25,7 +25,8 @@
         }
 
         &-active {
-            transition: opacity 0.6s;
+            transition: opacity .6s;
+            transition-delay: calc(var(--loading-delay) * 0.001s);
         }
     }
 }

@@ -1,13 +1,13 @@
 @mixin make-row() {
     display: flex;
-    margin-right: -$grid-gutter-width / 2;
-    margin-left: -$grid-gutter-width / 2;
+    margin-right: calc(-#{$grid-gutter-width} / 2);
+    margin-left: calc(-#{$grid-gutter-width} / 2);
     flex-wrap: wrap;
 }
 
 @mixin make-col-ready() {
-    padding-right: $grid-gutter-width / 2;
-    padding-left: $grid-gutter-width / 2;
+    padding-right: calc(#{$grid-gutter-width} / 2);
+    padding-left: calc(#{$grid-gutter-width} / 2);
     width: 100%;
     max-width: 100%;
     box-sizing:
@@ -21,7 +21,7 @@
 
 @mixin make-col($size, $columns: $grid-columns) {
     flex: 0 0 auto;
-    width: percentage($size / $columns);
+    width: calc(#{$size} / #{$columns} * 100%);
 }
 
 @mixin make-col-auto() {
@@ -30,15 +30,15 @@
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
-    $num: $size / $columns;
+    $num: calc(#{$size} / #{$columns});
 
-    margin-left: if($num == 0, 0, percentage($num));
+    margin-left: if($num == 0, 0, calc(#{$num} * 100%));
 }
 
 @mixin row-cols($count) {
     > * {
         flex: 0 0 auto;
-        width: 100% / $count;
+        width: calc(100% / #{$count});
     }
 }
 
