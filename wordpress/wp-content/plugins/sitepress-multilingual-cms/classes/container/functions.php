@@ -4,7 +4,7 @@ namespace WPML\Container;
 
 use function WPML\FP\curryN;
 
-if ( ! function_exists( 'make' ) ) {
+if ( ! function_exists( 'WPML\Container\make' ) ) {
 	/**
 	 * Curried function
 	 *
@@ -30,7 +30,7 @@ if ( ! function_exists( 'make' ) ) {
 	}
 }
 
-if ( ! function_exists( 'share' ) ) {
+if ( ! function_exists( 'WPML\Container\share' ) ) {
 
 	/**
 	 * class names or instances that should be shared.
@@ -45,7 +45,7 @@ if ( ! function_exists( 'share' ) ) {
 	}
 }
 
-if ( ! function_exists( 'alias' ) ) {
+if ( ! function_exists( 'WPML\Container\alias' ) ) {
 
 	/**
 	 * This allows to define aliases classes to be used in place of type hints.
@@ -63,7 +63,7 @@ if ( ! function_exists( 'alias' ) ) {
 	}
 }
 
-if ( ! function_exists( 'delegate' ) ) {
+if ( ! function_exists( 'WPML\Container\delegate' ) ) {
 
 	/**
 	 * This allows to delegate the object instantiation to a factory.
@@ -78,7 +78,7 @@ if ( ! function_exists( 'delegate' ) ) {
 	}
 }
 
-if ( ! function_exists( 'execute' ) ) {
+if ( ! function_exists( 'WPML\Container\execute' ) ) {
 
 	/**
 	 * Curried function

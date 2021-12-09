@@ -17,6 +17,6 @@ status_header(404);
 
 $context = Timber::context();
 $context['title'] = wp_get_document_title();
-$context['seo'] = get_seo(null);
+$context['seo'] = get_seo();
 
-Timber::render('pages/404.twig', $context);
+Timber::render('pages/page-404.twig', $context);

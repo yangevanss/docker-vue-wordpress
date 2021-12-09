@@ -23,28 +23,6 @@ if (!class_exists('Timber')) {
 }
 
 /**
- * acf options
- * use in wp-multilang https://support.advancedcustomfields.com/forums/topic/wp-multilang-with-acf-options-page/ 
- */
-if (function_exists('acf_add_options_page')) {
-
-    acf_add_options_page(array(
-        'page_title'     => 'Options',
-        'menu_title'    => 'Options',
-        'menu_slug'     => 'options',
-        'capability'    => 'edit_posts',
-        'redirect'        => false
-    ));
-
-    // acf_add_options_sub_page(array(
-    // 	'page_title' 	=> 'Sub-Options',
-    // 	'menu_title'	=> 'Sub-Options',
-    // 	'parent_slug'	=> 'options',
-    // ));
-
-}
-
-/**
  * Sets the directories (inside your theme) to find .twig files
  */
 Timber::$dirname = array('templates', 'views');
@@ -137,7 +115,6 @@ class StarterSite extends Timber\Site
             add_action('admin_menu', 'editor_menu_role');
             add_filter('upload_mimes', 'upload_svg');
             add_filter('admin_footer_text', 'admin_copyright');
-            add_filter('wpm_acf_image_config', '__return_empty_array');
         } else {
             remove_action('wp_head', '_wp_render_title_tag', 1);
             add_action('login_enqueue_scripts', 'admin_style');
@@ -155,7 +132,7 @@ class StarterSite extends Timber\Site
         $context['site'] = $this;
         $context['NODE_ENV'] = WP_DEBUG ? 'development' : 'production';
         $context['blog_public'] = get_option('blog_public');
-        $context['global_options'] = get_field('global_options', 'option');
+        $context['site_options'] = get_field('site_options', 'option');
         $context['main_menu'] = get_menu('main_menu');
         $context = array_merge($context, get_singular_context());
         $context = array_merge($context, get_archive_context());

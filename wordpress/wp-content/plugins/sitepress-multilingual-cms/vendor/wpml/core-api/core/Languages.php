@@ -13,12 +13,8 @@ use WPML\FP\Str;
 use WPML\FP\Nothing;
 use WPML\FP\Just;
 use WPML\LIB\WP\User;
-use WPML\Element\API\Entity\LanguageMapping;
-use function WPML\Container\make;
 use function WPML\FP\curryN;
-use function WPML\FP\invoke;
 use function WPML\FP\pipe;
-use WPML\LIB\WP\Option as WPOption;
 use WPML\API\Settings;
 
 /**

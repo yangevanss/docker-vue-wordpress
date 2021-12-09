@@ -10,12 +10,12 @@
  * @since   Timber 0.1
  */
 
-$templates = array('pages/search.twig');
+$templates = array('pages/page-search.twig');
 
 $context = Timber::context();
 global $posts;
 $context['posts'] = $posts;
-$context['seo'] = get_seo(null);
+$context['seo'] = get_seo();
 $context['title'] = 'Search results for ' . get_search_query();
 
 Timber::render($templates, $context);

@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block style %}
+    {{ enqueue_style('page-tax') }}
+{% endblock %}
+
+{% block content %}
+    <div class="page-tax">
+        <div class="container">
+            {% include "components/molecules/breadcrumb.twig" %}
+            <ul class="page-tax__main">
+                {% for post in posts %}
+                    <li class="page-tax__post">
+                        <a 
+                            href="{{ post.guid }}" 
+                            v-bg="'{{ require_assets('img/block-map.jpg') }}'"
+                        >
+                            <p>
+                                {{ post.post_title }}
+                            </p>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% include "components/molecules/pagination.twig" %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,6 +1,6 @@
 <?php
 require_once 'router/mail.php';
-require_once 'router/get_global_options.php';
+require_once 'router/get_site_options.php';
 
 /**
  * origin api
@@ -17,8 +17,8 @@ add_action('rest_api_init', function () {
             ]
         ]
     ]);
-    register_rest_route('api', '/global_options', array(
+    register_rest_route('api', '/site_options', array(
         'methods' => 'GET',
-        'callback' => 'get_global_options'
+        'callback' => 'get_site_options'
     ));
 });

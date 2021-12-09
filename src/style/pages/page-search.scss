@@ -1,0 +1,39 @@
+.page-search {
+    min-height: calc(100vh - 40px - #{map-get($header-height, desktop)});
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 50px 0;
+        @include media-breakpoint-down(tablet) {
+            display: block;
+        }
+    }
+
+    &__post {
+        flex: 0 0 calc((100% - 50px) / 2);
+        position: relative;
+        margin-bottom: 50px;
+
+        &::before {
+            content: '';
+            display: block;
+            padding-bottom: 56.25%;
+        }
+
+        > * {
+            @include size(100%);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        p {
+            padding: 5px 10px;
+            color: map-get($colors, white);
+            background-color: map-get($admin-colors, primary);
+        }
+    }
+}

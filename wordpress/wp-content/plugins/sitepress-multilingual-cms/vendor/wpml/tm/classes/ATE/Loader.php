@@ -90,13 +90,14 @@ class Loader implements \IWPML_Backend_Action {
 				'isTranslationManager' => User::getCurrent()->has_cap( \WPML_Manage_Translations_Role::CAPABILITY ),
 
 				'jobsToSync'       => $jobsToSync,
-				'totalJobsCount'   => intval( Jobs::getTotal() ),
+				'totalJobsCount'   => Jobs::getTotal(),
 				'needsReviewCount' => count( Fns::filter( ReviewStatus::doesJobNeedReview(), $jobs ) ),
 
 				'shouldTranslateEverything' => Option::shouldTranslateEverything() && ! TranslateEverything::isEverythingProcessed( true ),
 
 				'isAutomaticTranslations' => Option::shouldTranslateEverything(),
 				'isSyncRequired'          => self::isSyncRequired() || count( $jobsToSync ),
+				'needsFetchCredit'        => Option::shouldTranslateEverything() && UIPage::isTMDashboard( $_GET ),
 
 				'strings'     => self::getStrings(),
 				'ateConsole'  => self::getAteData( Lst::pluck( 'ateJobId', $jobsToSync ) ),

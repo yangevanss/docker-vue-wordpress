@@ -1,26 +1,15 @@
 <?php
 
-function get_seo($field, WP_Post $post = null)
+function get_seo(Array $field = [])
 {
-    $generate = [
+    return array_merge([
         'site_name' => get_bloginfo('name'),
         'title' => wp_get_document_title(),
         'title_template' => get_bloginfo('description'),
         'desc' => get_bloginfo('description'),
-        'thumbnail' => null,
-        'lang' => function_exists('wpm_get_language') ? wpm_get_language() : 'zh',
+        'thumbnail' => get_the_post_thumbnail_url(get_post(2)),
+        'lang' => ICL_LANGUAGE_CODE ?: 'zh-hant',
         'url' => get_permalink(),
         'og_type' => 'website'
-    ];
-
-    if($field){
-        $generate['title'] = $field['title'];
-        $generate['desc'] = $field['desc'] ?: $generate['desc'];
-        $generate['thumbnail'] = $field['thumbnail'];
-        if($post){
-            $generate['title'] = $generate['title'] ?: $post->post_title;
-        }
-    }
-
-    return $generate;
+    ], $field);
 }

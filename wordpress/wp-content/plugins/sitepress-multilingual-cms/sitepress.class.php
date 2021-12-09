@@ -13,7 +13,8 @@ use function WPML\FP\pipe;
  */
 class SitePress extends WPML_WPDB_User implements
 	IWPML_Current_Language,
-	IWPML_Taxonomy_State {
+	IWPML_Taxonomy_State,
+	\WPML\Core\ISitePress {
 	const AFTER_ST_PLUGIN_LOADED_HOOK = - PHP_INT_MAX + 1;
 
 	/** @var WPML_Taxonomy_Translation */

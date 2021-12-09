@@ -4,7 +4,6 @@ namespace WPML\Records;
 
 use WPML\Collect\Support\Traits\Macroable;
 use WPML\Collect\Support\Collection;
-use WPML\FP\Logic;
 use WPML\FP\Obj;
 use WPML\FP\Relation;
 use function WPML\FP\curryN;

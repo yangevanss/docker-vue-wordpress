@@ -1,0 +1,6 @@
+.page-404 {
+    display: grid;
+    min-height: calc(100vh - 40px - #{map-get($header-height, desktop)});
+    place-items: center;
+    text-align: center;
+}

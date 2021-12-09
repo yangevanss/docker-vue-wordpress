@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: 首頁樣板
+ * Template Name: Index Template
  */
 
 $context = Timber::context();

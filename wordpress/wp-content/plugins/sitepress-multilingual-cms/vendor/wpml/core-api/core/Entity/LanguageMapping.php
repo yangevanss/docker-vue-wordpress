@@ -2,7 +2,6 @@
 
 namespace WPML\Element\API\Entity;
 
-use WPML\FP\Fns;
 use WPML\FP\Lst;
 
 class LanguageMapping {

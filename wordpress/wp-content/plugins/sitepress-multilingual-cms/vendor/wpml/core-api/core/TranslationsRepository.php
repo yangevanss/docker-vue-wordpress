@@ -4,13 +4,8 @@ namespace WPML\Element\API;
 
 use WPML\FP\Cast;
 use WPML\FP\Fns;
-use WPML\FP\Logic;
 use WPML\FP\Lst;
-use WPML\FP\Maybe;
 use WPML\FP\Obj;
-use WPML\FP\Relation;
-use WPML\LIB\WP\Post;
-use WPML\LIB\WP\PostType;
 
 class TranslationsRepository {
 	/**

@@ -2,4 +2,4 @@
 
 $context = Timber::context();
 
-Timber::render(array('pages/tax.twig'), $context);
+Timber::render(array('pages/page-tax.twig'), $context);

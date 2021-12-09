@@ -244,6 +244,65 @@ li#wp-admin-bar-otgs-wpml-development, li#wp-admin-bar-otgs-wpml-development:hov
     border: 0;
     background: #c9471f url(../img/icon-refund-info.png) no-repeat 25px 25px;
     color: #fff; }
+    .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd {
+      padding: 30px;
+      background: linear-gradient(90deg, #ED793E 0%, #FF4642 100%);
+      border-radius: 5px; }
+      .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content {
+        display: grid;
+        grid-template-columns: auto 200px; }
+        .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one {
+          position: relative;
+          margin: 0 30px 0 0;
+          padding: 0 30px 0 0;
+          border-right: 1px solid rgba(255, 255, 255, 0.3); }
+          .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one h2, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one h2 {
+            margin-bottom: .3em;
+            padding: .2em 0;
+            background: url(../img/icon-refund-info-notice.svg) no-repeat 0 50%;
+            background-size: 20px;
+            padding-left: 30px; }
+          .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one .otgs-installer-notice-status-item-link-unregister, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one .otgs-installer-notice-status-item-link-unregister {
+            position: absolute;
+            bottom: 8px;
+            right: 30px; }
+            @media (max-width: 1100px) {
+              .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one .otgs-installer-notice-status-item-link-unregister, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one .otgs-installer-notice-status-item-link-unregister {
+                display: block;
+                position: relative;
+                float: none;
+                margin: 15px 0 0 0 !important;
+                bottom: auto;
+                right: 0; } }
+          @media (max-width: 1100px) {
+            .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one .otgs-installer-notice-status, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one .otgs-installer-notice-status {
+              display: block; } }
+        .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__two, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__two {
+          text-align: center;
+          align-self: center; }
+          .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__two h3, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__two h3 {
+            font-size: 1em;
+            color: #fff;
+            margin: 0 0 1em; }
+          .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__two a.update_site_key_js, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__two a.update_site_key_js {
+            display: inline-block;
+            font-weight: 500;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            padding: 8px 15px 8px 35px;
+            background: url(../img/icon-white-refresh.png) no-repeat 10px 45%; }
+            .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__two a.update_site_key_js:hover, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__two a.update_site_key_js:hover {
+              background-color: rgba(255, 255, 255, 0.3);
+              border-color: rgba(255, 255, 255, 0.05); }
+        @media (max-width: 800px) {
+          .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content {
+            display: block; }
+            .otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one, .notice.otgs-installer-notice.otgs-installer-notice-expired.otgs-installer-notice-expired-gd .otgs-installer-notice-content__one {
+              margin: 0 0 30px 0;
+              padding: 0 0 10px 0;
+              border: none;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.3); } }
     .otgs-installer-notice.otgs-installer-notice-expired:before, .notice.otgs-installer-notice.otgs-installer-notice-expired:before {
       display: none; }
     .otgs-installer-notice.otgs-installer-notice-expired .spinner, .notice.otgs-installer-notice.otgs-installer-notice-expired .spinner {

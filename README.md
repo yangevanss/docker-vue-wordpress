@@ -9,18 +9,13 @@
 1. yarn build
 2. .htaccess  RewriteBase、RewriteRule 要改成資料夾對應路徑
 3. 壓縮 wordpress 資料夾全部檔案，.htaccess 也要，它是隱藏檔
-4. 把 SQL/dump-newest.sql 的 localhost:3000 改成線上網址，然後上傳
-5. wp-config.php 改成 wp-config-sample.php 裡面的內容
-6. 設定 wp-config.php，key從這拿 https://api.wordpress.org/secret-key/1.1/salt/
+4. wp-config.php 改成 wp-config-sample.php 裡面的內容
+5. 設定 wp-config.php，key從這拿 https://api.wordpress.org/secret-key/1.1/salt/
+6. 更新 WPML KEY https://wpml.org/account/sites/
 
 ## .sh 檔案說明
 
 1. `dump.sh`：將 docker VM 的 DB 資料匯出至 `/SQL/dump-newest.sql`
-
-## wordpress 多國語系說明
-
-1. 至後台開啟 WP Multilang 外掛
-2. 多國語言翻譯開啟設定 /wordpress/wp-content/themes/blockstudio-theme/wpm-config.json，任何新註冊的 post-type、taxonomy、options 都要去這邊增加設定才會啟用多語系翻譯
 
 ## Git Commit Type 規範
 

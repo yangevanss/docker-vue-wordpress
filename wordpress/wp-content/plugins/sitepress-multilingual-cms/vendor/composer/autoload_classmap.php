@@ -88,6 +88,7 @@ return array(
     'WPML\\Container\\Config' => $baseDir . '/classes/container/class-config.php',
     'WPML\\Container\\Container' => $baseDir . '/classes/container/class-wpml-container.php',
     'WPML\\Core\\BackgroundTask' => $vendorDir . '/wpml/core-api/core/utility/BackgroundTask.php',
+    'WPML\\Core\\ISitePress' => $baseDir . '/classes/ISitePress.php',
     'WPML\\Core\\LanguageNegotiation' => $baseDir . '/classes/LanguageNegotiation.php',
     'WPML\\Core\\Menu\\Translate' => $baseDir . '/inc/wp-nav-menus/TranslateMenu.php',
     'WPML\\Core\\REST\\RewriteRules' => $baseDir . '/classes/REST/RewriteRules.php',

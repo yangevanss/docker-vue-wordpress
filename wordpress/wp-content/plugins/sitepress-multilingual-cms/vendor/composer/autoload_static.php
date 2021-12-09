@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc7d5d62614c7d543abd84f3cabae9c20
+class ComposerStaticInit7055fa79abfb5469edcc36666efd698d
 {
     public static $files = array (
         '5f5b8f7c1db2e892006e8805f0ed573c' => __DIR__ . '/..' . '/wpml/collect/src/Illuminate/Support/helpers.php',
@@ -148,6 +148,7 @@ class ComposerStaticInitc7d5d62614c7d543abd84f3cabae9c20
         'WPML\\Container\\Config' => __DIR__ . '/../..' . '/classes/container/class-config.php',
         'WPML\\Container\\Container' => __DIR__ . '/../..' . '/classes/container/class-wpml-container.php',
         'WPML\\Core\\BackgroundTask' => __DIR__ . '/..' . '/wpml/core-api/core/utility/BackgroundTask.php',
+        'WPML\\Core\\ISitePress' => __DIR__ . '/../..' . '/classes/ISitePress.php',
         'WPML\\Core\\LanguageNegotiation' => __DIR__ . '/../..' . '/classes/LanguageNegotiation.php',
         'WPML\\Core\\Menu\\Translate' => __DIR__ . '/../..' . '/inc/wp-nav-menus/TranslateMenu.php',
         'WPML\\Core\\REST\\RewriteRules' => __DIR__ . '/../..' . '/classes/REST/RewriteRules.php',
@@ -1896,9 +1897,9 @@ class ComposerStaticInitc7d5d62614c7d543abd84f3cabae9c20
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc7d5d62614c7d543abd84f3cabae9c20::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc7d5d62614c7d543abd84f3cabae9c20::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc7d5d62614c7d543abd84f3cabae9c20::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7055fa79abfb5469edcc36666efd698d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7055fa79abfb5469edcc36666efd698d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit7055fa79abfb5469edcc36666efd698d::$classMap;
 
         }, null, ClassLoader::class);
     }

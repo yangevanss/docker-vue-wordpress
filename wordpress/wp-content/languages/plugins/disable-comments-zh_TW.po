@@ -1,15 +1,27 @@
-# Translation of Plugins - Disable Comments &#8211; Remove Comments &amp; Protect From Spam - Stable (latest release) in Chinese (Taiwan)
-# This file is distributed under the same license as the Plugins - Disable Comments &#8211; Remove Comments &amp; Protect From Spam - Stable (latest release) package.
+# Translation of Plugins - Disable Comments &#8211; Remove Comments &amp; Stop Spam [Multi-Site Support] - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - Disable Comments &#8211; Remove Comments &amp; Stop Spam [Multi-Site Support] - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-05-20 07:21:54+0000\n"
+"PO-Revision-Date: 2021-11-10 06:47:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: GlotPress/3.0.0-alpha.2\n"
 "Language: zh_TW\n"
-"Project-Id-Version: Plugins - Disable Comments &#8211; Remove Comments &amp; Protect From Spam - Stable (latest release)\n"
+"Project-Id-Version: Plugins - Disable Comments &#8211; Remove Comments &amp; Stop Spam [Multi-Site Support] - Stable (latest release)\n"
+
+#: views/partials/_sites.php:12
+msgid "Select All"
+msgstr "全部選取"
+
+#: views/partials/_disable.php:28
+msgid "All the underneath settings will be applied for these selected sub sites."
+msgstr "下方全部設定均會套用至選取的子網站。"
+
+#: views/partials/_delete.php:15
+msgid "Select your sub-sites where you want to delete comments."
+msgstr "請選取要刪除留言的子網站。"
 
 #: views/settings.php:12
 msgctxt "Tab Name"
@@ -21,61 +33,61 @@ msgctxt "Tab Name"
 msgid "Disable Comments"
 msgstr "停用留言功能"
 
-#: views/partials/_disable.php:25
+#: views/partials/_disable.php:33
 msgid "This site will be controlled by the network admin until you click the \"Save Changes\" button."
 msgstr "這個網站在網站管理員點擊 [儲存設定] 前，均由多站網路管理員控制。"
 
 #: views/partials/_disable.php:19
-msgid "If you enable site wise settings, You need to configure your Disable Comments settings individually on every website in the network."
-msgstr "啟用 [多站網路子網站個別設定] 後，多站網路的 Disable Comments 外掛功能必須在子網站中進行設定。"
+msgid "If you enable Site Wise settings, you need to configure your “Disable Comments” settings individually on every website in the network."
+msgstr "啟用 [多站網路子網站個別設定] 後，多站網路的 Disable Comments 外掛功能必須個別在子網站中進行設定。"
 
 #: views/settings.php:6
 msgid "Version"
 msgstr "目前版本:"
 
-#: views/partials/_disable.php:84
+#: views/partials/_disable.php:92
 msgid "Turning on these settings will disable any comments made on your website via XML-RPC or REST API specifications."
 msgstr "開啟這些設定後，便能使用 XML-RPC 或 REST API 方式停用這個網站上任何留言功能。"
 
-#: views/partials/_disable.php:80
+#: views/partials/_disable.php:88
 msgid "Disable Comments via REST API"
 msgstr "透過 REST API 停用留言功能"
 
-#: views/partials/_disable.php:71
+#: views/partials/_disable.php:79
 msgid "Disable Comments via XML-RPC"
 msgstr "透過 XML-RPC 停用留言功能"
 
-#: views/partials/_disable.php:15 views/partials/_disable.php:69
-#: views/partials/_disable.php:79
+#: views/partials/_disable.php:15 views/partials/_disable.php:77
+#: views/partials/_disable.php:87
 msgid "Off"
 msgstr "關閉"
 
-#: views/partials/_disable.php:14 views/partials/_disable.php:68
-#: views/partials/_disable.php:78
+#: views/partials/_disable.php:14 views/partials/_disable.php:76
+#: views/partials/_disable.php:86
 msgid "On"
 msgstr "開啟"
 
-#: views/partials/_disable.php:61
+#: views/partials/_disable.php:69
 msgid "You can disable comments made on your website using WordPress specifications."
 msgstr "網站管理員可以在這個網站上使用"
 
-#: views/partials/_disable.php:60
+#: views/partials/_disable.php:68
 msgid "Disable Comments With API"
 msgstr "使用 API 停用留言功能"
 
-#: views/partials/_disable.php:56
+#: views/partials/_disable.php:64
 msgid "Disabling comments will also disable trackbacks and pingbacks. All comment-related fields will also be hidden from the edit/quick-edit screens of the affected posts. These settings cannot be overridden for individual posts. Comments will be visible on all other post types."
 msgstr "停用留言功能後，也會一併停用引用通知及自動引用通知。全部與留言功能相關的欄位，都會在套用這項設定的內容類型的 [編輯] 及 [快速編輯] 畫面中予以隱藏，且這些設定無法為個別文章/頁面進行變更。留言功能會顯示於其他未停用這項功能的內容類型。"
 
-#: views/partials/_disable.php:37
+#: views/partials/_disable.php:45
 msgid "On Specific Post Types:"
 msgstr "指定內容類型:"
 
-#: views/partials/_disable.php:33
+#: views/partials/_disable.php:41
 msgid "This will disable comments from every page and post on your website. Use this setting if you do not want to show comments anywhere."
 msgstr "這項設定會停用這個網站每篇文章及頁面的留言功能。如果全站都不需要留言功能，請使用這項設定。"
 
-#: views/partials/_disable.php:32
+#: views/partials/_disable.php:40
 msgid "Disable comments globally on your entire website"
 msgstr "網站全域停用留言功能"
 
@@ -111,33 +123,34 @@ msgstr "Disable Comments 外掛的功能為何"
 msgid "Read Our Tutorials"
 msgstr "參考我們的教學課程"
 
-#: views/partials/_delete.php:37
+#: views/partials/_delete.php:50
 msgid "Delete Certain Comment Types:"
 msgstr "刪除指定留言類型的留言項目:"
 
-#: views/partials/_delete.php:33
+#: views/partials/_delete.php:46
 msgid "This will remove existing comment entries for the selected post type(s) in the database and cannot be reverted without a database backups."
 msgstr "這項設定會在資料庫中移除選取的內容類型的留言項目。如果沒有先行備份，這項操作無法復原。"
 
-#: views/partials/_delete.php:10
+#: views/partials/_delete.php:23
 msgid "This will permanently delete comments everywhere on your website."
 msgstr "這項設定會永久刪除這個網站上的全部留言項目。"
 
-#: views/partials/_disable.php:33 views/partials/_delete.php:10
-#: views/partials/_delete.php:33 views/partials/_delete.php:46
+#: views/partials/_delete.php:23 views/partials/_delete.php:46
+#: views/partials/_delete.php:59 views/partials/_disable.php:41
 msgid "Warnings:"
 msgstr "警告:"
 
-#: views/partials/_delete.php:9
+#: views/partials/_delete.php:22
 msgid "Permanently delete all comments on your WordPress website"
 msgstr "永久刪除這個 WordPress 網站上的全部留言項目"
 
-#: views/partials/_delete.php:6
+#: views/partials/_delete.php:19
 msgid "These settings will permanently delete comments for your entire website, or for specific posts and comment types."
 msgstr "這些設定會永久刪除全站或指定文章及留言類型的留言項目。"
 
-#: views/partials/_disable.php:19 views/partials/_disable.php:25
-#: views/partials/_disable.php:56 views/partials/_delete.php:6
+#: views/partials/_delete.php:15 views/partials/_delete.php:19
+#: views/partials/_disable.php:19 views/partials/_disable.php:28
+#: views/partials/_disable.php:33 views/partials/_disable.php:64
 msgid "Note:"
 msgstr "注意:"
 
@@ -248,6 +261,7 @@ msgid "Comments enabled for %s. "
 msgstr "內容類型 [%s] 的留言功能已啟用。"
 
 #. translators: %s: post types to be disabled
+#. translators: %s: post types to be disabled
 #: includes/cli.php:128 includes/cli.php:132
 msgid "Comments disabled for %s. "
 msgstr "內容類型 [%s] 的留言功能已停用。"
@@ -256,23 +270,23 @@ msgstr "內容類型 [%s] 的留言功能已停用。"
 msgid "Comments is disabled everywhere. "
 msgstr "全站留言功能已停用。"
 
-#: disable-comments.php:782
+#: disable-comments.php:917
 msgid "Saved"
 msgstr "已儲存"
 
-#: disable-comments.php:122
+#: disable-comments.php:156
 msgid "We collect non-sensitive diagnostic data and plugin usage information. Your site URL, WordPress & PHP version, plugins & themes and email address to send you the discount coupon. This data lets us make sure this plugin always stays compatible with the most popular plugins and themes. No spam, I promise."
 msgstr "這個外掛會收集非敏感性診斷資料及外掛使用方式資訊，包含網站網址、WordPress、PHP、外掛、佈景主題等版本資訊，以及用於傳送折價優惠的電子郵件地址。這些資料只會用來讓我們確保外掛能與最多的熱門外掛及佈景主題保持相容性，並保證不會用來傳送垃圾郵件。"
 
-#: disable-comments.php:121
+#: disable-comments.php:155
 msgid "Want to help make Disable Comments even better?"
 msgstr "想要協助 Disable Comments 變的更好嗎？"
 
-#: views/partials/_delete.php:46
+#: views/partials/_delete.php:59
 msgid "Deleting comments by comment type will remove existing comment entries of the selected comment type(s) in the database and cannot be reverted without a database backup."
 msgstr "這項設定會在資料庫中移除選取的留言類型的留言項目。如果沒有先行備份，這項操作無法復原。"
 
-#: disable-comments.php:682
+#: disable-comments.php:778
 msgid "Default (no type)"
 msgstr "預設 (沒有類型)"
 
@@ -280,80 +294,80 @@ msgstr "預設 (沒有類型)"
 msgid "Allows administrators to globally disable comments on their site. Comments can be disabled according to post type. You could bulk delete comments using Tools."
 msgstr "讓網站管理員為整個網站停用留言功能，亦可依據內容類型停用留言功能，並在 [工具] 選單中提供批次刪除留言項目的功能。"
 
-#: disable-comments.php:613
+#: disable-comments.php:703
 msgctxt "settings menu title"
 msgid "Disable Comments"
 msgstr "停用留言功能"
 
-#: disable-comments.php:604
+#: disable-comments.php:694
 msgid "Tools"
 msgstr "工具"
 
-#: views/partials/_disable.php:3 disable-comments.php:603
+#: disable-comments.php:693 views/partials/_disable.php:3
 msgid "Settings"
 msgstr "設定"
 
 #. translators: %s: URL to Disabled Comment settings page.
-#: disable-comments.php:514
+#: disable-comments.php:604
 msgid "The <strong>Disable Comments</strong> plugin is active, but isn't configured to do anything yet. Visit the <a href=\"%s\">configuration page</a> to choose which post types to disable comments on."
 msgstr "<strong>Disable Comments</strong> 外掛已啟用，但尚未進行任何設定。請至<a href=\"%s\">外掛設定頁面</a>進行設定，選取要停用哪些內容類型的留言功能。"
 
 #. translators: %s: disabled post types.
-#: disable-comments.php:482
+#: disable-comments.php:569
 msgid ", "
 msgstr "、"
 
 #. translators: %s: disabled post types.
-#: disable-comments.php:482
+#: disable-comments.php:569
 msgid "Note: The <em>Disable Comments</em> plugin is currently active, and comments are completely disabled on: %s. Many of the settings below will not be applicable for those post types."
 msgstr "注意: <strong>Disable Comments</strong> 外掛目前已啟用，留言功能會在 [%s] 中完全停用。以下所列設定並不適用於那些內容類型。"
 
-#: disable-comments.php:379 disable-comments.php:523 disable-comments.php:530
+#: disable-comments.php:465 disable-comments.php:613 disable-comments.php:620
 msgid "Comments are closed."
 msgstr "留言功能已關閉。"
 
 #. translators: %s: WordPress version no.
-#: disable-comments.php:134
+#: disable-comments.php:168
 msgid "Disable Comments requires WordPress version %s or greater."
 msgstr "Disable Comments 需要 WordPress %s 版或更新版本。"
 
-#: views/partials/_disable.php:88
+#: views/partials/_disable.php:97
 msgid "Save Changes"
 msgstr "儲存設定"
 
-#: views/partials/_delete.php:14
+#: views/partials/_delete.php:27
 msgid "On Certain Post Types:"
 msgstr "指定內容類型:"
 
-#: views/partials/_delete.php:48
+#: views/partials/_delete.php:61
 msgid "Total Comments:"
 msgstr "留言總數:"
 
-#: views/partials/_disable.php:53 views/partials/_delete.php:30
+#: views/partials/_delete.php:43 views/partials/_disable.php:61
 msgid "Custom post types:"
 msgstr "自訂內容類型:"
 
-#: views/partials/_disable.php:52 views/partials/_delete.php:29
+#: views/partials/_delete.php:42 views/partials/_disable.php:60
 msgid "Only the built-in post types appear above. If you want to disable comments on other custom post types on the entire network, you can supply a comma-separated list of post types below (use the slug that identifies the post type)."
 msgstr "只有內建的內容類型會顯示於上方。如果想在整個多站網路中為自訂內容類型停用留言功能，請在下方提供以逗號分隔的內容類型清單。請填入可辨識內容類型的代稱。"
 
-#: views/partials/_disable.php:32 views/partials/_delete.php:9
+#: views/partials/_delete.php:22 views/partials/_disable.php:40
 msgid "Everywhere:"
 msgstr "全域:"
 
-#: disable-comments.php:849 disable-comments.php:853
+#: disable-comments.php:990 disable-comments.php:994
 msgid "Internal error occured. Please try again later."
 msgstr "發生內部錯誤，請稍後再試。"
 
-#: disable-comments.php:847 disable-comments.php:881 disable-comments.php:904
-msgid "All comments has been deleted"
+#: disable-comments.php:988 disable-comments.php:1022 disable-comments.php:1045
+msgid "All comments have been deleted"
 msgstr "全部留言已刪除。"
 
-#: views/partials/_delete.php:192
+#: views/partials/_delete.php:205
 msgid "No comments are available for deletion."
 msgstr "沒有留言可供刪除。"
 
-#: views/partials/_delete.php:54 disable-comments.php:623
+#: disable-comments.php:713 views/partials/_delete.php:67
 msgid "Delete Comments"
 msgstr "刪除留言項目"
 
@@ -370,5 +384,6 @@ msgid "https://wordpress.org/plugins/disable-comments/"
 msgstr "https://tw.wordpress.org/plugins/disable-comments/"
 
 #. Plugin Name of the plugin
+#: disable-comments.php:316
 msgid "Disable Comments"
 msgstr "Disable Comments"
