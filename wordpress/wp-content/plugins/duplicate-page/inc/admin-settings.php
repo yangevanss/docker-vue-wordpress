@@ -1,19 +1,16 @@
 <?php if (!defined('ABSPATH') && !current_user_can('manage_options')) {
     exit;
 } 
-?>
-<script>
-var dp_ajax_url = "<?php echo admin_url( 'admin-ajax.php' );?>";
-</script>
-<?php $this->custom_assets();
+$this->custom_assets();
 ?>
 <div class="wrap duplicate_page_settings">
-<?php $this->load_help_desk(); ?>
-<h1><?php _e('Duplicate Page Settings ', 'duplicate-page'); ?><a href="https://duplicatepro.com/pro/" target="_blank" class="button button-primary"><?php _e('Buy PRO', 'duplicate-page'); ?></a></h1>
 <?php
+$this->load_help_desk(); ?>
+<h1><?php _e('Duplicate Page Settings ', 'duplicate-page'); ?><a href="https://duplicatepro.com/pro/" target="_blank" class="button button-primary"><?php _e('Buy PRO', 'duplicate-page'); ?></a></h1>
+<?php 
 $msg = isset($_GET['msg']) ? intval($_GET['msg']) : '';
 if (current_user_can('manage_options') && isset($_POST['submit_duplicate_page']) && wp_verify_nonce(sanitize_text_field($_POST['duplicatepage_nonce_field']), 'duplicatepage_action')):
-    _e('<strong>Saving Please wait...</strong>', 'duplicate-page');
+    _e('<div class="saving-txt"><strong>Saving Please wait...</strong></div>','duplicate-page');
         $duplicatepageoptions = array(
             "duplicate_post_editor" => sanitize_text_field(htmlentities($_POST["duplicate_post_editor"])),
             "duplicate_post_status" => sanitize_text_field(htmlentities($_POST["duplicate_post_status"])),
@@ -30,13 +27,12 @@ if (current_user_can('manage_options') && isset($_POST['submit_duplicate_page'])
 endif;
 
 $opt = get_option('duplicate_page_options');
-
 if (!empty($msg) && $msg == 1):
-  _e('<div class="updated settings-error notice is-dismissible" id="setting-error-settings_updated"> 
-<p><strong>Settings saved.</strong></p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', 'duplicate-page');
+    _e('<div class="updated settings-error notice is-dismissible" id="setting-error-settings_updated"> 
+    <p><strong>Settings saved.</strong></p><button class="notice-dismiss button-custom-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice</span></button></div>','duplicate-page');
 elseif (!empty($msg) && $msg == 2):
   _e('<div class="error settings-error notice is-dismissible" id="setting-error-settings_updated"> 
-<p><strong>Settings not saved.</strong></p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', 'duplicate-page');
+  <p><strong>Settings not saved.</strong></p><button class="notice-dismiss button-custom-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice</span></button></div>','duplicate-page');
 endif;
 ?> 
 <div id="poststuff">
@@ -54,7 +50,7 @@ endif;
     	<option value="classic" <?php echo (isset($opt['duplicate_post_editor']) && $opt['duplicate_post_editor'] == 'classic') ? "selected = 'selected'" : ''; ?>><?php _e('Classic Editor', 'duplicate-page'); ?></option>
     	<option value="gutenberg" <?php echo (isset($opt['duplicate_post_editor']) && $opt['duplicate_post_editor'] == 'gutenberg') ? "selected = 'selected'" : ''; ?>><?php _e('Gutenberg Editor', 'duplicate-page'); ?></option>
         </select>
-    <p><?php _e('Please select which editor your are using. <strong>Default:</strong> Classic Editor', 'duplicate-page'); ?></p>
+    <p><?php _e('Please select which editor you are using.<strong>Default: </strong> Classic Editor', 'duplicate-page'); ?></p>
 </td>
 </tr>	
 <tr>
@@ -66,7 +62,7 @@ endif;
     	<option value="private" <?php echo($opt['duplicate_post_status'] == 'private') ? "selected = 'selected'" : ''; ?>><?php _e('Private', 'duplicate-page'); ?></option>
     	<option value="pending" <?php echo($opt['duplicate_post_status'] == 'pending') ? "selected = 'selected'" : ''; ?>><?php _e('Pending', 'duplicate-page'); ?></option>
         </select>
-    <p><?php _e('Please select any post status you want to assign for duplicate post. <strong>Default:</strong> Draft.', 'duplicate-page'); ?></p>
+    <p><?php _e('Please select any post status you want to assign for duplicate post.<strong>Default: </strong> Draft.','duplicate-page'); ?></p>
 </td>
 </tr>
 <tr>
@@ -75,26 +71,20 @@ endif;
 	<option value="to_list" <?php echo($opt['duplicate_post_redirect'] == 'to_list') ? "selected = 'selected'" : ''; ?>><?php _e('To All Posts List', 'duplicate-page'); ?></option>
 	<option value="to_page" <?php echo($opt['duplicate_post_redirect'] == 'to_page') ? "selected = 'selected'" : ''; ?>><?php _e('To Duplicate Edit Screen', 'duplicate-page'); ?></option>
     </select>
-    <p><?php _e('Please select any post redirection, redirect you to selected after click on duplicate this link. <strong>Default:</strong> To current list.', 'duplicate-page'); ?></p>
+    <p><?php  _e('Please select any post redirection, redirect you to selected after click on duplicate this link.<strong>Default: </strong>To current list.','duplicate-page'); ?></p>
 </td>
 </tr>
 <tr>
 <th scope="row"><label for="duplicate_post_suffix"><?php _e('Duplicate Post Suffix', 'duplicate-page'); ?></label></th>
 <td>
- <input type="text" class="regular-text" value="<?php echo !empty($opt['duplicate_post_suffix']) ? $opt['duplicate_post_suffix'] : ''; ?>" id="duplicate_post_suffix" name="duplicate_post_suffix">
+ <input type="text" class="regular-text" value="<?php echo !empty($opt['duplicate_post_suffix']) ? esc_attr($opt['duplicate_post_suffix']) : ''; ?>" id="duplicate_post_suffix" name="duplicate_post_suffix">
     <p><?php _e('Add a suffix for duplicate or clone post as Copy, Clone etc. It will show after title.', 'duplicate-page'); ?></p>
 </td>
 </tr>
 </tbody></table>
-<p class="submit"><input type="submit" value="Save Changes" class="button button-primary" id="submit" name="submit_duplicate_page"></p>
+<p class="submit"><input type="submit" value="<?php _e('Save Changes','duplicate-page'); ?>" class="button button-primary" id="submit" name="submit_duplicate_page"></p>
 </form>
 </div>
 </div>
 </div>
 </div>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        var admin_page_url = "options-general.php?page=duplicate_page_settings";
-        window.history.replaceState({}, document.title, admin_page_url);
-    });
-</script>

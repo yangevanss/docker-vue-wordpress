@@ -17,7 +17,7 @@ services:
             WORDPRESS_DB_USER: $WP_MYSQL_USERNAME
             WORDPRESS_DB_PASSWORD: $WP_MYSQL_PASSWORD
             WORDPRESS_DB_NAME: $WP_MYSQL_DATABASE
-            WORDPRESS_DEBUG: $WP_DEBUG
+            WORDPRESS_DEBUG: 'true'
             WORDPRESS_CONFIG_EXTRA: |
                 define('WP_SITEURL', 'http://' . $$_SERVER['HTTP_HOST'] . '/');
                 define('WP_HOME', 'http://' . $$_SERVER['HTTP_HOST'] . '/');
