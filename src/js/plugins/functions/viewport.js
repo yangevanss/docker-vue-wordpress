@@ -71,6 +71,7 @@ class Viewport {
                 return key
             }
         }
+        return null
     }
 
     get isDesktop () {

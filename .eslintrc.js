@@ -3,7 +3,17 @@ module.exports = {
     env: {
         node: true,
     },
-    extends: ['plugin:vue/recommended', '@vue/standard'],
+    parser: 'vue-eslint-parser',
+    parserOptions: {
+        parser: '@babel/eslint-parser',
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+    },
+    extends: [
+        'eslint:recommended',
+        'plugin:vue/recommended',
+        '@vue/standard',
+    ],
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -21,8 +31,5 @@ module.exports = {
         'vue/multi-word-component-names': 'off',
         'vue/multiline-html-element-content-newline': 'off',
         'vue/singleline-html-element-content-newline': 'off',
-    },
-    parserOptions: {
-        parser: '@babel/eslint-parser',
     },
 }
