@@ -1,4 +1,4 @@
-import { debounce } from 'lodash'
+import { debounce } from 'lodash-es'
 import { detect } from 'detect-browser'
 import mobileInnerHeight from './mobileInnerHeight'
 

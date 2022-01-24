@@ -29,6 +29,9 @@ module.exports = {
     optimization: {
         moduleIds: 'deterministic',
         runtimeChunk: 'single',
+        usedExports: true,
+        sideEffects: true,
+        innerGraph: true,
         splitChunks: {
             cacheGroups: {
                 vendor: {
