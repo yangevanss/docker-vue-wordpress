@@ -7,5 +7,5 @@ wordpress/*
 !wordpress/.gitkeep
 !wordpress/.htaccess
 wordpress/wp-content/themes/*
-!wordpress/wp-content/themes/blockstudio-theme
-wordpress/wp-content/themes/blockstudio-theme/src
+!wordpress/wp-content/themes/theme
+wordpress/wp-content/themes/theme/src

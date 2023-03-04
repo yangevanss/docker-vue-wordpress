@@ -59,5 +59,4 @@
         }
     },
     "todo-tree.filtering.excludeGlobs": ["**/node_modules/*", "**/wp-content/plugins/*"],
-    "cSpell.words": ["blockstudio"]
 }

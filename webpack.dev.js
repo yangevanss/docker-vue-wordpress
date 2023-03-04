@@ -14,7 +14,7 @@ module.exports = merge(common, {
         onBeforeSetupMiddleware (devServer) {
             chokidar
                 .watch([
-                    path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/'),
+                    path.resolve(__dirname, 'wordpress/wp-content/themes/theme/'),
                 ])
                 .on('all', function () {
                     devServer.sendMessage(devServer.webSocketServer.clients, 'content-changed')
@@ -27,7 +27,7 @@ module.exports = merge(common, {
         allowedHosts: 'all',
         // host: 'local-ip',
         static: {
-            directory: path.resolve(__dirname, 'wordpress/wp-content/themes/blockstudio-theme/src'),
+            directory: path.resolve(__dirname, 'wordpress/wp-content/themes/theme/src'),
         },
         client: {
             overlay: {

@@ -38,7 +38,7 @@ function api_send_mail($request)
     );
     $spareMailList = array( // 客戶需要留底的信箱陣列
         // get_option('contactEmail')
-        'default@blockstudio.tw',
+        'madcode.el@gmail.com',
     );
 
     // // ****** 處理信件標題、內容 開始 ******
