@@ -13,7 +13,6 @@ export default {
 
         addLoadingStack(new Promise(resolve => {
             setTimeout(() => {
-                console.log('%cBlock Studio', 'color: #ffffff; background-color: #40587c; padding: 5px 10px;')
                 resolve()
             }, Math.random() * 1000)
         }))
@@ -27,7 +26,7 @@ export default {
 
 <style lang="scss">
 .hello-world {
-    background: url('~@/assets/img/block-map.jpg') no-repeat center / cover;
+    background: url('https://source.unsplash.com/random/400x400') no-repeat center / cover;
 
     &::before {
         content: '';

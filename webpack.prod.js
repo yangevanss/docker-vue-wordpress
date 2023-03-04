@@ -10,7 +10,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 module.exports = merge(common, {
     mode: 'production',
     output: {
-        publicPath: './wp-content/themes/blockstudio-theme/src/',
+        publicPath: './wp-content/themes/theme/src/',
     },
     optimization: {
         minimizer: [
