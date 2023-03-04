@@ -210,7 +210,7 @@ var AmePluginVisibilityModule = /** @class */ (function () {
             return !_.isEmpty(value);
         });
         //Populate form field(s).
-        this.settingsData(jQuery.toJSON(settings));
+        this.settingsData(JSON.stringify(settings));
         return true;
     };
     AmePluginVisibilityModule._ = wsAmeLodash;
@@ -314,3 +314,4 @@ jQuery(function ($) {
         AjawV1.getAction('ws_ame_dismiss_pv_usage_notice').request();
     });
 });
+//# sourceMappingURL=plugin-visibility.js.map

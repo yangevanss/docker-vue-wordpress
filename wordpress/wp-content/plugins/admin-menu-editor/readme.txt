@@ -2,9 +2,9 @@
 Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: admin, dashboard, menu, security, wpmu
-Requires at least: 4.1
-Tested up to: 5.8.1
-Stable tag: 1.10
+Requires at least: 4.7
+Tested up to: 6.1
+Stable tag: 1.10.4
 
 Lets you edit the WordPress admin menu. You can re-order, hide or rename menus, add custom menus and more. 
 
@@ -74,6 +74,38 @@ Plugins installed in the `mu-plugins` directory are treated as "always on", so y
 3. Re-ordering menu items via drag and drop
 
 == Changelog ==
+
+= 1.10.4 =
+* Fixed a layout bug in the menu editor where the submenu column did not increase its height to align with the currently selected top level menu.
+* Tested up to WP 6.1.
+
+= 1.10.3 =
+* Increased the minimum required PHP version to 5.6. 
+* Fixed a number of deprecation warnings related to PHP 8.
+* Fixed a conflict with "Anti-Spam by CleanTalk" that could potentially cause a fatal error.
+* Fixed a conflict with "Admin Theme - Musik" where the menu order settings in the other plugin would override the menu order configured in AME.
+* Fixed missing padding in the "edit plugin details" panel (in the "Plugins" tab). Also updated the button layout to match the changed button layout of the "Quick Edit" panel introduced in WP 6.0.
+* Fixed a visual issue where some form fields might briefly show up and then disappear if the settings page stylesheet(s) took a while to load.
+* Removed dependency on the "icon16" CSS class.
+
+= 1.10.2 =
+* Added additional validation in escaping in multiple places.
+* Fixed a number of issues related to the WordPress coding standard and the WordPress-VIP-Go coding standard.
+* Fixed visual misalignment of menu property fields and accompanying dropdown buttons.
+* Fixed inconsistent spacing aroud some radio buttons on the settings page.
+* Introduced a limit to how many unique menu URLs can be remembered by the "highlight new menu items" feature. Previously, when this feature was enabled, the plugin would record each "seen" menu item, which could cause the associated database entry to grow endlessly. Now the plugin will remember up to 700 items per user.
+* Tested with WordPress 6.0 (release candidate) and 6.1-alpha.
+
+= 1.10.1 =
+* Fixed the `[ame-user-info]` shortcode not working in login redirects. It would always output "(No user)" instead of the actual user data.
+* Fixed a warning caused by a conflict with plugins and themes that call the "login_redirect" filter with only 1 parameter instead of the expected 3.
+* Probably fixed a bug where menu items that use fully qualified URLs would lose their custom settings when the site URL changed (such as when migrating the site to a different domain).
+* Fixed a minor conflict with the plugin "Google Analytics for WordPress by MonsterInsights" where the "Getting Started" menu item that is usually hidden would become visible when AME was activated.
+* Fixed an edge case where the plugin would incorrectly show an "is this option enabled for everyone" checkbox in an indeterminate state when it was actually enabled for all roles but was not explicitly enabled (or disabled) for individual users.
+* Fixed a bug where AME did not prefer submenu items when detecting the current menu item based on the current URL.
+* Switched from `jQuery.toJSON()` to `JSON.stringify()`. The old jQuery JSON plugin appears to be unmaintained, and all modern browsers have supported `JSON.stringify()` for a long time.
+* Other minor fixes.
+* Tested up to WP 6.0-beta1.
 
 = 1.10 =
 * Added a "Redirects" feature. You can create login redirects, logout redirects, and registration redirects. You can configure redirects for specific roles and users. You can also set up a default redirect that will apply to everyone who doesn't have a specific setting. Redirect URLs can contain shortcodes, but not all shortcodes will work in this context.

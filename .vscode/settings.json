@@ -1,30 +1,29 @@
 {
-    "search.exclude": {
-        "wordpress/wp-content/plugins/": true
-    },
+    // "search.exclude": {
+    //     "wordpress/wp-content/plugins/": true
+    // },
     "editor.insertSpaces": true, // 強制輸入空白
     "editor.detectIndentation": false, // 關閉縮排偵測
-    "editor.tabSize": 4, // 編輯器字體大小
+    "editor.tabSize": 2,
     "editor.formatOnSave": false,
-    // ----- eslint, stylelint 設定 -----
-    "eslint.alwaysShowStatus": true,
     "eslint.options": {
-        "extensions": [".html", ".js", ".vue"]
+        "extensions": [".html", ".js", ".cjs", ".vue"]
     },
-    "eslint.workingDirectories": [
-        // 指定 ESLint 執行的工作目錄
-        "."
-    ],
+    "eslint.workingDirectories": ["."],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
         "source.fixAll.stylelint": true
     },
-    "css.validate": false,
-    "less.validate": false,
-    "scss.validate": false,
     "stylelint.snippet": ["css", "scss", "vue"],
     "stylelint.validate": ["css", "scss", "vue"],
-    // ----- Todo tree 設定 -----
+    "[php]": {
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true
+    },
+    "[twig]": {
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": true
+    },
     "todo-tree.highlights.defaultHighlight": {
         "foreground": "white",
         "type": "text"

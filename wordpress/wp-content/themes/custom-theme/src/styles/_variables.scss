@@ -1,0 +1,26 @@
+$padding: 8px;
+$grid-columns: 12;
+$grid-row-columns: 6;
+$grid-gutter-width: $padding * 3;
+$grid-breakpoints: (
+  mobile: 0,
+  tablet: 768px,
+  medium: 1024px,
+  desktop: 1200px,
+  large: 1920px,
+);
+$container-max-widths: (
+  mobile: 100%,
+  tablet: 100%,
+  medium: 100%,
+  desktop: 1280px,
+  large: 1280px,
+);
+$container-padding: (
+  mobile: $padding,
+  tablet: $padding * 5,
+  medium: $padding * 5,
+  desktop: $padding * 5,
+  large: $padding * 5,
+);
+$header-height: ();

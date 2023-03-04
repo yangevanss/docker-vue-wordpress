@@ -1,10 +1,10 @@
 === Timber ===
 Contributors: jarednova
 Tags: template engine, templates, twig
-Requires at least: 4.9.8
-Tested up to: 5.8.1
-Stable tag: 1.19.1
-Requires PHP: 5.6
+Tested up to: 6.1.1
+Stable tag: 1.22.1
+Requires PHP: 7.2.5
+Requires at least: 5.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,40 @@ _Twig is the template language powering Timber; if you need a little background 
 **Changes for Theme Developers**
 
 **Fixes and improvements**
-* Fix documented return type for Timber\Image::thumbnail #2463 (thanks @titouanmathis)
+
+= 1.22.1 =
+
+* Fixed a bug when Twig version 3 was accidentally installed when installing Timber through Composer, by @rmens in https://github.com/timber/timber/pull/2679.
+
+= 1.22.0 =
+
+* Fixed included Twig version. In the plugin version 1.21.0 of Timber, Twig version 2.15.3 was accidentally included instead of Twig version 1.44.7.
+* Removed official support for PHP 8.1 in the plugin version. If you need to support PHP 8.1 in the future, please install [Timber through Composer](https://timber.github.io/docs/getting-started/setup/#via-github-for-developers) instead of installing Timber as a plugin. This will the only supported way of installing Timber when Timber version 2 will be released.
+* Updated minimum required WordPress version to 5.3.
+
+= 1.21.0 =
+
+* Updated minimum required PHP version to 7.2 to make the included Twig version support PHP 8.0 and 8.1, by @gchtr in #2640.
+* Updated minimum Twig version to 1.44.0 to support PHP 8.0 and 8.1, by @gchtr in #2640.
+* Fixed support for PHP 8.0 and PHP 8.1, by @nlemoine and @gchtr in #2638, #2640.
+
+= 1.20.0 =
+
+* Use newest version of Upstatement/routes for WordPress 6.0 by @jarednova in #2595
+
+= 1.19.2 =
+
+**Fixes and improvements**
+
+* Handle for duplicate term names in difft taxes by @jarednova in #2390
+* Fix typo in resize error message. by @Web-Assembler in #2523
+* Add webp support to letterbox filter by @ThomasBerends in #2528
+* Update composer/installers from v1 to v2 by @adamtomat in #2543
+* Improve composer version ranges by @gchtr in #2550
+
+* @Web-Assembler made their first contribution in #2523
+* @ThomasBerends made their first contribution in #2528
+* Full Changelog: https://github.com/timber/timber/compare/1.19.1...1.19.2
 
 = 1.19.1 =
 

@@ -508,6 +508,7 @@ function loadMenuConfiguration(adminMenu) {
 		const $item = buildMenuItem(itemData, isTopLevel);
 
 		if ((typeof afterNode !== 'undefined') && (afterNode !== null)) {
+			//phpcs:ignore WordPressVIPMinimum.JS.HTMLExecutingFunctions -- buildMenuItem() should be safe.
 			$(afterNode).after($item);
 		} else {
 			$item.appendTo(itemList);
@@ -742,7 +743,7 @@ function loadMenuConfiguration(adminMenu) {
 				verticalBoxOffset = (submenuBox.offset().top - mainMenuBox.offset().top),
 				minSubmenuHeight = (selectedMenu.offset().top - mainMenuBox.offset().top)
 					- verticalBoxOffset
-					+ menuTipHeight - submenuDropZone.outerHeight() + empiricalExtraHeight;
+					+ menuTipHeight - (submenuDropZone.outerHeight() || 0) + empiricalExtraHeight;
 			minSubmenuHeight = Math.max(minSubmenuHeight, 0);
 			submenuBox.css('min-height', minSubmenuHeight);
 		}
@@ -1256,12 +1257,12 @@ var knownMenuFields = {
 		caption : 'Menu title',
 		display: function(menuItem, displayValue, input, containerNode) {
 			//Update the header as well.
-			containerNode.find('.ws_item_title').html(formatMenuTitle(displayValue) + '&nbsp;');
+			containerNode.find('.ws_item_title').text(formatMenuTitle(displayValue) + '\xa0');
 			return displayValue;
 		},
 		write: function(menuItem, value, input, containerNode) {
 			menuItem.menu_title = value;
-			containerNode.find('.ws_item_title').html(stripAllTags(input.val()) + '&nbsp;');
+			containerNode.find('.ws_item_title').text(stripAllTags(input.val()) + '\xa0');
 		}
 	}),
 
@@ -1541,7 +1542,7 @@ var knownMenuFields = {
 			}
 
 			var selectButton = input.closest('.ws_edit_field').find('.ws_select_icon');
-			var cssIcon = selectButton.find('.icon16');
+			var cssIcon = selectButton.find('.ws_icon_image');
 			var imageIcon = selectButton.find('img');
 
 			var matches = cssClass.match(/\b(ame-)?menu-icon-([^\s]+)\b/);
@@ -1553,7 +1554,7 @@ var knownMenuFields = {
 				cssIcon.hide();
 				imageIcon.prop('src', iconUrl).show();
 			} else if ( iconFontMatches ) {
-				cssIcon.removeClass().addClass('icon16');
+				cssIcon.removeClass().addClass('ws_icon_image');
 				if ( iconFontMatches[2] === 'dashicons' ) {
 					//Dashicon.
 					cssIcon.addClass('dashicons ' + iconFontMatches[1]);
@@ -1567,12 +1568,12 @@ var knownMenuFields = {
 				//Other CSS-based icon.
 				imageIcon.hide();
 				var iconClass = (matches[1] ? matches[1] : '') + 'icon-' + matches[2];
-				cssIcon.removeClass().addClass('icon16 ' + iconClass).show();
+				cssIcon.removeClass().addClass('ws_icon_image ' + iconClass).show();
 			} else {
 				//This menu has no icon at all. This is actually a valid state
 				//and WordPress will display a menu like that correctly.
 				imageIcon.hide();
-				cssIcon.removeClass().addClass('icon16').show();
+				cssIcon.removeClass().addClass('ws_icon_image').show();
 			}
 
 			return displayValue;
@@ -1764,10 +1765,16 @@ function buildEditboxFields(fieldContainer, entry, isTopLevel){
 
 	//Add a link that shows/hides advanced fields
 	fieldContainer.append(
-		'<div class="ws_toggle_container"><a href="#" class="ws_toggle_advanced_fields"'+
-		(wsEditorData.hideAdvancedSettings ? '' : ' style="display:none;" ' )+'>'+
-		(wsEditorData.hideAdvancedSettings ? wsEditorData.captionShowAdvanced : wsEditorData.captionHideAdvanced)
-		+'</a></div>'
+		$('<div>').addClass('ws_toggle_container').append(
+			$('<a></a>', {href: '#'})
+				.addClass('ws_toggle_advanced_fields')
+				.text(
+					wsEditorData.hideAdvancedSettings
+						? wsEditorData.captionShowAdvanced
+						: wsEditorData.captionHideAdvanced
+				)
+				.toggle(!!wsEditorData.hideAdvancedSettings) //Conver to boolean because it could be a string ("1" or "0").
+		)
 	);
 }
 
@@ -1796,9 +1803,10 @@ function buildEditboxField(entry, field_name, field_settings){
 			break;
 
         case 'checkbox':
-            inputBox = $('<label><input type="checkbox" class="ws_field_value"> <span class="ws_field_label_text">'+
-                field_settings.caption + '</span></label>'
-            );
+	        inputBox = $('<label></label>')
+		        .append($('<input>', {type: 'checkbox', "class": 'ws_field_value'}))
+		        .append(' ')
+		        .append($('<span></span>', {"class": 'ws_field_label_text'}).text(field_settings.caption))
             break;
 
 		case 'access_editor':
@@ -1809,7 +1817,7 @@ function buildEditboxField(entry, field_name, field_settings){
 		case 'icon_selector':
 			//noinspection HtmlUnknownTag
 			inputBox = $(basicTextField)
-                .add('<button class="button ws_select_icon" title="Select icon"><div class="icon16 icon-settings"></div><img src="" style="display:none;" alt="Icon"></button>');
+                .add('<button class="button ws_select_icon" title="Select icon"><div class="ws_icon_image dashicons dashicons-admin-generic"></div><img src="" style="display:none;" alt="Icon"></button>');
 			break;
 
 		case 'color_scheme_editor':
@@ -1818,7 +1826,7 @@ function buildEditboxField(entry, field_name, field_settings){
 			break;
 
 		case 'heading':
-			inputBox = $('<span>' + field_settings.caption + '</span>');
+			inputBox = $('<span></span>').text(field_settings.caption);
 			break;
 
 		case 'text':
@@ -1839,23 +1847,30 @@ function buildEditboxField(entry, field_name, field_settings){
 		className += ' ws_field_group_heading';
 	}
 
-	var caption = '';
+	var caption = $(); //Empty set by default.
 	if (field_settings.standardCaption) {
-		var tooltip = '';
+		var $labelText = $('<span></span>')
+			.addClass('ws_field_label_text')
+			.text(field_settings.caption + ' ');
+
 		if (field_settings.tooltip !== null) {
-			tooltip = ' <a class="ws_field_tooltip_trigger"><div class="dashicons dashicons-info"></div></a>';
+			$labelText.append(
+				'<a class="ws_field_tooltip_trigger"><div class="dashicons dashicons-info"></div></a>'
+			);
 		}
-		caption = '<span class="ws_field_label_text">' + field_settings.caption + tooltip + '</span><br>';
+
+		caption = caption.add($labelText).add('<br>'); //Note: add(), not append().
 	}
-	var editField = $('<div>' + caption + '</div>')
+	var editField = $('<div></div>')
 		.attr('class', className)
+		.append(caption)
 		.append(inputBox);
 
 	if (field_settings.addDropdown) {
 		//Add a dropdown button
 		var dropdownId = field_settings.addDropdown;
 		editField.append(
-			$('<input type="button" value="&#9660;">')
+			$('<input type="button" value="&#xf347;">')
 				.addClass('button ws_dropdown_button ' + dropdownId + '_trigger')
 				.attr('tabindex', '-1')
 				.data('dropdownId', dropdownId)
@@ -2337,7 +2352,7 @@ function encodeMenuAsJSON(tree){
 	//Compress the admin menu.
 	tree = compressMenu(tree);
 
-	return $.toJSON(tree);
+	return JSON.stringify(tree);
 }
 
 function readMenuTreeState(){
@@ -2841,6 +2856,7 @@ function ameOnDomReady() {
     }));
 
 	function updateSubmenuBoxHeight(selectedMenu) {
+		//TODO: Eliminate this duplication. Maybe we could just call the corresponding column method.
 		const myColumn = menuPresenter.getColumnImmediate(selectedMenu.closest('.ws_main_container').data('ame-menu-level') || 1);
 		const nextColumn = menuPresenter.getColumnImmediate(myColumn.level + 1);
 		if (!nextColumn || (nextColumn === myColumn)) {
@@ -2987,6 +3003,7 @@ function ameOnDomReady() {
 
 	    //Update the item.
 	    if (knownMenuFields[fieldName].write !== null) {
+			// phpcs:ignore WordPressVIPMinimum.JS.HTMLExecutingFunctions.write -- Misdetected. Not document.write().
 		    knownMenuFields[fieldName].write(menuItem, value, input, containerNode);
 	    } else {
 		    menuItem[fieldName] = value;
@@ -5344,7 +5361,7 @@ function ameOnDomReady() {
 		}
 	});
 
-	//Set up menu field toltips.
+	//Set up menu field tooltips.
 	menuEditorNode.on('mouseenter click', '.ws_edit_field .ws_field_tooltip_trigger', function(event) {
 		var $trigger = $(this),
 			fieldName = $trigger.closest('.ws_edit_field').data('field_name');
@@ -5397,17 +5414,19 @@ function ameOnDomReady() {
 					var indicator = $(this),
 						extPermissions = indicator.data('ext_permissions'),
 						text = 'Additional permission settings are available. Click "Edit..." to change them.',
-						heading = '';
+						heading = '',
+						$content = $('<span></span>');
 
 					if (extPermissions && extPermissions.hasOwnProperty('title')) {
 						heading = extPermissions.title;
 						if (extPermissions.hasOwnProperty('type')) {
 							heading = _.capitalize(_.startCase(extPermissions.type).toLowerCase()) + ': ' + heading;
 						}
-						text = '<strong>' + heading + '</strong><br>' + text;
+						$content.append($('<strong></strong>').text(heading)).append('<br>');
 					}
 
-					return text;
+					$content.append($(document.createTextNode(text)));
+					return $content;
 				}
 			},
 			show: {
@@ -5605,8 +5624,10 @@ function ameOnDomReady() {
 						return;
 					}
 
+					throw new Error('Not fully implemented yet!');
 					//Caution: Won't work in IE. Needs compat checks.
-					var testPageUrl = new URL(menuUrl, window.location.href);
+					//var testPageUrl = new URL(menuUrl, window.location.href);
+					var testPageUrl = 'fixme';
 					testPageUrl.searchParams.append('ame-test-menu-access-as', $('#ws_ame_test_access_username').val());
 					testPageUrl.searchParams.append('_wpnonce', wsEditorData.testAccessNonce);
 					testPageUrl.searchParams.append('ame-test-relevant-role', testActorList.val());

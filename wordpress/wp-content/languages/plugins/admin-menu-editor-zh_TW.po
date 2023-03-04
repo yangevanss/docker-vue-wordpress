@@ -1,0 +1,48 @@
+# Translation of Plugins - Admin Menu Editor - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - Admin Menu Editor - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-08-08 06:12:20+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.3\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Plugins - Admin Menu Editor - Stable (latest release)\n"
+
+#: modules/actor-selector/actor-selector.php:48
+msgid "You don't have permission to use Admin Menu Editor Pro."
+msgstr "目前的登入身分沒有使用 Admin Menu Editor Pro 的權限。"
+
+#: modules/actor-selector/actor-selector.php:45
+msgid "Access denied. Invalid nonce."
+msgstr "存取遭拒。無效的單次隨機碼。"
+
+#: includes/shadow_plugin_framework.php:304
+msgid "Settings"
+msgstr "設定"
+
+#: includes/menu-editor-core.php:3087
+msgid "Settings saved."
+msgstr "設定已儲存。"
+
+#. Author URI of the plugin
+msgid "http://w-shadow.com/blog/"
+msgstr "https://w-shadow.com/blog/"
+
+#. Author of the plugin
+msgid "Janis Elsts"
+msgstr "Janis Elsts"
+
+#. Description of the plugin
+msgid "Lets you directly edit the WordPress admin menu. You can re-order, hide or rename existing menus, add custom menus and more."
+msgstr "這個外掛能讓網站管理員直接編輯管理後台選單，具備可重新排序、隱藏、重新命名或新增選單項目等功能。"
+
+#. Plugin URI of the plugin
+msgid "http://w-shadow.com/blog/2008/12/20/admin-menu-editor-for-wordpress/"
+msgstr "https://w-shadow.com/blog/2008/12/20/admin-menu-editor-for-wordpress/"
+
+#. Plugin Name of the plugin
+msgid "Admin Menu Editor"
+msgstr "Admin Menu Editor"

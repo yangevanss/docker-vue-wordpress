@@ -18,7 +18,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 
 <?php do_action('admin_menu_editor-display_header'); ?>
 
-	<form method="post" action="<?php echo esc_attr($formActionUrl); ?>" id="ws_plugin_settings_form">
+	<form method="post" action="<?php echo esc_url($formActionUrl); ?>" id="ws_plugin_settings_form">
 
 		<table class="form-table">
 			<tbody>
@@ -66,8 +66,8 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 
 								<br>
 								<span class="description">
-									Login: <?php echo $currentUser->user_login; ?>,
-								 	user ID: <?php echo get_current_user_id(); ?>
+									Login: <?php echo esc_html($currentUser->user_login); ?>,
+								 	user ID: <?php echo esc_html(get_current_user_id()); ?>
 								</span>
 							</label>
 						</p>
@@ -79,7 +79,11 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 								<?php checked( $settings['plugins_page_allowed_user_id'] !== null ); ?>
 								<?php disabled( !$isProVersion || ($isMultisite && !is_super_admin()) ); ?>
 							>
-							Hide the "Admin Menu Editor<?php if ( $isProVersion ) { echo ' Pro'; } ?>" entry on the "Plugins" page from other users
+							Hide "Admin Menu Editor<?php if ( $isProVersion ) { echo ' Pro'; } ?>"
+							<?php if ( defined('WS_ADMIN_BAR_EDITOR_FILE') || defined('AME_BRANDING_ADD_ON_FILE') ) {
+								echo 'and its add-ons';
+							} ?>
+							from the "Plugins" page for other users
 							<?php if ( !$isProVersion ) {
 								echo '(Pro version only)';
 							} ?>
@@ -102,24 +106,25 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 									<?php disabled(!$isMultisite || !$isSuperAdmin); ?>>
 								Global &mdash;
 								Use the same admin menu settings for all network sites.
-							</label><br>
+							</label>
 						</p>
 
-
-						<label>
-							<input type="radio" name="menu_config_scope" value="site"
-								<?php checked('site', $settings['menu_config_scope']); ?>
-								<?php disabled(!$isMultisite || !$isSuperAdmin); ?>>
-							Per-site &mdash;
-							Use different admin menu settings for each site.
-						</label>
+						<p>
+							<label>
+								<input type="radio" name="menu_config_scope" value="site"
+									<?php checked('site', $settings['menu_config_scope']); ?>
+									<?php disabled(!$isMultisite || !$isSuperAdmin); ?>>
+								Per-site &mdash;
+								Use different admin menu settings for each site.
+							</label>
+						</p>
 					</fieldset>
 				</td>
 			</tr>
 
 			<?php do_action('admin-menu-editor-display_addons'); ?>
 
-			<tr>
+			<tr id="ame-available-modules">
 				<th scope="row">
 					Modules
 					<a class="ws_tooltip_trigger"
@@ -134,7 +139,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 					<fieldset>
 						<?php
 						global $wp_menu_editor;
-						foreach ($wp_menu_editor->get_available_modules() as $id => $module) {
+						foreach ($wp_menu_editor->get_available_modules() as $moduleId => $module) {
 							if ( !empty($module['isAlwaysActive']) ) {
 								continue;
 							}
@@ -145,8 +150,8 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 								if ( version_compare(phpversion(), $module['requiredPhpVersion'], '<') ) {
 									$compatibilityNote = sprintf(
 										'Required PHP version: %1$s or later. Installed PHP version: %2$s',
-										htmlentities($module['requiredPhpVersion']),
-										htmlentities(phpversion())
+										esc_html($module['requiredPhpVersion']),
+										esc_html(phpversion())
 									);
 								}
 							}
@@ -158,13 +163,15 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 									<input type="checkbox" name="active_modules[]" value="%1$s" %2$s %3$s>
 								    %4$s
 								</label>',
-								esc_attr($id),
-								$wp_menu_editor->is_module_active($id, $module) ? 'checked="checked"' : '',
+								esc_attr($moduleId),
+								$wp_menu_editor->is_module_active($moduleId, $module) ? 'checked="checked"' : '',
+								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Constant strings.
 								$isCompatible ? '' : 'disabled="disabled"',
-								!empty($module['title']) ? $module['title'] : htmlentities($id)
+								esc_html(!empty($module['title']) ? $module['title'] : $moduleId)
 							);
 
 							if ( !empty($compatibilityNote) ) {
+								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $compatibilityNote was escaped when generated.
 								printf('<br><span class="description">%s</span>', $compatibilityNote);
 							}
 
@@ -383,13 +390,13 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 								<p>
 									<label>
 										<input type="radio" name="deep_nesting_enabled"
-										       value="<?php echo esc_attr(json_encode($nestingSetting)); ?>"
+										       value="<?php echo esc_attr(wp_json_encode($nestingSetting)); ?>"
 											<?php
 											if ( $settings['deep_nesting_enabled'] === $nestingSetting ) {
 												echo ' checked="checked"';
 											}
 											?>>
-										<?php echo $label; ?>
+										<?php echo esc_html($label); ?>
 									</label>
 								</p>
 							<?php endforeach; ?>
@@ -446,7 +453,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 					<fieldset id="ame-submenu-icons-settings">
 						<p>
 							<label>
-								<input type="radio" name="error_verbosity" value="<?php echo WPMenuEditor::VERBOSITY_LOW ?>>"
+								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_LOW); ?>>"
 									<?php checked(WPMenuEditor::VERBOSITY_LOW, $settings['error_verbosity']); ?>>
 								Low
 
@@ -458,7 +465,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 
 						<p>
 							<label>
-								<input type="radio" name="error_verbosity" value="<?php echo WPMenuEditor::VERBOSITY_NORMAL; ?>>"
+								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_NORMAL); ?>>"
 									<?php checked(WPMenuEditor::VERBOSITY_NORMAL, $settings['error_verbosity']); ?>>
 								Normal
 
@@ -471,7 +478,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 
 						<p>
 							<label>
-								<input type="radio" name="error_verbosity" value="<?php echo WPMenuEditor::VERBOSITY_VERBOSE; ?>>"
+								<input type="radio" name="error_verbosity" value="<?php echo esc_attr(WPMenuEditor::VERBOSITY_VERBOSE); ?>>"
 									<?php checked(WPMenuEditor::VERBOSITY_VERBOSE, $settings['error_verbosity']); ?>>
 								Verbose
 
@@ -543,6 +550,7 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 						<?php
 						printf(
 							'%.2f MiB of %s',
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We're using sprintf() to format a float.
 							memory_get_peak_usage() / (1024 * 1024),
 							esc_html(ini_get('memory_limit'))
 						);

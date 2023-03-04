@@ -4,13 +4,42 @@
  * Miscellaneous utility functions.
  */
 class ameUtils {
+	/**
+	 * HTML tags allowed in WP_Error messages and titles.
+	 *
+	 * This is based on the default list of allowed tags in /wp-includes/kses.php.
+	 */
+	const ALLOWED_WP_ERROR_TAGS = array(
+		'abbr'       => array(
+			'title' => true,
+		),
+		'acronym'    => array(
+			'title' => true,
+		),
+		'b'          => array(),
+		'blockquote' => array(
+			'cite' => true,
+		),
+		'cite'       => array(),
+		'code'       => array(),
+		'del'        => array(
+			'datetime' => true,
+		),
+		'em'         => array(),
+		'i'          => array(),
+		'q'          => array(
+			'cite' => true,
+		),
+		's'          => array(),
+		'strong'     => array(),
+	);
 
 	/**
 	 * Get a value from a nested array or object based on a path.
 	 *
 	 * @param array|object $array Get an entry from this array.
 	 * @param array|string $path A list of array keys in hierarchy order, or a string path like "foo.bar.baz".
-	 * @param mixed $default The value to return if the specified path is not found.
+	 * @param mixed $default The value to return if the specified path is not found. Defaults to NULL.
 	 * @param string $separator Path element separator. Only applies to string paths.
 	 * @return mixed
 	 */
@@ -26,7 +55,9 @@ class ameUtils {
 		$currentValue = $array;
 		$pathExists = true;
 		foreach ($path as $node) {
-			if ( is_array($currentValue) && array_key_exists($node, $currentValue) ) {
+			if ( ($currentValue instanceof ArrayAccess) && $currentValue->offsetExists($node) ) {
+				$currentValue = $currentValue[$node];
+			} else if ( is_array($currentValue) && array_key_exists($node, $currentValue) ) {
 				$currentValue = $currentValue[$node];
 			} else if ( is_object($currentValue) && property_exists($currentValue, $node) ) {
 				$currentValue = $currentValue->$node;
@@ -89,7 +120,7 @@ class ameUtils {
 
 		if ( $hasUnicodeSupport ) {
 			$totalLength = mb_strlen($input);
-			$words = preg_split('/([\s\-_]++)/u', $input, null, PREG_SPLIT_DELIM_CAPTURE);
+			$words = preg_split('/([\s\-_]++)/u', $input, -1, PREG_SPLIT_DELIM_CAPTURE);
 			$output = array();
 			foreach ($words as $word) {
 				$firstCharacter = mb_substr($word, 0, 1, $charset);
@@ -101,6 +132,121 @@ class ameUtils {
 		}
 		return ucwords($input);
 	}
+
+	/**
+	 * Check if two arrays have the same keys and values. Arrays with string keys
+	 * or mixed keys can be in different order and still be considered "equal".
+	 *
+	 * @param array $a
+	 * @param array $b
+	 * @return bool
+	 */
+	public static function areAssocArraysEqual($a, $b) {
+		$secondArraySize = count($b);
+		if ( count($a) !== $secondArraySize ) {
+			return false;
+		}
+		$sameItems = array_intersect_assoc($a, $b);
+		return count($sameItems) === $secondArraySize;
+	}
+
+	/**
+	 * Escape a WP_Error object for passing it to wp_die().
+	 *
+	 * Converts special characters in error messages to HTML entities.
+	 * Returns a new WP_Error instance. Does not modify the input object.
+	 *
+	 * @param WP_Error $error
+	 * @return WP_Error New WP_Error instance.
+	 */
+	public static function escapeWpError($error) {
+		return self::copyErrorWithFilter($error, 'esc_html');
+	}
+
+	/**
+	 * Strip disallowed HTML from a WP_Error object.
+	 *
+	 * @param WP_Error $error
+	 * @return WP_Error New WP_Error instance.
+	 */
+	public static function ksesWpError($error) {
+		return self::copyErrorWithFilter($error, array(__CLASS__, 'ksesCallbackForErrors'));
+	}
+
+	protected static function ksesCallbackForErrors($message) {
+		return wp_kses($message, self::ALLOWED_WP_ERROR_TAGS);
+	}
+
+	/**
+	 * Copy a WP_Error object and apply a filter callback to each message.
+	 *
+	 * Also, if an error has a data item that's an array with a 'title' key,
+	 * this escapes HTML in the title.
+	 *
+	 * @param \WP_Error $error
+	 * @param callable $callback
+	 * @return \WP_Error
+	 */
+	protected static function copyErrorWithFilter($error, $callback) {
+		$result = new WP_Error();
+		$canGetAllData = method_exists($error, 'get_all_error_data'); //WP 5.6+
+
+		foreach ($error->get_error_codes() as $code) {
+			foreach ($error->get_error_messages($code) as $message) {
+				$result->add($code, call_user_func($callback, $message));
+			}
+
+			if ( $canGetAllData ) {
+				$dataItems = $error->get_all_error_data($code);
+			} else {
+				$data = $error->get_error_data($code);
+				if ( $data !== null ) {
+					$dataItems = array($data);
+				} else {
+					$dataItems = array();
+				}
+			}
+
+			foreach ($dataItems as $data) {
+				//Page titles should never contain unescaped HTML tags.
+				//As of this writing, this plugin doesn't put titles in error data,
+				//but other code might, and wp_die() supports it.
+				if ( isset($data['title']) ) {
+					$data['title'] = esc_html($data['title']);
+				}
+				$result->add_data($data, $code);
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Get the first element of an iterable collection.
+	 *
+	 * @param iterable $collection Array, Traversable, Generator, etc.
+	 * @param mixed $defaultValue Value to return if the collection is empty.
+	 * @return mixed
+	 */
+	public static function getFirstItem($collection, $defaultValue = null) {
+		foreach ($collection as $value) {
+			return $value;
+		}
+		return $defaultValue;
+	}
+}
+
+/**
+ * @see ameUtils::escapeWpError
+ *
+ * This function exists because the "EscapeOutput" sniff in the WordPress coding standards
+ * doesn't understand class methods.
+ *
+ * @param \WP_Error $error
+ * @return \WP_Error
+ */
+function wsAmeEscapeWpError($error) {
+	return ameUtils::escapeWpError($error);
 }
 
 class ameFileLock {
@@ -111,6 +257,8 @@ class ameFileLock {
 		$this->fileName = $fileName;
 	}
 
+	//fopen() and flock() should be fine here because we only need read permissions.
+	//phpcs:disable WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_flock,WordPress.WP.AlternativeFunctions.file_system_read_fopen
 	public function acquire($timeout = null) {
 		if ( $this->handle !== null ) {
 			throw new RuntimeException('Cannot acquire a lock that is already held.');
@@ -152,6 +300,7 @@ class ameFileLock {
 			$this->handle = null;
 		}
 	}
+	//phpcs:enable
 
 	/**
 	 * Wait for a random interval without going over $endTime.
@@ -165,7 +314,7 @@ class ameFileLock {
 			return false;
 		}
 
-		$delayMs = rand(80, 300);
+		$delayMs = wp_rand(80, 300);
 		$remainingTimeMs = ($endTime - $now) * 1000;
 		if ( $delayMs < $remainingTimeMs ) {
 			usleep($delayMs * 1000);
@@ -325,28 +474,34 @@ class ameOrderedMap implements Iterator, Countable {
 		return $this;
 	}
 
+	#[\ReturnTypeWillChange]
 	public function current() {
 		return $this->currentNode->value;
 	}
 
+	#[\ReturnTypeWillChange]
 	public function next() {
 		if ( $this->currentNode !== null ) {
 			$this->currentNode = $this->currentNode->next;
 		}
 	}
 
+	#[\ReturnTypeWillChange]
 	public function key() {
 		return $this->currentNode->key;
 	}
 
+	#[\ReturnTypeWillChange]
 	public function valid() {
 		return ($this->currentNode !== null);
 	}
 
+	#[\ReturnTypeWillChange]
 	public function rewind() {
 		$this->currentNode = $this->head;
 	}
 
+	#[\ReturnTypeWillChange]
 	public function count() {
 		return count($this->nodesByKey);
 	}
@@ -360,7 +515,7 @@ class ameOrderedMap implements Iterator, Countable {
 	 */
 	public function filter($predicate) {
 		$result = new self();
-		foreach($this as $key => $value) {
+		foreach ($this as $key => $value) {
 			if ( call_user_func($predicate, $value, $key) ) {
 				$result->append($key, $value);
 			}
@@ -392,5 +547,189 @@ class ameLinkedListNode {
 	public function __construct($value, $key = '') {
 		$this->value = $value;
 		$this->key = $key;
+	}
+}
+
+class ameMultiDictionary {
+	const PATH_SEPARATOR = '.';
+	const MAX_PATH_DEPTH = 64;
+
+	/**
+	 * Get a value from an array or object using a path.
+	 *
+	 * Supports multidimensional/nested arrays and objects.
+	 *
+	 * @param array|object $collection
+	 * @param string|string[] $path
+	 * @param mixed $defaultValue
+	 * @param string $separator
+	 * @return mixed|null The value at the specified path, or the default value
+	 *                    if the path does not exist.
+	 */
+	public static function get($collection, $path, $defaultValue = null, $separator = self::PATH_SEPARATOR) {
+		$path = self::parsePath($path, $separator);
+		if ( empty($path) ) {
+			return $collection;
+		}
+
+		//Follow the $path into the $collection as far as possible.
+		$currentValue = $collection;
+		$pathExists = true;
+		foreach ($path as $key) {
+			if ( ($currentValue instanceof ArrayAccess) && $currentValue->offsetExists($key) ) {
+				//Caution: offsetExists() may return false if the key exists but is null.
+				$currentValue = $currentValue[$key];
+			} else if ( is_array($currentValue) && array_key_exists($key, $currentValue) ) {
+				$currentValue = $currentValue[$key];
+			} else if ( is_object($currentValue) && property_exists($currentValue, $key) ) {
+				$currentValue = $currentValue->{$key};
+			} else {
+				$pathExists = false;
+				break;
+			}
+		}
+
+		if ( $pathExists ) {
+			return $currentValue;
+		}
+		return $defaultValue;
+	}
+
+	public static function set(
+		&$collection,
+		$path,
+		$value,
+		$createArrays = true,
+		$overwriteScalars = false,
+		$separator = self::PATH_SEPARATOR
+	) {
+		$path = self::parsePath($path, $separator);
+		if ( empty($path) ) {
+			//An empty path doesn't make sense, we can't replace the collection itself.
+			throw new InvalidArgumentException('Cannot set a value because the path is empty.');
+		}
+
+		if ( !self::isCollection($collection) ) {
+			//The collection is not an array or an object, so we can't set a value in it.
+			throw new InvalidArgumentException('Collection must be an array or an object.');
+		}
+
+		$lastKey = array_pop($path);
+		if ( empty($path) ) {
+			$target = &$collection;
+		} else {
+			$target = &self::acquireNestedCollection(
+				$collection,
+				$path,
+				$createArrays,
+				$overwriteScalars
+			);
+			if ( $target === null ) {
+				return false;
+			}
+		}
+
+		if ( is_array($target) || ($target instanceof ArrayAccess) ) {
+			$target[$lastKey] = $value;
+		} else if ( is_object($target) ) {
+			$target->{$lastKey} = $value;
+		}
+		return true;
+	}
+
+	public static function delete(&$collection, $path, $separator = self::PATH_SEPARATOR) {
+		$path = self::parsePath($path, $separator);
+		if ( empty($path) ) {
+			throw new InvalidArgumentException('Cannot delete an item because the path is empty.');
+		}
+		if ( !self::isCollection($collection) ) {
+			throw new InvalidArgumentException('Collection must be an array or an object.');
+		}
+
+		$lastKey = array_pop($path);
+		$target = &self::acquireNestedCollection($collection, $path, false);
+		if ( $target !== null ) {
+			if ( is_array($target) || ($target instanceof ArrayAccess) ) {
+				unset($target[$lastKey]);
+			} else if ( is_object($target) ) {
+				unset($target->{$lastKey});
+			}
+		}
+	}
+
+	public static function parsePath($path, $separator = self::PATH_SEPARATOR) {
+		if ( is_array($path) ) {
+			return $path;
+		} else if ( ($path === '') || ($path === $separator) ) {
+			return array();
+		}
+		return explode($separator, $path, self::MAX_PATH_DEPTH);
+	}
+
+	/**
+	 * @param array $prefix
+	 * @param string|array $path
+	 * @return array
+	 */
+	public static function addPrefixToPath($prefix, $path, $separator = self::PATH_SEPARATOR) {
+		return array_merge($prefix, self::parsePath($path, $separator));
+	}
+
+	protected static function isCollection($collection) {
+		return is_array($collection) || is_object($collection);
+	}
+
+	protected static function &acquireNestedCollection(
+		&$collection,
+		$parsedPath,
+		$createArrays = true,
+		$overwriteScalars = false
+	) {
+		$current = &$collection;
+		$notFound = null;
+		$previousNode = null;
+		$previousKey = null;
+		foreach ($parsedPath as $key) {
+			//The array and object branches are functionally identical,
+			//but they must be separated due to syntax differences.
+			if ( is_array($current) || ($current instanceof ArrayAccess) ) {
+				if ( !isset($current[$key]) ) {
+					if ( $createArrays ) {
+						$current[$key] = array();
+					} else {
+						return $notFound;
+					}
+				}
+				$current = &$current[$key];
+			} else if ( is_object($current) ) {
+				if ( !isset($current->{$key}) ) {
+					if ( $createArrays ) {
+						$current->{$key} = array();
+					} else {
+						return $notFound;
+					}
+				}
+				$current = &$current->{$key};
+			}
+
+			//Overwrite scalar values with associative arrays if necessary.
+			if ( !is_array($current) && !is_object($current) ) {
+				if ( $overwriteScalars && ($previousNode !== null) ) {
+					if ( is_array($previousNode) || ($previousNode instanceof ArrayAccess) ) {
+						$previousNode[$previousKey] = array();
+					} else if ( is_object($previousNode) ) {
+						$previousNode->{$previousKey} = array();
+					}
+					$current = &$previousNode[$previousKey];
+				} else {
+					return $notFound;
+				}
+			}
+
+			$previousNode = &$current;
+			$previousKey = $key;
+		}
+
+		return $current;
 	}
 }

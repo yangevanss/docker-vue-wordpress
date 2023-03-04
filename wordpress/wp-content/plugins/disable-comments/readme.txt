@@ -1,11 +1,11 @@
 === Disable Comments - Remove Comments & Stop Spam [Multi-Site Support] ===
-Contributors: Asif2BD, priyomukul, wpdevteam, re_enter_rupok, tusharimran, alimuzzamanalim, solarissmoke, garrett-eclipse
-Donate link: https://wpdeveloper.net/
+Contributors: Asif2BD, priyomukul, wpdevteam, re_enter_rupok, alimuzzamanalim, solarissmoke, garrett-eclipse
+Donate link: https://wpdeveloper.com/
 Tags: comments, delete comments, disable comments, spam comment, disable, stop spam, remove comments, anti spam, disable xml-rpc, hide comment, XML-RPC, REST-API, WP-CLI, multi-site support
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 6.1
 Requires PHP: 5.6
-Stable tag: 2.2.4
+Stable tag: 2.4.3
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,7 +17,7 @@ Allows administrators to globally disable comments on their site. Comments can b
 
 Instantly allow or disallow comments from any post type in WordPress (Pages, Posts, or Media) to stop the spammers and gain complete control over your full website. WP-CLI Support & Control comments via XML-RPC and REST-API too!
 
-[More About Plugin](https://wpdeveloper.net/plugins/disable-comments/) ◼️ [Documentation](https://wpdeveloper.net/docs-category/disable-comments/) ◼️ [Support Forum](https://wordpress.org/support/plugin/disable-comments/)
+[More About Plugin](https://wpdeveloper.com/plugins/disable-comments/) ◼️ [Documentation](https://wpdeveloper.com/docs-category/disable-comments/) ◼️ [Support Forum](https://wordpress.org/support/plugin/disable-comments/)
 
 https://www.youtube.com/watch?v=EpuYs9Nf_nY
 
@@ -43,8 +43,10 @@ https://www.youtube.com/watch?v=J9AteKzQpPs
 * Outgoing pingbacks are disabled.
 * Stop spam comments entirely from the site with one click.
 * **[New]** Delete comments by type.
-* **[New]** Disable comments via [XML-RPC](https://wpdeveloper.net/docs/how-to-disable-comments-made-via-xml-rpc/) & [REST-API](https://wpdeveloper.net/docs/how-to-disable-comments-made-via-rest-api/)
+* **[New]** Disable comments via [XML-RPC](https://wpdeveloper.com/docs/how-to-disable-comments-made-via-xml-rpc/) & [REST-API](https://wpdeveloper.com/docs/how-to-disable-comments-made-via-rest-api/)
 * **[New]** Fully Multi-site Network supported.
+* **[New]** Manage multiple website networks specific subsites or entire networks comments in advance.
+* **[New]** Exclude Disable Comments Settings based on user roles.
 
 https://www.youtube.com/watch?v=FBq3-W-p-DM
 
@@ -56,7 +58,7 @@ Please delete any existing comments on your site **before applying this setting*
 Easily configure your comment-related settings with an amazing and attractive app-like user interface.
 
 **WP-CLI COMMANDS TO DISABLE COMMENTS**
-Use [WP-CLI](https://wpdeveloper.net/docs/how-to-use-disable-comments-plugin-with-wp-cli-command-line/) control for comment-related settings to disable comments on posts, pages, attachments or everywhere on your website.
+Use [WP-CLI](https://wpdeveloper.com/docs/how-to-use-disable-comments-plugin-with-wp-cli-command-line/) control for comment-related settings to disable comments on posts, pages, attachments or everywhere on your website.
 
 https://www.youtube.com/watch?v=mzi5uhKB9Zk
 
@@ -95,12 +97,12 @@ Some of the plugin’s behavior can be modified by site administrators and plugi
 These definitions can be made either in your main `wp-config.php` or in your theme's `functions.php` file.
 
 
-**THIS PLUGIN IS NOW MAINTAINED BY THE TEAM** [WPDeveloper](https://wpdeveloper.net/).
+**THIS PLUGIN IS NOW MAINTAINED BY THE TEAM** [WPDeveloper](https://wpdeveloper.com/).
 
 
 ### 💙 LOVED DISABLE COMMENTS?
 
-- For documentation and tutorials go to our [Documentation](https://wpdeveloper.net/docs-category/disable-comments/)
+- For documentation and tutorials go to our [Documentation](https://wpdeveloper.com/docs-category/disable-comments/)
 
 - For video tutorials go to our [YouTube Playlist](https://www.youtube.com/watch?v=J9AteKzQpPs&list=PLWHp1xKHCfxD2_xOIR5dMAGf3wd4hv-8K)
 
@@ -108,7 +110,7 @@ These definitions can be made either in your main `wp-config.php` or in your the
 
 - If you love Disable Comments, [rate us on WordPress](https://wordpress.org/support/plugin/disable-comments/reviews/?filter=5)
 
-- For more information about features, FAQs, and documentation, check out our website at [Disable Comments](https://wpdeveloper.net/plugins/disable-comments/)
+- For more information about features, FAQs, and documentation, check out our website at [Disable Comments](https://wpdeveloper.com/plugins/disable-comments/)
 
 
 ### 🔥 GET FREEBIES FOR YOUR WORDPRESS SITE
@@ -123,18 +125,18 @@ Consider checking out our other WordPress solutions & boost your WordPress websi
 
 📄 [EmbedPress](https://wordpress.org/plugins/embedpress/): EmbedPress lets you embed anything including videos, images, posts, audio, maps and upload PDF, DOC, PPT etc.
 
-☁ [Templately](https://wordpress.org/plugins/templately/): 1000+ Free templates library for Elementor & Gutenberg along with the cloud collaboration for WordPress.
+☁ [Templately](https://wordpress.org/plugins/templately/): 1200+ Free templates library for Elementor & Gutenberg along with the cloud collaboration for WordPress.
 
 📚 [BetterDocs](https://wordpress.org/plugins/betterdocs/): Best Documentation & Knowledge Base Plugin for WordPress reduce manual support tickets & improve user experience.
 
 ⏰ [SchedulePress](https://wordpress.org/plugins/wp-scheduled-posts/): Advanced editorial calendar with WordPress Post Scheduling, Social Sharing, Missed scheduled alerts, and more.
 
-⭐ [ReviewX](https://wordpress.org/plugins/reviewx/): WooCommerce Product review plugin that allows users to submit product reviews with multiple criteria, photos, video, and more.
+⭐ [ReviewX](https://wordpress.org/plugins/reviewx/): WooCommerce Product review plugin that allows users to submit product reviews with multiple criteria, photos, videos, and more.
 
 ⚡ [Flexia](https://wordpress.org/themes/flexia/): Most lightweight, customizable & multi purpose theme for WordPress.
 
 
-Visit [WPDeveloper](https://wpdeveloper.net/) to learn more about how to do better in WordPress with [Help Tutorial, Tips & Tricks](https://wpdeveloper.net/blog).
+Visit [WPDeveloper](https://wpdeveloper.com/) to learn more about how to do better in WordPress with [Help Tutorial, Tips & Tricks](https://wpdeveloper.com/blog).
 
 
 
@@ -159,7 +161,7 @@ Visit [WPDeveloper](https://wpdeveloper.net/) to learn more about how to do bett
 
 This is because your theme is not checking the comment status of posts in the correct way.
 
-You may like to point your theme's author to [this explanation](https://wpdeveloper.net/wordpress-posts-have-comments-allowed/) of what they are doing wrong, and how to fix it.
+You may like to point your theme's author to [this explanation](https://wpdeveloper.com/wordpress-posts-have-comments-allowed/) of what they are doing wrong, and how to fix it.
 
 = How can I remove the text that says "comments are closed" at the bottom of articles where comments are disabled? =
 
@@ -183,6 +185,7 @@ Go to the tools page for the Disable Comments plugin and utlize the Delete Comme
 
 1. Setting Screen for Disable Comments
 2. Delete Comments under Tools menu.
+3. Multisite Network support
 
 
 == Changelog ==
@@ -190,6 +193,46 @@ Go to the tools page for the Disable Comments plugin and utlize the Delete Comme
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 This will be maiintained from August 19, 2020 - @asif2bd
+
+= [2.4.3] - 2023-01-12 =
+* Added: PHP 8.2 Compatibility
+
+= [2.4.2] - 2022-09-18 =
+* Improved sanitization.
+
+= [2.4.1] - 2022-08-10 =
+* Improvement: Localized missing strings in plugin.
+* Improvement: Included the fonts in plugin distribution.
+
+= [2.4.0] - 2022-07-27 =
+* New Feature: Exclude Disable Comments settings based on user roles.
+* Few minor bug fix and improvement.
+
+= [2.3.6] - 2022-06-05 =
+* Fixed: JavaScript error in Gutenberg editor.
+
+= [2.3.5] - 2022-04-27 =
+* Added: More WP-CLI commands.
+* Few minor bug fix and improvement.
+
+= [2.3.4] - 2022-03-28 =
+* Fixed: PHP Warning in Multisite Network.
+
+= [2.3.3] - 2022-01-25 =
+* Added: WordPress 5.9 compatibility added.
+
+= [2.3.2] - 2021-12-20 =
+* Added: Configure Disable Avatar settings from the main network of Multisite Network.
+* Fixed: Disable Comments via REST API toggle mismatch issue.
+
+= [2.3.1] - 2021-12-14 =
+* Added: You can enable or disable Avatar from Disable Comments settings.
+
+= [2.3.0] - 2021-12-14 =
+* New Feature: Delete Spam Comments.
+* Updated deprecated jQuery library.
+* Improvement: Disable Gravatar request.
+* Few minor bug fixes and improvement.
 
 = [2.2.4] - 2021-11-09 =
 * Added: Ajax pagination in Subsite area (Multisite network).

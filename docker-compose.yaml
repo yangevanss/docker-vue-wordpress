@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+    wordpress:
+        container_name: ${COMPOSE_PROJECT_NAME}_wordpress
+        image: wordpress:6.1.1-php8.0
+        volumes:
+            - ./wordpress:/var/www/html
+            - ./wordpress/.htaccess:/var/www/html/.htaccess
+        expose:
+            - $WP_PORT
+        ports:
+            - $WP_PORT:80
+        depends_on:
+            - mysql
+        environment:
+            WORDPRESS_DB_HOST: mysql:3306
+            WORDPRESS_DB_USER: $WP_MYSQL_USERNAME
+            WORDPRESS_DB_PASSWORD: $WP_MYSQL_PASSWORD
+            WORDPRESS_DB_NAME: $WP_MYSQL_DATABASE
+            WORDPRESS_DEBUG: 'true'
+            WORDPRESS_CONFIG_EXTRA: |
+                define('WP_SITEURL', 'http://' . $$_SERVER['HTTP_HOST'] . '/');
+                define('WP_HOME', 'http://' . $$_SERVER['HTTP_HOST'] . '/');
+                define('WP_MEMORY_LIMIT', '256M');
+                define('WP_MAX_MEMORY_LIMIT', '256M');
+                define('VITE_PORT', $VITE_PORT);
+
+    phpmyadmin:
+        container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        depends_on:
+            - mysql
+        environment:
+            - PMA_HOST=mysql:3306
+            - PMA_ARBITRARY=1
+            - UPLOAD_LIMIT=100M
+        ports:
+            - $WP_PORT_PHP_MY_ADMIN:80
+
+    mysql:
+        container_name: ${COMPOSE_PROJECT_NAME}_mysql
+        image: mysql:8.0.31
+        platform: linux/arm64/v8
+        volumes:
+            - ./SQL/dump-newest.sql:/docker-entrypoint-initdb.d/dump-newest.sql
+        environment:
+            MYSQL_ROOT_PASSWORD: $WP_MYSQL_ROOT_PASSWORD
+            MYSQL_DATABASE: $WP_MYSQL_DATABASE
+            MYSQL_USER: $WP_MYSQL_USERNAME
+            MYSQL_PASSWORD: $WP_MYSQL_PASSWORD

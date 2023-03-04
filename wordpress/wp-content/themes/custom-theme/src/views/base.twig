@@ -1,0 +1,20 @@
+<!doctype html>
+<!--[if lt IE 9]><html class="no-js no-svg ie lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 9]><html class="no-js no-svg ie ie9 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif]-->
+<!--[if gt IE 9]><!-->
+	<html
+	class="no-js no-svg" {{ site.language_attributes }}> <!--<![endif]-->
+	<head>
+		{{ enqueue_script_style('@vite/client') }}
+		{{ enqueue_script_style('@/main') }}
+		{% block head %}{% endblock %}
+		{% include 'html-header.twig' %}
+	</head>
+	<body class="{{body_class}} -loading" data-template="base.twig">
+		{% include 'components/Header/index.twig' %}
+		<main id="app" role="main" class="content-wrapper"> {% block content %}{% endblock %}
+			</main>
+			{% include 'components/Footer/index.twig' %}
+			{{ function('wp_footer') }}
+		</body>
+	</html>

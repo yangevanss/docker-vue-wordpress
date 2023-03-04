@@ -42,6 +42,7 @@ class ameAccessTestRunner implements ArrayAccess {
 	public function ajax_set_test_configuration() {
 		check_ajax_referer('ws_ame_set_test_configuration');
 		if ( !$this->menuEditor->current_user_can_edit_menu() ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Outputs JSON, not HTML.
 			exit($this->menuEditor->json_encode(array(
 				'error' => 'You don\'t have permission to test menu settings.',
 			)));
@@ -52,15 +53,14 @@ class ameAccessTestRunner implements ArrayAccess {
 
 		$metaId = add_user_meta(get_current_user_id(), self::TEST_DATA_META_KEY, wp_slash($menuData), false);
 		if ( $metaId === false ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Outputs JSON, not HTML.
 			exit($this->menuEditor->json_encode(array(
 				'error' => 'Failed to store test data. add_user_meta() returned FALSE.',
 			)));
 		}
 
-		exit($this->menuEditor->json_encode(array(
-			'success' => true,
-			'meta_id' => $metaId,
-		)));
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Outputs JSON, not HTML.
+		exit($this->menuEditor->json_encode(array('success' => true, 'meta_id' => $metaId)));
 	}
 
 	public function init_access_test() {
@@ -96,7 +96,7 @@ class ameAccessTestRunner implements ArrayAccess {
 		try {
 			$test_menu = ameMenu::load_json($json);
 		} catch (InvalidMenuException $e) {
-			exit($e->getMessage());
+			exit(esc_html($e->getMessage()));
 		}
 		$this->test_menu = $test_menu;
 
@@ -128,6 +128,7 @@ class ameAccessTestRunner implements ArrayAccess {
 	}
 
 	public function output_access_test_results() {
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Intentionally outputs generated JS.
 		echo $this->get_access_test_result_script();
 	}
 
@@ -139,10 +140,9 @@ class ameAccessTestRunner implements ArrayAccess {
 			)
 		);
 
-		$script = '<script type="text/javascript">
+		return '<script type="text/javascript">
 			window.parent.postMessage((' . $this->menuEditor->json_encode($response) . '), "*");
 		</script>';
-		return $script;
 	}
 
 	public function replace_die_handler_for_access_test($callback = null) {
@@ -217,6 +217,7 @@ class ameAccessTestRunner implements ArrayAccess {
 	 * The return value will be casted to boolean if non-boolean was returned.
 	 * @since 5.0.0
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetExists($offset) {
 		return array_key_exists($offset, $this->access_test_results);
 	}
@@ -231,6 +232,7 @@ class ameAccessTestRunner implements ArrayAccess {
 	 * @return mixed Can return all value types.
 	 * @since 5.0.0
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetGet($offset) {
 		return $this->access_test_results[$offset];
 	}
@@ -248,6 +250,7 @@ class ameAccessTestRunner implements ArrayAccess {
 	 * @return void
 	 * @since 5.0.0
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetSet($offset, $value) {
 		$this->access_test_results[$offset] = $value;
 	}
@@ -262,6 +265,7 @@ class ameAccessTestRunner implements ArrayAccess {
 	 * @return void
 	 * @since 5.0.0
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetUnset($offset) {
 		unset($this->access_test_results[$offset]);
 	}

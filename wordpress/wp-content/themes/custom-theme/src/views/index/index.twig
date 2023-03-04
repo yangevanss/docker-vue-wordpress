@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{{ enqueue_script_style('@/views/index/index') }}
+	<div class="container">
+		<p>{{ qux }}</p>
+		<h2>{{ foo }}</h2>
+	</div>
+	<img src="{{ require_assets('@/vite.svg') }}" alt="">
+	<Icon name="vite"></Icon>
+	<Hello-world></Hello-world>
+	{% include 'index/components/HelloWorld/index.twig' %}
+
+	{% include 'components/Pagination/index.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+{% endblock %}

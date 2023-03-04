@@ -39,6 +39,11 @@ class Module extends amePersistentModule {
 
 	protected $searchUsersAction;
 
+	/**
+	 * @var WP_User|null
+	 */
+	protected $currentRedirectedUser = null;
+
 	public function __construct($menuEditor) {
 		parent::__construct($menuEditor);
 
@@ -55,6 +60,10 @@ class Module extends amePersistentModule {
 			add_filter('logout_redirect', [$this, 'filterLogoutRedirect'], self::FILTER_PRIORITY, 3);
 			//Registration redirect. This happens after the user is created but before the user logs in.
 			add_filter('registration_redirect', [$this, 'filterRegistrationRedirect'], self::FILTER_PRIORITY, 1);
+
+			//Let other components, like the "[ame-user-info]" shortcode, know which user is being redirected.
+			//This is necessary because WP doesn't set the global user object when performing some redirects.
+			add_filter('admin_menu_editor-redirected_user', [$this, 'provideRedirectedUser']);
 		}
 
 		if ( is_admin() ) {
@@ -156,7 +165,8 @@ class Module extends amePersistentModule {
 	 * @return string
 	 * @noinspection PhpUnusedParameterInspection The parameters are defined by the hook and can't be changed.
 	 */
-	public function filterLoginRedirect($redirectTo, $requestedRedirectTo, $user = null) {
+	public function filterLoginRedirect($redirectTo, $requestedRedirectTo = '', $user = null) {
+		//TODO: If there are no "first login" settings for this user, apply the regular login redirect.
 		if ( $this->checkFirstLogin($user) ) {
 			$trigger = Triggers::FIRST_LOGIN;
 		} else {
@@ -184,6 +194,7 @@ class Module extends amePersistentModule {
 	 */
 	protected function filterRedirect($trigger, $redirectTo, $requestedRedirectTo, $user = null) {
 		if ( !($user instanceof WP_User) ) {
+			$this->currentRedirectedUser = null;
 			return $redirectTo;
 		}
 
@@ -191,12 +202,17 @@ class Module extends amePersistentModule {
 		if ( $found->nonEmpty() ) {
 			/** @var Redirect $customRedirect */
 			$customRedirect = $found->get();
+
+			//Set the user for shortcodes in the redirect URL. wp_get_current_user() doesn't always work,
+			//like when the user is still in the process of logging in.
+			$this->currentRedirectedUser = $user;
 			$url = $customRedirect->getUrl();
+			$this->currentRedirectedUser = null;
 
 			//WordPress uses wp_safe_redirect() for login, logout, and registration redirects, which
 			//only allows local redirects by default. Let's temporarily add the domain name of the URL
 			//to the allowed host list to let the user set any redirect URL they want.
-			$redirectHost = parse_url($url, PHP_URL_HOST);
+			$redirectHost = wp_parse_url($url, PHP_URL_HOST);
 			if ( !empty($redirectHost) ) {
 				add_filter('allowed_redirect_hosts', function ($allowedHosts) use ($redirectHost) {
 					$allowedHosts[] = $redirectHost;
@@ -279,6 +295,17 @@ class Module extends amePersistentModule {
 		}
 	}
 
+	/**
+	 * @param $user
+	 * @return WP_User|null
+	 */
+	public function provideRedirectedUser($user = null) {
+		if ( $this->currentRedirectedUser !== null ) {
+			return $this->currentRedirectedUser;
+		}
+		return $user;
+	}
+
 	public function registerScripts() {
 		parent::registerScripts();
 
@@ -336,9 +363,12 @@ class Module extends amePersistentModule {
 			'hasMoreUsers'    => $hasMoreUsers,
 		];
 
+		//phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( isset($_GET['selectedTrigger']) && in_array($_GET['selectedTrigger'], Triggers::getValues()) ) {
+			//phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Already validated by checking against Triggers::getValues().
 			$scriptData['selectedTrigger'] = $_GET['selectedTrigger'];
 		}
+		//phpcs:enable
 
 		wp_add_inline_script(
 			self::UI_SCRIPT_HANDLE,
@@ -364,8 +394,7 @@ class Module extends amePersistentModule {
 
 		if ( is_wp_error($validationResult) ) {
 			//It seems that wp_die() doesn't automatically escape special characters, so let's do that.
-			$message = esc_html($validationResult->get_error_message());
-			wp_die($message);
+			wp_die(esc_html($validationResult->get_error_message()));
 		}
 
 		$newRedirects = new RedirectCollection();
@@ -955,7 +984,7 @@ class MenuExtractor {
 		$url = ameMenuItem::get($item, 'url');
 
 		$rawTitle = ameMenuItem::get($item, 'menu_title', '[Untitled]');
-		$fullTitle = trim(strip_tags(ameMenuItem::remove_update_count($rawTitle)));
+		$fullTitle = trim(wp_strip_all_tags(ameMenuItem::remove_update_count($rawTitle)));
 		if ( $parentTitle !== null ) {
 			$fullTitle = $parentTitle . ' → ' . $fullTitle;
 		}
@@ -986,7 +1015,7 @@ class MenuExtractor {
 	 * @return boolean
 	 */
 	private function looksLikeDashboardUrl($url) {
-		$scheme = parse_url($url, PHP_URL_SCHEME);
+		$scheme = wp_parse_url($url, PHP_URL_SCHEME);
 		if ( !empty($scheme) ) {
 			return false;
 		}

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+          "@/*": ["wordpress/wp-content/themes/custom-theme/src/*"]
+      }
+  }
+}

@@ -4,9 +4,9 @@
  * Plugin Name: Disable Comments
  * Plugin URI: https://wordpress.org/plugins/disable-comments/
  * Description: Allows administrators to globally disable comments on their site. Comments can be disabled according to post type. You could bulk delete comments using Tools.
- * Version: 2.2.4
+ * Version: 2.4.3
  * Author: WPDeveloper
- * Author URI: https://wpdeveloper.net
+ * Author URI: https://wpdeveloper.com
  * License: GPL-3.0+
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: disable-comments
@@ -25,6 +25,10 @@ class Disable_Comments
 	private static $instance = null;
 	private $options;
 	public  $networkactive;
+	public  $tracker;
+	public  $is_CLI;
+	public  $sitewide_settings;
+	public  $setup_notice_flag;
 	private $modified_types = array();
 
 	public static function get_instance()
@@ -37,7 +41,7 @@ class Disable_Comments
 
 	function __construct()
 	{
-		define('DC_VERSION', '2.2.4');
+		define('DC_VERSION', '2.4.3');
 		define('DC_PLUGIN_SLUG', 'disable_comments_settings');
 		define('DC_PLUGIN_ROOT_PATH', dirname(__FILE__));
 		define('DC_PLUGIN_VIEWS_PATH', DC_PLUGIN_ROOT_PATH . '/views/');
@@ -103,14 +107,14 @@ class Disable_Comments
 
 		// Upgrade DB if necessary.
 		$this->check_db_upgrades();
+		$this->check_upgrades();
 
-		$this->init_filters();
-
+		add_action( 'plugins_loaded', [ $this, 'init_filters'] );
 		add_action( 'wp_loaded', [ $this, 'start_plugin_usage_tracking'] );
 	}
 
 	public function is_network_admin(){
-		if (is_network_admin() || defined('DOING_AJAX') && DOING_AJAX && is_multisite() && preg_match('#^'.network_admin_url().'#i',$_SERVER['HTTP_REFERER'])) {
+		if (is_network_admin() || isset($_SERVER['HTTP_REFERER']) && defined('DOING_AJAX') && DOING_AJAX && is_multisite() && preg_match('#^'.network_admin_url().'#i',$_SERVER['HTTP_REFERER'])) {
 			return true;
 		}
 		return false;
@@ -215,6 +219,18 @@ class Disable_Comments
 		}
 	}
 
+	public function check_upgrades(){
+		$dc_version = get_option('disable_comment_version');
+		if (version_compare($dc_version, '2.3.1', '<')) {
+			if ($this->is_remove_everywhere()){
+				update_option('show_avatars', true);
+			}
+		}
+		if(!$dc_version || $dc_version != DC_VERSION){
+			update_option('disable_comment_version', DC_VERSION);
+		}
+	}
+
 	private function update_options()
 	{
 		if ($this->networkactive && !empty($this->options['is_network_admin']) && $this->options['is_network_admin']) {
@@ -273,15 +289,49 @@ class Disable_Comments
 	/**
 	 * Check whether comments have been disabled on a given post type.
 	 */
+	private function is_exclude_by_role()
+	{
+		if(!empty($this->options['enable_exclude_by_role']) && !empty($this->options['exclude_by_role'])){
+			if(is_user_logged_in()){
+				$user  = wp_get_current_user();
+				$roles = ( array ) $user->roles;
+				$diff = array_intersect($this->options['exclude_by_role'], $roles);
+				if(count($diff) || (in_array("administrator", $this->options['exclude_by_role']) && is_super_admin())){
+					return true;
+				}
+			}
+			else if(in_array('logged-out-users', $this->options['exclude_by_role'])){
+				return true;
+			}
+		}
+		return false;
+	}
+	private function is_remove_everywhere()
+	{
+		if($this->is_exclude_by_role()){
+			return false;
+		}
+		if(isset($this->options['remove_everywhere'])){
+			return $this->options['remove_everywhere'];
+		}
+		return false;
+	}
+
+	/**
+	 * Check whether comments have been disabled on a given post type.
+	 */
 	private function is_post_type_disabled($type)
 	{
+		if($this->is_exclude_by_role()){
+			return false;
+		}
 		return $type && in_array($type, $this->get_disabled_post_types());
 	}
 
-	private function init_filters()
+	public function init_filters()
 	{
 		// These need to happen now.
-		if ($this->options['remove_everywhere']) {
+		if ($this->is_remove_everywhere()) {
 			add_action('widgets_init', array($this, 'disable_rc_widget'));
 			add_filter('wp_headers', array($this, 'filter_wp_headers'));
 			add_action('template_redirect', array($this, 'filter_query'), 9);   // before redirect_canonical.
@@ -300,11 +350,12 @@ class Disable_Comments
 		}
 		// rest API Comment Block
 		if (isset($this->options['remove_rest_API_comments']) && intval($this->options['remove_rest_API_comments']) === 1) {
-			add_filter('rest_pre_insert_comment', array($this, 'disable_rest_API_comments'));
+			add_filter('rest_pre_insert_comment', array($this, 'disable_rest_API_comments'), 10, 2);
 		}
 
 		// These can happen later.
-		add_action('plugins_loaded', array($this, 'register_text_domain'));
+		$this->register_text_domain();
+		// add_action('plugins_loaded', array($this, 'register_text_domain'));
 		add_action('wp_loaded', array($this, 'init_wploaded_filters'));
 		// Disable "Latest comments" block in Gutenberg.
 		add_action('enqueue_block_editor_assets', array($this, 'filter_gutenberg_blocks'));
@@ -319,7 +370,6 @@ class Disable_Comments
 		}
 	}
 
-
 	public function register_text_domain()
 	{
 		load_plugin_textdomain('disable-comments', false, dirname(plugin_basename(__FILE__)) . '/languages');
@@ -328,7 +378,7 @@ class Disable_Comments
 	public function init_wploaded_filters()
 	{
 		$disabled_post_types = $this->get_disabled_post_types();
-		if (!empty($disabled_post_types)) {
+		if (!empty($disabled_post_types) && !$this->is_exclude_by_role()) {
 			foreach ($disabled_post_types as $type) {
 				// we need to know what native support was for later.
 				if (post_type_supports($type, 'comments')) {
@@ -369,7 +419,7 @@ class Disable_Comments
 			add_action('admin_notices', array($this, 'discussion_notice'));
 			add_filter('plugin_row_meta', array($this, 'set_plugin_meta'), 10, 2);
 
-			if ($this->options['remove_everywhere']) {
+			if ($this->is_remove_everywhere()) {
 				add_action('admin_menu', array($this, 'filter_admin_menu'), 9999);  // do this as late as possible.
 				add_action('admin_print_styles-index.php', array($this, 'admin_css'));
 				add_action('admin_print_styles-profile.php', array($this, 'admin_css'));
@@ -381,7 +431,7 @@ class Disable_Comments
 		else {
 			add_action('template_redirect', array($this, 'check_comment_template'));
 
-			if ($this->options['remove_everywhere']) {
+			if ($this->is_remove_everywhere()) {
 				add_filter('feed_links_show_comments_feed', '__return_false');
 			}
 		}
@@ -404,7 +454,7 @@ class Disable_Comments
 	 */
 	public function check_comment_template()
 	{
-		if (is_singular() && ($this->options['remove_everywhere'] || $this->is_post_type_disabled(get_post_type()))) {
+		if (is_singular() && ($this->is_remove_everywhere() || $this->is_post_type_disabled(get_post_type()))) {
 			if (!defined('DISABLE_COMMENTS_REMOVE_COMMENTS_TEMPLATE') || DISABLE_COMMENTS_REMOVE_COMMENTS_TEMPLATE == true) {
 				// Kill the comments template.
 				add_filter('comments_template', array($this, 'dummy_comments_template'), 20);
@@ -495,7 +545,7 @@ class Disable_Comments
 	public function filter_gutenberg_blocks($hook)
 	{
 		global $post;
-		if ($this->options['remove_everywhere'] || (isset($post->post_type) && in_array($post->post_type, $this->get_disabled_post_types(), true))) {
+		if ($this->is_remove_everywhere() || (isset($post->post_type) && $this->is_post_type_disabled($post->post_type))) {
 			return $this->disable_comments_script();
 		}
 	}
@@ -520,11 +570,13 @@ class Disable_Comments
 			// css
 			wp_enqueue_style('sweetalert2',  DC_ASSETS_URI . 'css/sweetalert2.min.css', [], false);
 			// wp_enqueue_style('pagination',  DC_ASSETS_URI . 'css/pagination.css', [], false);
-			wp_enqueue_style('disable-comments-style',  DC_ASSETS_URI . 'css/style.css', [], false);
+			wp_enqueue_style('disable-comments-style',  DC_ASSETS_URI . 'css/style.css', [], DC_VERSION);
+			wp_enqueue_style('select2',  DC_ASSETS_URI . 'css/select2.min.css', [], false);
 			// js
 			wp_enqueue_script('sweetalert2', DC_ASSETS_URI . 'js/sweetalert2.all.min.js', array('jquery'), false, true);
 			wp_enqueue_script('pagination', DC_ASSETS_URI . 'js/pagination.min.js', array('jquery'), false, true);
-			wp_enqueue_script('disable-comments-scripts', DC_ASSETS_URI . 'js/disable-comments-settings-scripts.js', array('jquery'), false, true);
+			wp_enqueue_script('select2', DC_ASSETS_URI . 'js/select2.min.js', array('jquery'), false, true);
+			wp_enqueue_script('disable-comments-scripts', DC_ASSETS_URI . 'js/disable-comments-settings-scripts.js', array('jquery', 'select2', 'pagination', 'sweetalert2', 'wp-i18n'), DC_VERSION, true);
 			wp_localize_script(
 				'disable-comments-scripts',
 				'disableCommentsObj',
@@ -535,6 +587,7 @@ class Disable_Comments
 					'_nonce' => wp_create_nonce('disable_comments_save_settings')
 				)
 			);
+			wp_set_script_translations( 'disable-comments-scripts', 'disable-comments' );
 		} else {
 			// notice css
 			wp_enqueue_style('disable-comments-notice',  DC_ASSETS_URI . 'css/notice.css', [], false);
@@ -645,19 +698,19 @@ class Disable_Comments
 	public function filter_existing_comments($comments, $post_id)
 	{
 		$post_type = get_post_type($post_id);
-		return ($this->options['remove_everywhere'] || $this->is_post_type_disabled($post_type)  ? array() : $comments);
+		return ($this->is_remove_everywhere() || $this->is_post_type_disabled($post_type)  ? array() : $comments);
 	}
 
 	public function filter_comment_status($open, $post_id)
 	{
 		$post_type = get_post_type($post_id);
-		return ($this->options['remove_everywhere'] || $this->is_post_type_disabled($post_type) ? false : $open);
+		return ($this->is_remove_everywhere() || $this->is_post_type_disabled($post_type) ? false : $open);
 	}
 
 	public function filter_comments_number($count, $post_id)
 	{
 		$post_type = get_post_type($post_id);
-		return ($this->options['remove_everywhere'] || $this->is_post_type_disabled($post_type) ? 0 : $count);
+		return ($this->is_remove_everywhere() || $this->is_post_type_disabled($post_type) ? 0 : $count);
 	}
 
 	public function disable_rc_widget()
@@ -799,6 +852,26 @@ class Disable_Comments
 		return $types;
 	}
 
+	public function get_roles($selected)
+	{
+		$roles = [
+			[
+				"id"       => 'logged-out-users',
+				"text"     => __('Logged out users', 'disable-comments'),
+				"selected" => in_array('logged-out-users', (array) $selected),
+			]
+		];
+		$editable_roles = array_reverse( get_editable_roles() );
+		foreach ( $editable_roles as $role => $details ) {
+			$roles[] = [
+				"id"       => esc_attr($role),
+				"text"     => translate_user_role( $details['name'] ),
+				"selected" => in_array($role, (array) $selected),
+			];
+		}
+		return $roles;
+	}
+
 	public function tools_page()
 	{
 		return;
@@ -806,9 +879,29 @@ class Disable_Comments
 
 	public function settings_page()
 	{
-		if( isset( $_GET['cancel'] ) && trim( $_GET['cancel'] ) === 'setup' ){
-			$this->update_option('dc_setup_screen_seen', true);
+		// if( isset( $_GET['cancel'] ) && trim( $_GET['cancel'] ) === 'setup' ){
+		// 	$this->update_option('dc_setup_screen_seen', true);
+		// }
+		$avatar_status = '-1';
+		if($this->is_network_admin()){
+			$show_avatars = [];
+			$sites = get_sites([
+				'number' => 0,
+				'fields' => 'ids',
+			]);
+			foreach ( $sites as $blog_id ) {
+				switch_to_blog( $blog_id );
+				$show_avatars[] = get_option('show_avatars', '0');
+				restore_current_blog();
+			}
+			if(count($show_avatars) == array_sum($show_avatars)){
+				$avatar_status = '0';
+			}
+			elseif(0 == array_sum($show_avatars)){
+				$avatar_status = '1';
+			}
 		}
+
 		include_once DC_PLUGIN_VIEWS_PATH . 'settings.php';
 	}
 
@@ -867,6 +960,9 @@ class Disable_Comments
 			}
 			$old_options = $this->options;
 			$this->options = [];
+			if($this->is_CLI){
+				$this->options = $old_options;
+			}
 
 			$this->options['is_network_admin'] = isset($formArray['is_network_admin']) && $formArray['is_network_admin'] == '1' ? true : false;
 
@@ -903,6 +999,33 @@ class Disable_Comments
 			if(isset($formArray['sitewide_settings'])){
 				update_site_option('disable_comments_sitewide_settings', $formArray['sitewide_settings']);
 			}
+
+			if(isset($formArray['disable_avatar'])){
+				if($this->is_network_admin()){
+					if($formArray['disable_avatar'] == '0' || $formArray['disable_avatar'] == '1'){
+						$sites = get_sites([
+							'number' => 0,
+							'fields' => 'ids',
+						]);
+						foreach ( $sites as $blog_id ) {
+							switch_to_blog( $blog_id );
+							update_option('show_avatars', (bool) !$formArray['disable_avatar']);
+							restore_current_blog();
+						}
+					}
+				}
+				else{
+					update_option('show_avatars', (bool) !$formArray['disable_avatar']);
+				}
+			}
+
+			if (isset($formArray['enable_exclude_by_role'])) {
+				$this->options['enable_exclude_by_role'] = $formArray['enable_exclude_by_role'];
+			}
+			if (isset($formArray['exclude_by_role'])) {
+				$this->options['exclude_by_role'] = $formArray['exclude_by_role'];
+			}
+
 			// xml rpc
 			$this->options['remove_xmlrpc_comments'] = (isset($formArray['remove_xmlrpc_comments']) ? intval($formArray['remove_xmlrpc_comments']) : ($this->is_CLI && isset($this->options['remove_xmlrpc_comments']) ? $this->options['remove_xmlrpc_comments'] : 0));
 			// rest api comments
@@ -933,7 +1056,11 @@ class Disable_Comments
 		global $deletedPostTypeNames;
 		$log = '';
 		$nonce = (isset($_POST['nonce']) ? $_POST['nonce'] : '');
-		$formArray = $this->form_data_modify($_POST['data']);
+		if (!empty($_args)) {
+			$formArray = wp_parse_args($_args);
+		} else {
+			$formArray = (isset($_POST['data']) ? $this->form_data_modify($_POST['data']) : []);
+		}
 
 		if (($this->is_CLI && !empty($_args)) || wp_verify_nonce($nonce, 'disable_comments_save_settings')) {
 			if ( !empty($formArray['is_network_admin']) && function_exists( 'get_sites' ) && class_exists( 'WP_Site_Query' ) ) {
@@ -1008,9 +1135,9 @@ class Disable_Comments
 				if (!empty($delete_post_types)) {
 					// Loop through post_types and remove comments/meta and set posts comment_count to 0.
 					foreach ($delete_post_types as $delete_post_type) {
-						$wpdb->query("DELETE cmeta FROM $wpdb->commentmeta cmeta INNER JOIN $wpdb->comments comments ON cmeta.comment_id=comments.comment_ID INNER JOIN $wpdb->posts posts ON comments.comment_post_ID=posts.ID WHERE posts.post_type = '$delete_post_type'");
-						$wpdb->query("DELETE comments FROM $wpdb->comments comments INNER JOIN $wpdb->posts posts ON comments.comment_post_ID=posts.ID WHERE posts.post_type = '$delete_post_type'");
-						$wpdb->query("UPDATE $wpdb->posts SET comment_count = 0 WHERE post_author != 0 AND post_type = '$delete_post_type'");
+						$wpdb->query($wpdb->prepare("DELETE cmeta FROM $wpdb->commentmeta cmeta INNER JOIN $wpdb->comments comments ON cmeta.comment_id=comments.comment_ID INNER JOIN $wpdb->posts posts ON comments.comment_post_ID=posts.ID WHERE posts.post_type = '%s'", $delete_post_type));
+						$wpdb->query($wpdb->prepare("DELETE comments FROM $wpdb->comments comments INNER JOIN $wpdb->posts posts ON comments.comment_post_ID=posts.ID WHERE posts.post_type = '%s'", $delete_post_type));
+						$wpdb->query($wpdb->prepare("UPDATE $wpdb->posts SET comment_count = 0 WHERE post_author != 0 AND post_type = '%s'", $delete_post_type));
 
 						$post_type_object = get_post_type_object($delete_post_type);
 						$post_type_label  = $post_type_object ? $post_type_object->labels->name : $delete_post_type;
@@ -1028,15 +1155,15 @@ class Disable_Comments
 				if (!empty($delete_comment_types)) {
 					// Loop through comment_types and remove comments/meta and set posts comment_count to 0.
 					foreach ($delete_comment_types as $delete_comment_type) {
-						$wpdb->query("DELETE cmeta FROM $wpdb->commentmeta cmeta INNER JOIN $wpdb->comments comments ON cmeta.comment_id=comments.comment_ID WHERE comments.comment_type = '$delete_comment_type'");
-						$wpdb->query("DELETE comments FROM $wpdb->comments comments  WHERE comments.comment_type = '$delete_comment_type'");
+						$wpdb->query($wpdb->prepare("DELETE cmeta FROM $wpdb->commentmeta cmeta INNER JOIN $wpdb->comments comments ON cmeta.comment_id=comments.comment_ID WHERE comments.comment_type = '%s'", $delete_comment_type));
+						$wpdb->query($wpdb->prepare("DELETE comments FROM $wpdb->comments comments  WHERE comments.comment_type = '%s'", $delete_comment_type));
 						$deletedPostTypeNames[] = $commenttypes[$delete_comment_type];
 					}
 
 					// Update comment_count on post_types
 					foreach ($types as $key => $value) {
-						$comment_count = $wpdb->get_var("SELECT COUNT(comments.comment_ID) FROM $wpdb->comments comments INNER JOIN $wpdb->posts posts ON comments.comment_post_ID=posts.ID WHERE posts.post_type = '$key'");
-						$wpdb->query("UPDATE $wpdb->posts SET comment_count = $comment_count WHERE post_author != 0 AND post_type = '$key'");
+						$comment_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(comments.comment_ID) FROM $wpdb->comments comments INNER JOIN $wpdb->posts posts ON comments.comment_post_ID=posts.ID WHERE posts.post_type = '%s'", $key));
+						$wpdb->query($wpdb->prepare("UPDATE $wpdb->posts SET comment_count = %d WHERE post_author != 0 AND post_type = '%s'", $comment_count, $key));
 					}
 
 					$wpdb->query("OPTIMIZE TABLE $wpdb->commentmeta");
@@ -1044,8 +1171,19 @@ class Disable_Comments
 
 					$log = __('All comments have been deleted', 'disable-comments');
 				}
+			} elseif ($formArray['delete_mode'] == 'delete_spam') {
+
+				$wpdb->query("DELETE cmeta FROM $wpdb->commentmeta cmeta INNER JOIN $wpdb->comments comments ON cmeta.comment_id=comments.comment_ID WHERE comments.comment_approved = 'spam'");
+				$wpdb->query("DELETE comments FROM $wpdb->comments comments  WHERE comments.comment_approved = 'spam'");
+
+
+				$wpdb->query("OPTIMIZE TABLE $wpdb->commentmeta");
+				$wpdb->query("OPTIMIZE TABLE $wpdb->comments");
+
+				$log = __('All spam comments have been deleted.', 'disable-comments');
 			}
 		}
+		delete_transient('wc_count_comments');
 		return $log;
 	}
 

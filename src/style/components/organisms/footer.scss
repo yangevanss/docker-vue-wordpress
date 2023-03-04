@@ -1,7 +1,0 @@
-.o-footer {
-    @include typo('list', 1);
-
-    padding: 5px 20px;
-    text-align: center;
-    color: map-get($admin-colors, primary);
-}
