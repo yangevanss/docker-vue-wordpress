@@ -22,6 +22,6 @@ export default {
     @include size(1rem);
 
     overflow: hidden;
-    fill: currentColor;
+    fill: currentcolor;
 }
 </style>
