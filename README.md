@@ -147,7 +147,9 @@ import { globalComponents } from "@/plugins/globalComponents";
 import { emitter } from "@/plugins/emitter";
 import { breakpoints } from "@/plugins/breakpoints";
 
-const app = createApp({});
+const app = createApp({
+  delimiters: ["{$", "$}"],
+});
 
 app.use(webFont);
 app.use(globalComponents);

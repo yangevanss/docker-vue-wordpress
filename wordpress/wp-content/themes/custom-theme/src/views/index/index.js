@@ -10,6 +10,7 @@ import "./components/HelloWorld/index";
 import HelloWorld from "@/components/vue/Helloworld/index.vue";
 
 const app = createApp({
+  delimiters: ["{$", "$}"],
   components: {
     HelloWorld,
   },
