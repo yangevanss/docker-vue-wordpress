@@ -1,34 +1,317 @@
-## 安裝步驟
+Overview
+==================================
 
-1. 到 .env 檔設定基本環境
-2. docker compose up -d
-3. yarn; yarn dev
+- [Installation](#installation)
+  - [Development](#development)
+  - [Production](#production)
+  - [Export SQL](#export-sql)
+- [Guides](#guides)
+  - [Routing](#routing)
+  - [Components](#components)
+    - [Global components](#global-components)
+      - [Twig](#twig)
+      - [Vue](#vue)
+    - [Local components](#local-components)
+      - [Twig](#twig-1)
+      - [Vue](#vue-1)
+  - [Alias](#alias)
+    - [Vite](#vite)
+    - [Twig](#twig)
+  - [Assets](#assets)
+    - [Vite](#vite-1)
+    - [Twig](#twig-1)
+  - [Twig functions](#twig-functions)
+- [Wordpress](#wordpress)
+  - [Hierarchy](#hierarchy)
+  - [Plugins](#plugins)
 
-## 上傳步驟
+----------------------------------
 
-1. yarn build
-2. .htaccess  RewriteBase、RewriteRule 要改成資料夾對應路徑
-3. 壓縮 wordpress 資料夾全部檔案，.htaccess 也要，它是隱藏檔
-4. wp-config.php 改成 wp-config-sample.php 裡面的內容
-5. 設定 wp-config.php，key從這拿 https://api.wordpress.org/secret-key/1.1/salt/
-6. 更新 WPML KEY https://wpml.org/account/sites/
+# Installation
 
-## .sh 檔案說明
+## Development
 
-1. `dump.sh`：將 docker VM 的 DB 資料匯出至 `/SQL/dump-newest.sql`
+1. Setting .env file
 
-## Git Commit Type 規範
+Name | Description |
+--- | --- |
+`COMPOSE_PROJECT_NAME` | Docker container name |
+`VITE_PORT` | Vite port |
+`WP_PORT` | Wordpress port |
+`WP_PORT_PHP_MY_ADMIN` | phpMyAdmin Port |
+`WP_MYSQL_DATABASE` | MySQL database name  |
+`WP_MYSQL_USERNAME` | MySQL username |
+`WP_MYSQL_PASSWORD` | MySQL password |
+`WP_MYSQL_ROOT_PASSWORD` | MySQL root password |
 
-1. feat: 新增/修改功能 (feature)。
-2. fix: 修補 bug (bug fix)。
-3. docs: 文件，增加說明 (documentation)。
-4. backup: 備份。EX： SQL檔案
-5. data: 資料變化。EX：圖片、固定文案、動態資料
-6. style: 格式 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, etc)。
-7. refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。
-8. perf: 改善效能 (A code change that improves performance)。
-9. test: 增加測試 (when adding missing tests)。
-10. chore: 建構程序或輔助工具的變動 (maintain)。
-11. revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。
+2. Install Docker
+  * MAC: https://docs.docker.com/desktop/install/mac-install/
+  * Windows: https://docs.docker.com/desktop/install/windows-install/
+3. Install Docker images
+```bash
+  docker compose up -d
+```
+4. Install npm packages
+```bash
+  pnpm install
+  # or
+  npm install
+```
+5. Start development
+```bash
+  pnpm dev
+  # or
+  npm run dev
+```
+6. Open http://localhost:{`WP_PORT`} in browser
+
+## Production
+
+1. Build 
+```bash
+  pnpm build
+  # or
+  npm run build
+```
+2. Change `WP_DEBUG` to `false`
+```php
+  // wp-config.php
+
+  define('WP_DEBUG', false);
+```
+
+## Export SQL
+```bash
+  sh dump.sh
+```
+----------------------------------
+
+# Guides
+
+All development files are in `wordpress/wp-content/themes/custom-theme` directory.
+
+## Routing
+----------------------------------
+Put your routing file in `src/views` directory.
+
+Example: Home page
+
+file tree:
+```
+views/
+--| index/
+-----| index.twig
+-----| index.js
+-----| style.scss
+```
+
+in vite.config.js
+```js
+// vite.config.js
+
+build: {
+  ...
+  rollupOptions: {
+    input: [
+      ...
+      "wordpress/wp-content/themes/custom-theme/src/views/index/index.js",
+    ],
+  },
+},
+```
+
+in index.twig
+```twig
+<!-- views/index/index.twig -->
+
+{% extends "base.twig" %}
+
+{% block head %}
+  {{ enqueue_script_style('@/views/index/index') }}
+{% endblock %}
+
+{% block content %}
+  <div class="page-index">
+    ...
+  </div>
+{% endblock %}
+```
+
+in index.js
+```js
+// views/index/index.js
+
+import "./style.scss";
+import { createApp } from "vue";
+import { webFont } from "@/plugins/webFont";
+import { globalComponents } from "@/plugins/globalComponents";
+import { emitter } from "@/plugins/emitter";
+import { breakpoints } from "@/plugins/breakpoints";
+
+const app = createApp({});
+
+app.use(webFont);
+app.use(globalComponents);
+app.use(emitter);
+app.use(breakpoints);
+
+app.mount("#app");
+```
+
+in front-page.php
+```php
+// custom-theme/front-page.php
+
+Timber::render(array('index/index.twig'), $context);
+```
+
+----------------------------------
+## Components
+
+Twig file tree:
+```
+{component-name}/
+--| index.twig
+--| index.js
+--| style.scss
+```
+
+in index.js
+```js
+// {component-name}/index.js
+
+import "./style.scss";
+```
+
+vue file tree:
+```
+{component-name}/
+--| index.vue
+```
+
+### Global components
+
+#### Twig: 
+Put your global components in `src/components` directory.
+
+in main.js
+```js
+// src/main.js
+
+import "@/components/{component-name}/index";
+```
+
+#### Vue:
+Put your global components in `src/components/vue` directory.
+
+in src/plugins/globalComponents/index.js
+```js
+import MyComponent from "@/components/vue/{component-name}/index.vue";
+
+export const globalComponents = {
+  install(app, options) {
+    app.components = {
+      // put your global components here
+      MyComponent,
+    };
+  },
+};
+```
+
+### Local components
+
+#### Twig:
+Put your local components in `src/views/{your-view}/components` directory.
+
+in src/views/{your-view}/index.js
+```js
+// src/views/{your-view}/index.js
+
+import "./components/{component-name}/index";
+```
+
+#### Vue:
+Put your local components in `src/views/{your-view}/components/vue` directory.
+
+in src/views/{your-view}/index.js
+```js
+// src/views/{your-view}/index.js
+
+import MyComponent from "./components/vue/{component-name}/index.vue";
+
+const app = createApp({
+  components: {
+    // put your local components here
+    MyComponent,
+  },
+});
+
+```
+
+----------------------------------
+## Alias
+### Vite
+
+Find | Replacement |
+--- | --- |
+`@` | `src` |
+
+### Twig
+
+Default root path: `src/views`
+
+`enqueue_script_style`: 
+
+Find | Replacement |
+--- | --- |
+`@` | `src` |
+
+`require_assets`:
+
+Find | Replacement |
+--- | --- |
+`@` | `src/assets/global` |
+
+`include`:
+
+Find | Replacement |
+--- | --- |
+`components` | `src/components` |
+
+----------------------------------
+## Assets
+### Vite
+
+Put your assets in `src/assets` directory.
+
+### Twig
+
+Put your assets in `src/assets/global` directory.
+
+----------------------------------
+## Twig functions
+`enqueue_script_style`
+
+Enqueue script and style
+
+```twig
+{{ enqueue_script_style('@/views/index/index') }}
+```
+
+`require_assets`
+
+Require assets
+
+```twig
+{{ require_assets('@/img/logo.svg') }}
+```
+
+----------------------------------
+
+# Wordpress
+
+## Hierarchy
+
+https://developer.wordpress.org/files/2014/10/Screenshot-2019-01-23-00.20.04.png
 
 

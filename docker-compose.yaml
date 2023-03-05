@@ -42,7 +42,7 @@ services:
         image: mysql:8.0.31
         platform: linux/arm64/v8
         volumes:
-            - ./SQL/dump-newest.sql:/docker-entrypoint-initdb.d/dump-newest.sql
+            - ./sql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
         environment:
             MYSQL_ROOT_PASSWORD: $WP_MYSQL_ROOT_PASSWORD
             MYSQL_DATABASE: $WP_MYSQL_DATABASE

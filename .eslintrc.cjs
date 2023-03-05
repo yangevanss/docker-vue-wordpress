@@ -73,5 +73,6 @@ module.exports = {
     "no-constructor-return": "off",
     "no-param-reassign": ["error", { props: false }],
     "no-shadow": "off",
+    "import/prefer-default-export": "off",
   },
 };

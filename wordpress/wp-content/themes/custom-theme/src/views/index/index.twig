@@ -6,7 +6,9 @@
 		<p>{{ qux }}</p>
 		<h2>{{ foo }}</h2>
 	</div>
-	<img src="{{ require_assets('@/vite.svg') }}" alt="">
+	<div class="container">
+		<img src="{{ require_assets('@/vite.svg') }}" alt="" width="100">
+	</div>
 	<Icon name="vite"></Icon>
 	<Hello-world></Hello-world>
 	{% include 'index/components/HelloWorld/index.twig' %}

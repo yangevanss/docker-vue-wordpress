@@ -1,26 +1,30 @@
 $padding: 8px;
+$prefix: "custom";
 $grid-columns: 12;
+$grid-gutter-width: 1.5rem;
 $grid-row-columns: 6;
-$grid-gutter-width: $padding * 3;
 $grid-breakpoints: (
-  mobile: 0,
-  tablet: 768px,
-  medium: 1024px,
-  desktop: 1200px,
-  large: 1920px,
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
 );
+$spacer: 1rem;
+$gutters: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+$container-padding-x: $grid-gutter-width;
 $container-max-widths: (
-  mobile: 100%,
-  tablet: 100%,
-  medium: 100%,
-  desktop: 1280px,
-  large: 1280px,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
 );
-$container-padding: (
-  mobile: $padding,
-  tablet: $padding * 5,
-  medium: $padding * 5,
-  desktop: $padding * 5,
-  large: $padding * 5,
-);
-$header-height: ();
