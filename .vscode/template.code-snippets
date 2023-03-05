@@ -1,23 +1,33 @@
 {
-  "SCSS RWD mixin large": {
-      "prefix": "xl",
-      "body": ["@include media-breakpoint-down(large) {", "$1", "}"],
-      "description": "rwd large"
-  },
-  "SCSS RWD mixin desktop": {
-      "prefix": "lg",
-      "body": ["@include media-breakpoint-down(desktop) {", "$1", "}"],
-      "description": "rwd desktop"
-  },
-  "SCSS RWD mixin tablet": {
-      "prefix": "md",
-      "body": ["@include media-breakpoint-down(tablet) {", "$1", "}"],
-      "description": "rwd tablet"
-  },
-  "SCSS RWD mixin mobile": {
+  "SCSS RWD mixin xs": {
       "prefix": "xs",
-      "body": ["@include media-breakpoint-down(mobile) {", "$1", "}"],
-      "description": "rwd mobile"
+      "body": ["@include media-breakpoint-down(xs) {", "$1", "}"],
+      "description": "rwd xs"
+  },
+  "SCSS RWD mixin sm": {
+    "prefix": "sm",
+    "body": ["@include media-breakpoint-down(sm) {", "$1", "}"],
+    "description": "rwd sm"
+  },
+  "SCSS RWD mixin md": {
+    "prefix": "md",
+    "body": ["@include media-breakpoint-down(md) {", "$1", "}"],
+    "description": "rwd md"
+  },
+  "SCSS RWD mixin lg": {
+    "prefix": "lg",
+    "body": ["@include media-breakpoint-down(lg) {", "$1", "}"],
+    "description": "rwd lg"
+  },
+  "SCSS RWD mixin xl": {
+    "prefix": "xl",
+    "body": ["@include media-breakpoint-down(xl) {", "$1", "}"],
+    "description": "rwd xl"
+  },
+  "SCSS RWD mixin xxl": {
+    "prefix": "xxl",
+    "body": ["@include media-breakpoint-down(xxl) {", "$1", "}"],
+    "description": "rwd xxl"
   },
   "SCSS size mixin": {
       "prefix": "si",
