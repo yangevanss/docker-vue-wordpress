@@ -184,7 +184,7 @@ in index.js
 import "./style.scss";
 ```
 
-vue file tree:
+Vue file tree:
 ```
 {component-name}/
 --| index.vue
