@@ -23,7 +23,6 @@ Overview
   - [Twig functions](#twig-functions)
 - [Wordpress](#wordpress)
   - [Hierarchy](#hierarchy)
-  - [Plugins](#plugins)
 
 ----------------------------------
 
