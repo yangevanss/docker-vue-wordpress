@@ -28,6 +28,7 @@ services:
     phpmyadmin:
         container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
         image: phpmyadmin/phpmyadmin
+        platform: linux/amd64
         depends_on:
             - mysql
         environment:
