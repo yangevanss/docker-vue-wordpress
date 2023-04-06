@@ -5,9 +5,9 @@ function require_assets(String $path)
 {
   $path = str_replace('@/', 'wordpress/wp-content/themes/custom-theme/src/assets/global/', $path);
 
-  $src = path_join($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . VITE_PORT, $path);
-
+  
   if (WP_DEBUG) {
+    $src = path_join($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . VITE_PORT, $path);
     return $src;
   }
 
