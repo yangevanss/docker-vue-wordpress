@@ -50,17 +50,18 @@ Name | Description |
 ```bash
   docker compose up -d
 ```
+4. Active corepack
+```bash
+  corepack enable
+  # if you want to use yarn, just change "packageManager" in package.json 
+```
 4. Install npm packages
 ```bash
   pnpm install
-  # or
-  npm install
 ```
 5. Start development
 ```bash
   pnpm dev
-  # or
-  npm run dev
 ```
 6. Open http://localhost:{`WP_PORT`} in browser
 
