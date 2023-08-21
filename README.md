@@ -317,3 +317,25 @@ Require assets
 https://developer.wordpress.org/files/2014/10/Screenshot-2019-01-23-00.20.04.png
 
 
+----------------------------------
+## Plugins
+### Bug between WP Multilang(2.4.1) & Advanced Custom Fields PRO(5.11.3)
+**Root Cause**
+
+select2 will report `Uncaught Error: No select2/compat/dropdownCss`
+
+**Solution**
+
+[Source](https://wordpress.org/support/topic/incompability-with-acf/#post-15117328)
+
+
+```php
+// location: WP multilang `class-wpm-admin-assets.php` line:54
+
+// Replace
+wp_register_script( 'select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js', array( 'jquery' ), null );
+
+// to
+wp_register_script( 'select2', '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.js', array( 'jquery' ), null );
+
+```
